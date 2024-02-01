@@ -86,9 +86,9 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: white;
+  color: #06000B;
   text-align: var(--bs-body-text-align);
-  background-color: #06000B;
+  background-color: #F5F6FA;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -4242,7 +4242,7 @@ fieldset:disabled .btn {
   padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
   font-size: var(--bs-nav-link-font-size);
   font-weight: var(--bs-nav-link-font-weight);
-  color: var(--negro);
+  color: #fff;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -4255,7 +4255,7 @@ fieldset:disabled .btn {
 
 .nav-link:hover,
 .nav-link:focus {
-  color: #8C2198;
+  color: #cccccc;
 }
 
 .nav-link.disabled {
@@ -4415,7 +4415,7 @@ fieldset:disabled .btn {
 
 .navbar-brand:hover,
 .navbar-brand:focus {
-  color: #8c00ff;
+  color: #8C2198;
 }
 
 .navbar-nav {
@@ -9287,8 +9287,8 @@ fieldset:disabled .btn {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: #fff;
-  color: black;
+  background-color: #10001d;
+  color: #A0A5BA;
 }
 
 .bg-black {
@@ -12893,7 +12893,7 @@ body {
 }
 
 .sb-topnav.navbar-dark #sidebarToggle {
-  color: #06000B;
+  color: #fff;
 }
 
 .sb-topnav.navbar-light #sidebarToggle {
@@ -12957,30 +12957,34 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #f1f1f1;
-  color: #480a61;
+  background-color: #06000B;
+  color: #ccc;
   font-weight: 500;
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: #480a61;
+  color: #ccc;
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: #06000B;
+  color: #ccc;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: #06000B;
+  color: #ccc;
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: #06000B;
+  color: #ccc;
 }
 
-.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #06000B;
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover{
   cursor: pointer;
+  background-color:#8D16FF ;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
@@ -12992,7 +12996,7 @@ body {
 }
 
 .sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #fff;
+  background-color: #10011D;
 }
 
 .sb-sidenav-light {
