@@ -24,13 +24,11 @@ $name = $_SESSION['nombre_completo'];
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="principal_administrador.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
 		<!-- Sidebar Toggle-->
-		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-				class="fas fa-bars"></i></button>
+		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-					aria-expanded="false"><i class="fas fa-user fa-fw"></i> <?php echo $name;?></a>
+				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> <?php echo $name; ?></a>
 				<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" href="#!">Configuración</a></li>
 					<li>
@@ -53,14 +51,12 @@ $name = $_SESSION['nombre_completo'];
 						</a>
 						<div class="sb-sidenav-menu-heading">Interface</div>
 						<!-- CRUD EQUIPOS -->
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseEquipos" aria-expanded="false" aria-controls="collapseEquipos">
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEquipos" aria-expanded="false" aria-controls="collapseEquipos">
 							<div class="sb-nav-link-icon"><i class="fa-solid fa-computer"></i></div>
 							Equipos
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<div class="collapse" id="collapseEquipos" aria-labelledby="headingOne"
-							data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseEquipos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" onclick='Metodo("partials/registrar_equipo.php")'>
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-keyboard"></i></div>
@@ -74,14 +70,12 @@ $name = $_SESSION['nombre_completo'];
 						</div>
 
 						<!-- CRUD USUARIOS -->
-						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-							data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
 							<div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
 							Usuarios
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<div class="collapse" id="collapseUsuarios" aria-labelledby="headingOne"
-							data-bs-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseUsuarios" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" onclick='Metodo("partials/registrar_usuario.php")'>
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
@@ -108,29 +102,33 @@ $name = $_SESSION['nombre_completo'];
 				<div class="container-fluid px-4">
 					<div class="container" id="qCarga">
 						<br>
-						<h1>Bienvenid@ de vuelta
-							<?php echo $name; ?>
-						</h1>
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Bienvenido/a <?php echo $name; ?></h5>
+								<hr>
+								<p class="card-subtitle">Gracias por visitar nuestro sitio.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</main>
 		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		crossorigin="anonymous"></script>
+
+	<!-- archivos javascript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="./assets/js/datatables-simple-demo.js"></script>
 	<script src="./assets/js/jquery-3.7.1.min.js"></script>
 	<script src="./assets/js/scripts.js"></script>
 	<script src="./assets/js/ticket.js"></script>
 	<script src="./assets/js/usuario.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	<!-- <script src="./assets/demo/chart-area-demo.js"></script>
-	<script src="./assets/demo/chart-bar-demo.js"></script>
-	<script src="./assets/demo/chart-pie-demo.js"></script> -->
 	<script src="./assets/js/equipo.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+	<script src="js/datatables-simple-demo.js"></script>
 	<script src="./assets/demo/datatables-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>
 
