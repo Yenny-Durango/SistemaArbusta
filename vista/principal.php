@@ -10,7 +10,7 @@ $name = $_SESSION['nombre_completo'];
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="sitio arbusta" />
+    <meta name="description" content="Sitio Arbusta" /> <!-- Corregí la ortografía de "sitio" -->
     <meta name="author" content="Yenny Durango" />
     <title>ARBUSTA</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
@@ -21,11 +21,11 @@ $name = $_SESSION['nombre_completo'];
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
+        <!-- Navbar Brand -->
         <a class="navbar-brand ps-3" href="principal.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
-        <!-- Sidebar Toggle-->
+        <!-- Sidebar Toggle -->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        <!-- Navbar-->
+        <!-- Navbar -->
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> <?php echo $name; ?></a>
@@ -45,8 +45,8 @@ $name = $_SESSION['nombre_completo'];
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="#">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
+                        <a class="nav-link" href="principal.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house-user"></i></div>
                             Inicio
                         </a>
                         <div class="sb-sidenav-menu-heading">Interface</div>
@@ -59,9 +59,18 @@ $name = $_SESSION['nombre_completo'];
                         </a>
                         <div class="collapse" id="collapseEquipo" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" onclick='Metodo("partials/equipo.php")'>Mi Equipo</a>
-                                <a class="nav-link" onclick='Metodo("partials/informacionproducto.php")'>información del Producto</a>
-                                <a class="nav-link" onclick='Metodo("partials/datostecnicos.php")'>Datos Tecnicos</a>
+                                <a class="nav-link" onclick='Metodo("partials/equipo.php")'>
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-computer"></i></div>
+                                    Mi Equipo
+                                </a>
+                                <a class="nav-link" onclick='Metodo("partials/informacionproducto.php")'>
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-computer"></i></div>
+                                    Info Producto
+                                </a>
+                                <a class="nav-link" onclick='Metodo("partials/datostecnicos.php")'>
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-computer"></i></div>
+                                    Datos Técnicos
+                                </a>
                             </nav>
                         </div>
 
@@ -89,9 +98,14 @@ $name = $_SESSION['nombre_completo'];
             <main>
                 <div class="container-fluid px-4">
                     <div class="container" id="qCarga">
-                        <br><br>
-                        <h1>Bienvenid@ de vuelta <?php echo $name; ?></h1>
-
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Bienvenido/a <?php echo $name; ?></h5>
+                                <hr>
+                                <p class="card-subtitle">Gracias por visitar nuestro sitio.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -100,9 +114,9 @@ $name = $_SESSION['nombre_completo'];
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; ARBUSTA 2024</div>
                         <div>
-                            <a href="#">Politica de privacidad</a>
+                            <a href="#">Política de privacidad</a>
                             &middot;
-                            <a href="#">Terminos &amp; Condiciones</a>
+                            <a href="#">Términos &amp; Condiciones</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +124,7 @@ $name = $_SESSION['nombre_completo'];
         </div>
     </div>
 
-    <!-- archivos javascript -->
+    <!-- Archivos JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="./assets/js/datatables-simple-demo.js"></script>
     <script src="./assets/js/jquery-3.7.1.min.js"></script>
