@@ -27,33 +27,33 @@ function RegistrarTicket()
   $telefono = $_POST['telefono'];
   $nombre_completo = $_POST['nombre_completo'];
   $id_usuario = $_SESSION['id_usuario'];
+  $imagenes = $_FILES["imagenes"];
 
-  // Procesar cada imagen cargada
-  $imagePaths = [];
-  if (isset($_FILES["image_uploads"]) && count($_FILES["image_uploads"]["name"]) > 0) {
-    for ($i = 0; $i < count($_FILES["image_uploads"]["name"]); $i++) {
-      $targetDir = "../vista/assets/img/";
-      $targetFile = $targetDir . basename($_FILES["image_uploads"]["name"][$i]);
-      if (move_uploaded_file($_FILES["image_uploads"]["tmp_name"][$i], $targetFile)) {
-        $imagePaths[] = $targetFile;
-      }
+  foreach ($imagenes["name"] as $key => $nombre) {
+    $ruta_temporal = $imagenes["tmp_name"][$key];
+    $ruta_destino = "../assets/img/" . $nombre; // Ajusta la carpeta de destino según tu configuración
+
+    if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
+      // Subida exitosa, ahora registramos en la base de datos
+      $sql = "INSERT INTO imagenes (nombre, ruta) VALUES ('$nombre', '$ruta_destino')";
+      $pdo->exec($sql);
+      echo "La imagen $nombre se ha subido y registrado correctamente.<br>";
+    } else {
+      echo "Error al subir la imagen $nombre.<br>";
     }
   }
-
-  // Convertir rutas de imágenes a una cadena separada por comas
-  $imagePathsStr = implode(",", $imagePaths);
 
   // Validar si todos los campos requeridos están completos
   if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo  === '' || $telefono === '' || $nombre_completo === '') {
     echo "Complete todos los campos";
   } else {
     // Preparar y ejecutar la consulta SQL para insertar el nuevo ticket
-    $sql = "INSERT INTO tickets(fecha_creacion, resumen_problema, detalle_problema, capturas, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :capturas, :correo, :telefono, :nombre_completo, :id_usuario)";
+    $sql = "INSERT INTO tickets(fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagenes, :correo, :telefono, :nombre_completo, :id_usuario)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
     $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
     $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':capturas', $imagePathsStr, PDO::PARAM_STR);
+    $stmt->bindParam(':imagenes', $imagenes, PDO::PARAM_STR);
     $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
     $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
     $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);

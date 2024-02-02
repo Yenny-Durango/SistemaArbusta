@@ -33,7 +33,7 @@
     $result = $pdo->query($sql);
 
     if ($result->rowCount() > 0) {
-        echo "<h1 class=\"mt-4\">Listar usuarios</h1>
+        echo "<h1 class=\"mt-4\">Listar tickets</h1>
         <table id=\"example\" class=\"display\" style=\"width:100%\">
         <thead>
             <tr>
@@ -56,7 +56,7 @@
             <td>" . $row["fecha_creacion"] . "</td>
             <td>" . $row["resumen_problema"] . "</td>
             <td>" . $row["detalle_problema"] . "</td>
-            <td>" . $row["capturas"] . "</td>
+            <td>" . $row["imagenes"] . "</td>
             <td>" . $row["correo"] . "</td>
             <td>" . $row["telefono"] . "</td>
             <td>" . $row["nombre_completo"] . "</td>

@@ -3329,6 +3329,9 @@ textarea.is-invalid.datatable-input {
   border-radius: var(--bs-btn-border-radius);
   background-color: var(--bs-btn-bg);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: auto;
+  margin: auto;
+  padding: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3393,8 +3396,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: var(--bs-primary);
-  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-bg: #8D16FF;
+  --bs-btn-border-color: #8D16FF;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: var(--bs-secondary);
   --bs-btn-hover-border-color: var(--bs-secondary);
@@ -3413,8 +3416,8 @@ fieldset:disabled .btn {
   --bs-btn-bg: var(--bs-secondary);
   --bs-btn-border-color: var(--bs-secondary);
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: var(--bs-primary);
-  --bs-btn-hover-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #8D16FF;
+  --bs-btn-hover-border-color: #8D16FF;
   --bs-btn-focus-shadow-rgb: 130, 138, 145;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: var(--negro);

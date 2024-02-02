@@ -56,9 +56,8 @@ try {
     <!-- Campo para cargar imágenes -->
     <br>
     <div class="form-floating">
-        <input type="file" id="image_uploads" name="image_uploads[]" accept=".jpg, .jpeg, .png" multiple class="form-control" />
-        <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
-        <input type="hidden" id="imagePaths" name="imagePaths">
+        <input type="file" name="imagenes[]" id="imagenes" accept="image/*" multiple="multiple" class="form-control" required>
+        <label for="imagenes">Seleccionar hasta 5 imágenes:</label>
     </div>
     <br>
 
