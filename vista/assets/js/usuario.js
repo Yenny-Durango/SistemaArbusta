@@ -279,6 +279,25 @@ function ValidarContrasenaUsuario(elemento) {
   ValidarCamposUsuarioLogin();
 }
 
+function ValidarConfimarContrasenaUsuario(elemento) {
+  let inputValue = elemento.value.trim();
+  let contrasena = document.getElementById("contrasena").value.trim();
+  let errorSpan = document.getElementById("confirmarContrasenaError");
+
+  if (inputValue !== contrasena) {
+    // No cumple con las reglas
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "Las contraseñas deben coincidir.";
+    mostrarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
+  } else {
+    // Cumple con las reglas
+    elemento.style.borderColor = "green";
+    errorSpan.textContent = "";
+    ocultarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
+    ValidarCamposUsuario();
+  }
+}
+
 function Ingresar() {
   event.preventDefault();
   let redirectTo; // Declare redirectTo outside the success function

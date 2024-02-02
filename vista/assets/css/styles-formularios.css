@@ -96,7 +96,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: white;
+  color: #000;
   text-align: var(--bs-body-text-align);
   background-image: url("../img/fondo-lavandas.jpg");
   background-attachment: fixed;
@@ -2206,7 +2206,7 @@ progress {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #f7f7f7;
+  color: #000000;
   background-color: transparent;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -2237,7 +2237,7 @@ progress {
 
 .form-control:focus,
 .datatable-input:focus {
-  color: #f7f7f7;
+  color: #000000;
   background-color: transparent;
   border-color: #ce86fe;
   outline: 0;
@@ -2263,7 +2263,7 @@ progress {
 
 .form-control:disabled,
 .datatable-input:disabled {
-  background-color: #e9ecef;
+  background-color: #585858;
   opacity: 1;
 }
 
@@ -2420,9 +2420,9 @@ textarea.form-control-lg {
 
 .form-select:focus,
 .datatable-selector:focus {
-  border-color: #86b7fe;
+  border-color: #ce86fe;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(157, 13, 253, 0.25);
 }
 
 .form-select[multiple],
@@ -2533,8 +2533,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #910dfd;
+  border-color: #910dfd;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 
@@ -4459,7 +4459,7 @@ fieldset:disabled .btn {
   min-width: 0;
   height: var(--bs-card-height);
   word-wrap: break-word;
-  background-color: #06000B;
+  background-color: #ffffff;
   background-clip: border-box;
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
@@ -8693,7 +8693,7 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #e0b9ff;
+  color: #c485f7;
   text-align: center;
   cursor: pointer;
   display: block;
@@ -8703,7 +8703,7 @@ fieldset:disabled .btn {
 
 .text-primary:hover{
   text-decoration: underline;
-  color: #ffffff;
+  color: #db4dff;
 }
 
 .bg-primary {

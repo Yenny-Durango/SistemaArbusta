@@ -71,7 +71,7 @@
     </div>
 
     <!-- Botón para mostrar/ocultar la contraseña -->
-    <span id="verContrasena" class="verContrasena" title="Ver contraseña" onclick="mostrarContrasena()">Ver contraseña</span>
+    <span id="verContrasena" class="text-primary" title="Ver contraseña" onclick="mostrarContrasena()">Ver contraseña</span>
 
     <!-- Botón de envío del formulario -->
     <div class="mt-4 mb-0">

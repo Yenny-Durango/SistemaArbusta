@@ -29,6 +29,8 @@ function RegistrarTicket()
   $id_usuario = $_SESSION['id_usuario'];
   $imagenes = $_FILES["imagenes"];
 
+  $imagen_ids = array(); // Almacenar los IDs de las imágenes registradas
+
   foreach ($imagenes["name"] as $key => $nombre) {
     $ruta_temporal = $imagenes["tmp_name"][$key];
     $ruta_destino = "../assets/img/" . $nombre; // Ajusta la carpeta de destino según tu configuración
@@ -37,6 +39,7 @@ function RegistrarTicket()
       // Subida exitosa, ahora registramos en la base de datos
       $sql = "INSERT INTO imagenes (nombre, ruta) VALUES ('$nombre', '$ruta_destino')";
       $pdo->exec($sql);
+      $imagen_ids[] = $pdo->lastInsertId(); // Obtener el ID de la imagen recién insertada
       echo "La imagen $nombre se ha subido y registrado correctamente.<br>";
     } else {
       echo "Error al subir la imagen $nombre.<br>";
@@ -53,7 +56,7 @@ function RegistrarTicket()
     $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
     $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
     $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':imagenes', $imagenes, PDO::PARAM_STR);
+    $stmt->bindParam(':imagenes', implode(',', $imagen_ids), PDO::PARAM_STR); // Almacenar los IDs de las imágenes como una cadena separada por comas
     $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
     $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
     $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
@@ -71,6 +74,7 @@ function RegistrarTicket()
   // Cerrar la conexión a la base de datos
   $pdo = null;
 }
+
 
 // Función para modificar un ticket existente en la base de datos.
 function ModificarTicket()

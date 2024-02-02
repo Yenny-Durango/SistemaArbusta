@@ -82,8 +82,14 @@ $name = $_SESSION['nombre_completo'];
                         </a>
                         <div class="collapse" id="collapseTicket" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" onclick='Metodo("partials/registrar_ticket.php")'>Crear Ticket</a>
-                                <a class="nav-link" onclick='Metodo("partials/listar_tickets.php")'>Mis Tickets</a>
+                                <a class="nav-link" onclick='Metodo("partials/registrar_ticket.php")'>
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Crear Ticket
+                                </a>
+                                <a class="nav-link" onclick='Metodo("partials/listar_tickets.php")'>
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Mis Tickets
+                                </a>
                             </nav>
                         </div>
                     </div>

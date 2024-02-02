@@ -65,7 +65,7 @@
                                         <!-- Recaptcha para validación -->
                                         <center>
                                             <div class="card-body">
-                                                <div class="g-recaptcha" data-sitekey="6LdiYFYpAAAAAC5XMkW1T2S0km6SLOmOFqJ7AGc_" data-theme="dark"></div>
+                                                <div class="g-recaptcha" data-sitekey="6LdiYFYpAAAAAC5XMkW1T2S0km6SLOmOFqJ7AGc_"></div>
                                             </div>
                                             <!-- Botón para enviar el formulario de inicio de sesión -->
                                             <button type="submit" class="btn btn-primary" id="submitButton" onclick="Ingresar()">Ingresar</button>

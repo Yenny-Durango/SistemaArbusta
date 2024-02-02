@@ -48,7 +48,7 @@ try {
 
     <!-- Campo de detalle del problema -->
     <div class="form-floating">
-        <textarea class="form-control" id="detalle_problema" name="detalle_problema" cols="30" rows="10" class="form-control" placeholder="detalle_problema" style="height: 100px;" onkeyup="ValidarDetalleProblema(this)">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis nesciunt accusantium sed ratione omnis illum minus laboriosam. Sed provident voluptates debitis quidem magni eaque, dolor, odio accusamus inventore magnam adipisci.</textarea>
+        <textarea class="form-control" id="detalle_problema" name="detalle_problema" cols="30" rows="10" class="form-control" placeholder="detalle_problema" style="height: 100px;" onkeyup="ValidarDetalleProblema(this)"></textarea>
         <label for="Detalle Problema">Detalle Problema</label>
         <span id="detalleProblemaError" class="alert alert-danger" hidden></span>
     </div>
