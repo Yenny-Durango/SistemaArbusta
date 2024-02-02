@@ -87,6 +87,13 @@ $name = $_SESSION['nombre_completo'];
 								</a>
 							</nav>
 						</div>
+
+						<div class="sb-sidenav-menu-heading">Firma Arbusta</div>
+						<!-- FIRMA -->
+						<a class="nav-link" onclick='Metodo("partials/firma.php")'>
+							<div class="sb-nav-link-icon"><i class="fa-solid fa-signature"></i></div>
+							Firma
+						</a>
 					</div>
 				</div>
 				<center>
@@ -123,6 +130,7 @@ $name = $_SESSION['nombre_completo'];
 	<script src="./assets/js/ticket.js"></script>
 	<script src="./assets/js/usuario.js"></script>
 	<script src="./assets/js/equipo.js"></script>
+	<script src="./assets/js/firma.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="js/scripts.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
@@ -131,7 +139,6 @@ $name = $_SESSION['nombre_completo'];
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

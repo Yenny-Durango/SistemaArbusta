@@ -4,6 +4,9 @@ switch ($_POST['Metodo']) {
   case 'RegistrarUsuario':
     RegistrarUsuario();
     break;
+  case 'ModificarUsuario':
+    ModificarUsuario();
+    break;
   case 'Ingresar':
     Ingresar();
     break;
@@ -112,4 +115,72 @@ function Ingresar()
   }
 
   $pdo = null; // Cerrar la conexion
+}
+
+function ModificarUsuario()
+{
+  // Requiere el archivo de conexión a la base de datos
+  require "../modelo/conexion.php";
+
+  // Inicia la sesión
+  session_start();
+
+  // Obtiene los datos del formulario por POST
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $correo = $_POST['correo'];
+  $telefono = $_POST['telefono'];
+  $contrasena = $_POST['contrasena'];
+  $nombre_completo = $apellido . ' , ' . $nombre;
+
+  // Verifica si el correo electrónico ya existe en la base de datos
+  $sql = "UPDATE usuario SET nombre_completo = :nombre_completo, correo = :correo, telefono = :telefono, contrasena = :contrasena,tipo_usuario = tipo_usuario WHERE id_usuario == :id_usuario";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
+  $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+  $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+  $stmt->bindParam(':contrasena', $contrasena_bd, PDO::PARAM_STR);
+  $stmt->execute();
+
+  // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
+  if ($stmt->rowCount() > 0) {
+    echo "Modificado correctamente";
+  } else {
+    echo "Hubo un problema al intentar modificar la información";
+  }
+
+  // Cierra la conexión a la base de datos
+  $pdo = null;
+}
+
+function EliminarUsuario()
+{
+  // Requiere el archivo de conexión a la base de datos
+  require "../modelo/conexion.php";
+
+  // Inicia la sesión
+  session_start();
+
+  // Verifica si se envió un ID de usuario por POST
+  if (isset($_POST['id_usuario'])) {
+    // Obtiene el ID de usuario a eliminar
+    $idUsuario = $_POST['id_usuario'];
+
+    // Prepara la consulta SQL para eliminar al usuario
+    $sql = "DELETE FROM usuario WHERE id_usuario = :id_usuario";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id_usuario', $idUsuario, PDO::PARAM_INT);
+
+    // Ejecuta la consulta
+    if ($stmt->execute()) {
+      echo "Usuario eliminado correctamente";
+    } else {
+      echo "Hubo un problema al intentar eliminar la información";
+    }
+  } else {
+    echo "No se proporcionó un ID de usuario válido";
+  }
+
+  // Cierra la conexión a la base de datos
+  $pdo = null;
 }

@@ -17,7 +17,8 @@
 
         #example th,
         #example td {
-            text-align: center; /* Centrar el texto en las celdas */
+            text-align: center;
+            /* Centrar el texto en las celdas */
         }
     </style>
 </head>
@@ -54,7 +55,9 @@
               <td>" . $row["correo"] . "</td>
               <td>" . $row["telefono"] . "</td>
               <td>" . $row["tipo_usuario"] . "</td>
-              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"modificarUsuario()\">Modificar</button></td>
+              
+              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarUsuario(" . $row["id_usuario"] . ")\">Modificar</button></td>
+
               <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"eliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
             </tr>";
         }
