@@ -56,6 +56,14 @@
             <td>" . $row["fecha_creacion"] . "</td>
             <td>" . $row["resumen_problema"] . "</td>
             <td>" . $row["detalle_problema"] . "</td>
+            <td>";
+
+            $imagenes = explode(',', $row["imagenes"]);
+            foreach ($imagenes as $imagen) {
+                echo "<img src=\"" . $imagen . "\" alt=\"Imagen\">";
+            }
+            
+            echo "</td>
             <td>" . $row["imagenes"] . "</td>
             <td>" . $row["correo"] . "</td>
             <td>" . $row["telefono"] . "</td>

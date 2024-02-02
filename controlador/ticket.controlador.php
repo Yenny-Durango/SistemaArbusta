@@ -23,35 +23,36 @@ function RegistrarTicket()
   $fecha_creacion = $_POST['fecha_creacion'];
   $resumen_problema = $_POST['resumen_problema'];
   $detalle_problema = $_POST['detalle_problema'];
+  $imagenes = $_FILES["imagenes"]; 
   $correo = $_POST['correo'];
   $telefono = $_POST['telefono'];
   $nombre_completo = $_POST['nombre_completo'];
   $id_usuario = $_SESSION['id_usuario'];
-  $imagenes = $_FILES["imagenes"];
-
-  $imagen_ids = array(); // Almacenar los IDs de las imágenes registradas
-
-  foreach ($imagenes["name"] as $key => $nombre) {
-    $ruta_temporal = $imagenes["tmp_name"][$key];
-    $ruta_destino = "../assets/img/" . $nombre; // Ajusta la carpeta de destino según tu configuración
-
-    if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
-      // Subida exitosa, ahora registramos en la base de datos
-      $sql = "INSERT INTO imagenes (nombre, ruta) VALUES ('$nombre', '$ruta_destino')";
-      $pdo->exec($sql);
-      $imagen_ids[] = $pdo->lastInsertId(); // Obtener el ID de la imagen recién insertada
-      echo "La imagen $nombre se ha subido y registrado correctamente.<br>";
-    } else {
-      echo "Error al subir la imagen $nombre.<br>";
-    }
-  }
 
   // Validar si todos los campos requeridos están completos
-  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo  === '' || $telefono === '' || $nombre_completo === '') {
+  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo === '' || $telefono === '' || $nombre_completo === '') {
     echo "Complete todos los campos";
   } else {
     // Preparar y ejecutar la consulta SQL para insertar el nuevo ticket
-    $sql = "INSERT INTO tickets(fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagenes, :correo, :telefono, :nombre_completo, :id_usuario)";
+    $sql = "INSERT INTO tickets (fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagenes, :correo, :telefono, :nombre_completo, :id_usuario)";
+
+    $imagen_ids = array(); // Almacenar los IDs de las imágenes registradas
+
+    foreach ($imagenes["name"] as $key => $nombre) {
+      $ruta_temporal = $imagenes["tmp_name"][$key];
+      $ruta_destino = "../assets/img/" . $nombre; // Ajusta la carpeta de destino según tu configuración
+
+      if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
+        // Subida exitosa, ahora registramos en la base de datos
+        $sql = "INSERT INTO imagenes (nombre, ruta) VALUES ('$nombre', '$ruta_destino')";
+        $pdo->exec($sql);
+        $imagen_ids[] = $pdo->lastInsertId(); // Obtener el ID de la imagen recién insertada
+        echo "La imagen $nombre se ha subido y registrado correctamente.<br>";
+      } else {
+        echo "Error al subir la imagen $nombre.<br>";
+      }
+    }
+
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
     $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
@@ -112,12 +113,12 @@ function ModificarTicket()
     echo "Complete todos los campos";
   } else {
     // Preparar y ejecutar la consulta SQL para modificar el ticket existente
-    $sql = "UPDATE tickets SET fecha_creacion=:fecha_creacion, resumen_problema=:resumen_problema, detalle_problema=:detalle_problema, capturas=:capturas, correo=:correo, telefono=:telefono, nombre_completo=:nombre_completo WHERE id_ticket=:id_ticket";
+    $sql = "UPDATE tickets SET fecha_creacion=:fecha_creacion, resumen_problema=:resumen_problema, detalle_problema=:detalle_problema, imagenes=:imagenes, correo=:correo, telefono=:telefono, nombre_completo=:nombre_completo WHERE id_ticket=:id_ticket";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
     $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
     $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':capturas', $imagePathsStr, PDO::PARAM_STR);
+    $stmt->bindParam(':imagenes', $imagePathsStr, PDO::PARAM_STR);
     $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
     $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
     $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);

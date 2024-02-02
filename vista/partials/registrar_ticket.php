@@ -18,6 +18,7 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+<link rel="stylesheet" href="../assets/css/styles.css">
 <br><br>
 <form method="POST" action="" enctype="multipart/form-data">
     <!-- Título del formulario -->
@@ -56,8 +57,10 @@ try {
     <!-- Campo para cargar imágenes -->
     <br>
     <div class="form-floating">
-        <input type="file" name="imagenes[]" id="imagenes" accept="image/*" multiple="multiple" class="form-control" required>
-        <label for="imagenes">Seleccionar hasta 5 imágenes:</label>
+        <input type="file" name="imagenes" id="imagenes" onchange="mostrarImagen(event)" accept="image/*" class="form-control">
+        <label for="imagenes">Subir imágenes</label>
+        <input type="hidden" id="inputImagenes" name="inputImagenes">
+        <div id="imagenesPrevias" class="card mt-3"></div>
     </div>
     <br>
 
@@ -95,3 +98,4 @@ try {
         <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarTicket()">Registrar Ticket</button></div>
     </div>
 </form>
+<script src="../assets/js/ticket.js"></script>
