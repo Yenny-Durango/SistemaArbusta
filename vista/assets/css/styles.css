@@ -12955,8 +12955,9 @@ body {
 }
 
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
-  margin-left: 1.5rem;
+  margin-left: 15px;
   flex-direction: column;
+  width: 100%;
 }
 
 .sb-sidenav .sb-sidenav-footer {
@@ -13294,4 +13295,35 @@ b {
 b {
   gap: 15px;
   display: flex;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Crea tres columnas de igual tamaño */
+  gap: 20px;
+  /* Espacio entre las tarjetas */
+  max-width: 800px;
+  /* Opcional: Limita el ancho del grid */
+  margin: 0 auto;
+  /* Centra el grid horizontalmente */
+}
+
+.card-opciones {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.5s;
+  cursor: pointer;
+  /* Agrega una transición suave para el efecto de agrandamiento */
+}
+
+.card-opciones:hover {
+  transform: scale(1.1);
+  /* Escala la tarjeta al 110% del tamaño original al pasar el cursor sobre ella */
+}
+
+.card-opciones img {
+  width: 100px;
 }

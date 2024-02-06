@@ -55,13 +55,10 @@
               <td>" . $row["correo"] . "</td>
               <td>" . $row["telefono"] . "</td>
               <td>" . $row["tipo_usuario"] . "</td>
-              
               <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarUsuario(" . $row["id_usuario"] . ")\">Modificar</button></td>
-
-              <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"eliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
+              <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
             </tr>";
         }
-
         echo "
         </tbody>
         <tfoot>

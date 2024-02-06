@@ -7,6 +7,9 @@ switch ($_POST['Metodo']) {
   case 'ModificarUsuario':
     ModificarUsuario();
     break;
+  case 'EliminarUsuario':
+    EliminarUsuario();
+    break;
   case 'Ingresar':
     Ingresar();
     break;

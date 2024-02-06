@@ -119,6 +119,21 @@ $name = $_SESSION['nombre_completo'];
                                 <p class="card-subtitle">Gracias por visitar nuestro sitio.</p>
                             </div>
                         </div>
+                        <br>
+                        <div class="grid-container">
+                            <div class="card-opciones">
+                                <h1>Equipo</h1>
+                                <img src="assets/img/smart-devices.png" alt="">
+                            </div>
+                            <div class="card-opciones">
+                                <h1>Tickets</h1>
+                                <img src="assets/img/entradas.png" alt="">
+                            </div>
+                            <div class="card-opciones">
+                                <h1>Firma</h1>
+                                <img src="assets/img/firma-digital.png" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
