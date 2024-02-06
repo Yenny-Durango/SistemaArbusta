@@ -1,11 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <a href="../../partials/listar_usuarios.php"></a>
+    <style>
+        .container {
+            width: 500px;
+            overflow: auto;
+            margin: auto;
+            border-radius: 10px;
+            border: 1px solid #ebebeb;
+            font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container p,
+        b {
+            color: #7223A5;
+        }
+
+        .card-firma {
+            display: flex;
+            padding: 10px;
+            overflow: auto;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .card-firma img {
+            width: 50%;
+            height: 50%;
+        }
+
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .redes_sociales {
+            justify-content: space-between;
+            display: flex;
+            margin: 10px;
+        }
+
+        .item {
+            display: flex;
+            gap: 15px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+    <div class="container">
+        <div class="card-firma">
+            <img src="../img/arb_firma.gif" alt="" width="120px">
+            <div class="contenido">
+                <div class="item">
+                    <p>nombre</p><b>/</b>
+                    <p>Rol</p>
+                </div>
+                <div class="item">
+                    <p>correo</p><b>/</b>
+                    <p>telefono</p>
+                </div>
+                <div class="item">
+                    <a href="https://www.arbusta.net/">
+                        <p>Arbusta</p>
+                    </a>
+                    <b>/</b>
+                    <p>Sede</p>
+                </div>
+            </div>
+        </div>
+        <div class="redes_sociales">
+            <a href="https://es-la.facebook.com/arbustait/"><img src="../img/facebook.png" alt="" width="30px"></a>
+            <a href="https://twitter.com/arbustait"><img src="../img/signo-de-twitter.png" alt="" width="30px"></a>
+            <a href="https://ar.linkedin.com/company/arbustait"><img src="../img/linkedin.png" alt="" width="30px"></a>
+            <a href="https://github.com/ArbustaIT"><img src="../img/github.png" alt="" width="30px"></a>
+            <a href="https://www.instagram.com/arbustait/"><img src="../img/instagram.png" alt="" width="30px"></a>
+        </div>
+    </div>
 </body>
+
 </html>

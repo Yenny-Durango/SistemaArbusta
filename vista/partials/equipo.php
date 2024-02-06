@@ -19,7 +19,7 @@ try {
 ?>
 <br><br>
 <form action="">
-    <h1 class=".h1">EQUIPO <img src="../assets/img/undraw_warning_re_eoyh.svg" alt=""></h1>
+    <h1 class=".h1">EQUIPO</h1>
     <br>
     <?php
     if ($results) {

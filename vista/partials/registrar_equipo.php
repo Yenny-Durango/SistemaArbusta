@@ -27,7 +27,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de categoría del equipo -->
             <div class="form-floating">
-                <select name="categoria_equipo" id="categoria_equipo" class="form-control" onkeyup="ValidarCategoriaEquipo(this)">
+                <select name="categoria_equipo" id="categoria_equipo" class="form-select" onkeyup="ValidarCategoriaEquipo(this)">
                     <!-- Opciones de categoría del equipo -->
                     <option value="Notebooks">Notebooks</option>
                     <option value="Desktops">Desktops</option>
@@ -49,7 +49,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de compañía -->
             <div class="form-floating mb-3 mb-md-0">
-                <select name="compania" id="compania" class="form-control">
+                <select name="compania" id="compania" class="form-select">
                     <!-- Opciones de compañía -->
                     <option value="ARBUSTA S.R.L">ARBUSTA S.R.L.</option>
                     <option value="ARBUSTA S.A.S">ARBUSTA S.A.S.</option>
@@ -61,7 +61,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de uso del equipo -->
             <div class="form-floating">
-                <select name="usado_por" id="usado_por" class="form-control">
+                <select name="usado_por" id="usado_por" class="form-select">
                     <!-- Opciones de uso del equipo -->
                     <option value="Departamento">Departamento</option>
                     <option value="Empleado">Empleado</option>
@@ -75,7 +75,7 @@ $usuarios = $statement->fetchAll();
     <div class="row mb-3">
         <div class="col-md-6">
             <div class="form-floating mb-3 mb-md-0">
-                <select name="id_usuario" id="id_usuario" class="form-control">
+                <select name="id_usuario" id="id_usuario" class="form-select">
                     <!-- Opción vacía y opciones de usuarios -->
                     <option value=""></option>
                     <?php foreach ($usuarios as $usuario) : ?>
@@ -88,7 +88,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de ubicación de uso -->
             <div class="form-floating mb-3 mb-md-0">
-                <select name="ubicacion_uso" id="ubicacion_uso" class="form-control">
+                <select name="ubicacion_uso" id="ubicacion_uso" class="form-select">
                     <!-- Opciones de ubicación de uso -->
                     <option value="BUE">BUE</option>
                     <option value="ROS">ROS</option>
@@ -204,7 +204,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de almacenamiento -->
             <div class="form-floating mb-3 mb-md-0">
-                <select name="almacenamiento" id="almacenamiento" class="form-control">
+                <select name="almacenamiento" id="almacenamiento" class="form-select">
                     <!-- Opciones de almacenamiento -->
                     <option value="HDD 250GB">HDD 250GB</option>
                     <option value="HDD 500GB">HDD 500GB</option>
@@ -254,7 +254,7 @@ $usuarios = $statement->fetchAll();
         <div class="col-md-6">
             <!-- Campo de sistema operativo -->
             <div class="form-floating mb-3 mb-md-0">
-                <select name="sistema_operativo" id="sistema_operativo" class="form-control">
+                <select name="sistema_operativo" id="sistema_operativo" class="form-select">
                     <!-- Opciones de sistema operativo -->
                     <option value="Android">Android</option>
                     <option value="iOS">iOS</option>

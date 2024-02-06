@@ -1,81 +1,88 @@
-<br>
-<form method="post" action="">
-    <!-- Título del formulario -->
-    <h1 class="h1">CREA TU FIRMA</h1>
-    <br>
+<?php
+require "../../modelo/conexion.php";
+session_start();
 
-    <div class="row mb-3">
-        <!-- Sección de nombre y apellido -->
-        <div class="col-md-6">
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Preparar y ejecutar la consulta SQL
+    $stmt = $pdo->query("SELECT nombre_completo, correo, telefono FROM usuario WHERE id_usuario = " . $_SESSION["id_usuario"]);
+    $stmt->execute();
+
+    // Obtener los resultados
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Firma Arbusta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/Style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="./firmail.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</head>
+
+<body>
+    <br>
+    <h1 class=".h1">GENERADOR DE FIRMA</h1>
+    <br>
+    <div class="w3-center form-align-top w3-animate-bottom ">
+        <div>
             <div class="form-floating mb-3 mb-md-0">
-                <!-- Campo de nombre y apellido -->
-                <input class="form-control" id="nombre_apellido" name="nombre_apellido" type="text" placeholder="nombre_apellido" onkeyup="ValidarNombreApellido(this)" />
+                <input class="form-control" data-toggle="tooltip" title="Ingresa tu nombre y apellido" type="text" name="nombre" id="nombre" placeholder="Nombre y apellido" value="<?php echo $results[0]['nombre_completo']; ?>" required>
                 <label for="Nombre y Apellido">Nombre y Apellido</label>
             </div>
-            <!-- Mensaje de error para el campo de nombre y apellido -->
-            <span id="nombre_apellidoError" class="alert alert-danger" hidden></span>
-        </div>
-
-        <!-- Sección de sede -->
-        <div class="col-md-6">
-            <div class="form-floating">
-                <!-- Menú desplegable para la selección de la sede -->
-                <select name="sede" id="sede" class="form-control" onkeyup="ValidarSede(this)">
-                    <!-- Opciones de categoría del equipo -->
-                    <option value="Selecciona una opcion">Selecciona una opción</option>
-                    <option value="ARGENTINA_BUENOS_AIRES">ARGENTINA - BUENOS AIRES</option>
-                    <option value="ARGENTINA_ROSARIO">ARGENTINA - ROSARIO</option>
-                    <option value="URUGUAY_MONTEVIDEO">URUGUAY - MONTEVIDEO</option>
-                    <option value="COLOMBIA_MEDELLIN">COLOMBIA - MEDELLIN</option>
+            <br>
+            <div class="form-floating mb-3 mb-md-0">
+                <select class="form-select" type="text" name="loc" id="loc" placeholder="Selecciona tu sede" data-toggle="tooltip" title="Selecciona tu sede, (vacío para roles Staff)">
+                    <option value="Buenos Aires, Argentina">Argentina - Buenos Aires</option>
+                    <option value="Rosario, Argentina">Argentina - Rosario</option>
+                    <option value="Medellin, Colombia">Colombia - Medellín</option>
+                    <option value="Montevideo, Uruguay">Uruguay - Montevideo</option>
+                    <option value=""></option>
                 </select>
-                <label for="sede">Sede</label>
+                <label for="Sede">Sede</label>
             </div>
-        </div>
-    </div>
-
-    <!-- Sección de información adicional del equipo -->
-    <div class="row mb-3">
-        <!-- Campo de teléfono -->
-        <div class="col-md-6">
+            <br>
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" onkeyup="ValidarTelefono(this)" />
-                <label for="Telefono (Opcional)">Teléfono (Opcional)</label>
+                <input class="form-control" type="number" name="num_cel" id="num_cel" placeholder="Ingresa tu número de telefono" data-toggle="tooltip" title="Ingresa tu número de telefono" value="<?php echo $results[0]['telefono']; ?>">
+                <label for="Telefono">Telefono</label>
             </div>
-            <!-- Mensaje de error para el campo de teléfono -->
-            <span id="telefonoError" class="alert alert-danger" hidden></span>
-        </div>
-
-        <!-- Campo de correo electrónico -->
-        <div class="col-md-6">
+            <br>
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="correo" name="correo" type="text" placeholder="correo" onkeyup="ValidarCorreo(this)" />
-                <label for="Correo">Correo electrónico</label>
+                <input class="form-control" type="text" name="mail" id="mail" placeholder="correo" data-toggle="tooltip" title="Ingresa tu correo de arbusta" value="<?php echo $results[0]['correo']; ?>" required>
+                <label for="Correo">Correo</label>
             </div>
-            <!-- Mensaje de error para el campo de correo electrónico -->
-            <span id="correoError" class="alert alert-danger" hidden></span>
+            <br>
+            <div class="form-floating mb-3 mb-md-0">
+                <input class="form-control" data-toggle="tooltip" title="Ingresa tu puesto / rol" type="text" name="puesto" id="puesto" placeholder="* Ingresa tu puesto / rol" required>
+                <label for="Puesto / Rol de trabajo">Puesto / Rol de trabajo</label>
+            </div>
+            <br>
+            <div class="form-floating mb-3 mb-md-0" style="height:50px">
+                <button class="btn btn-outline-success" name="generar" id="generar" onclick="ejecutar();">Generar firma para insertar</button>
+            </div>
+            <div id="firma" class="firma card"></div>
         </div>
     </div>
+</body>
 
-    <!-- Campo de rol/puesto de trabajo -->
-    <div class="form-floating">
-        <div class="form-floating mb-3 mb-md-0">
-            <input class="form-control" id="rol_trabajo" name="rol_trabajo" type="text" placeholder="rol_trabajo" onkeyup="ValidarRolTrabajo(this)" />
-            <label for="Rol/Puesto de trabajo">Escribe tu Rol/Puesto de trabajo</label>
-        </div>
-        <!-- Mensaje de error para el campo de rol/puesto de trabajo -->
-        <span id="rolError" class="alert alert-danger" hidden></span>
-    </div>
-
-    <!-- Botón de submit para enviar el formulario -->
-    <div class="mt-4 mb-0">
-        <div class="d-grid"><button type="submit" id="submitButton" class="btn btn-primary btn-block" onclick="GenerarFirma()">Generar Firma</button></div>
-    </div>
-</form>
-
-<div id="firma" class="firma"></div>
-
-<script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
+</html>

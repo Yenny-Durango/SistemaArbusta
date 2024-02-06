@@ -12901,6 +12901,7 @@ body {
 
 .sb-topnav.navbar-dark #sidebarToggle {
   color: #fff;
+  margin: 5px;
 }
 
 .sb-topnav.navbar-light #sidebarToggle {
@@ -13244,4 +13245,54 @@ body::-webkit-scrollbar-track {
 /* Estilo del fondo cuando se pasa el ratón sobre la barra de desplazamiento */
 body::-webkit-scrollbar-thumb:hover {
   background-color: blueviolet;
+}
+
+.contenedor-firma {
+  overflow: auto;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid #ebebeb;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 360px;
+}
+
+.contenedor-firma p,
+b {
+  color: #7223A5;
+}
+
+.card-firma {
+  display: flex;
+  padding: 10px;
+  overflow: auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-firma .logo img {
+  width: 100px;
+  height: 100px;
+}
+.card-firma img{
+  width: 20px;
+}
+.contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.redes_sociales {
+  justify-content: space-between;
+  display: flex;
+  margin: 10px;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  gap: 15px;
+  display: flex;
+  align-items: center;
 }
