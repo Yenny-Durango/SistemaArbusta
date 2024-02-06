@@ -23,24 +23,29 @@ function RegistrarTicket()
   $fecha_creacion = $_POST['fecha_creacion'];
   $resumen_problema = $_POST['resumen_problema'];
   $detalle_problema = $_POST['detalle_problema'];
-  $imagenes = $_FILES['imagenes'];
   $correo = $_POST['correo'];
   $telefono = $_POST['telefono'];
   $nombre_completo = $_POST['nombre_completo'];
   $id_usuario = $_SESSION['id_usuario'];
 
   // Validar si todos los campos requeridos están completos
-  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo === '' || $telefono === '' || $nombre_completo === '' || $imagenes === '') {
+  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo === '' || $telefono === '' || $nombre_completo === '') {
     echo "Complete todos los campos";
   } else {
+    $imagen_nombre = $_FILES['imagenes']['name'];
+    $imagen_tmp = $_FILES['imagenes']['tmp_name'];
+    $imagen_tipo = $_FILES['imagenes']['type'];
+
+    $imagen_contenido = file_get_contents($imagen_tmp);
+
     // Preparar y ejecutar la consulta SQL para insertar el nuevo ticket
-    $sql = "INSERT INTO tickets (fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagenes, :correo, :telefono, :nombre_completo, :id_usuario)";
+    $sql = "INSERT INTO tickets(fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagen_contenido, :correo, :telefono, :nombre_completo, :id_usuario)";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
     $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
     $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':imagenes', $imagenes, PDO::PARAM_STR);
+    $stmt->bindParam(':imagen_contenido', $imagen_contenido, PDO::PARAM_LOB);
     $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
     $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
     $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);

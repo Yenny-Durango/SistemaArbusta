@@ -3298,7 +3298,6 @@ textarea.is-invalid.datatable-input {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: 'Rubik', sans-serif;
-  ;
   --bs-btn-font-size: 1rem;
   --bs-btn-font-weight: 400;
   --bs-btn-line-height: 1.5;
@@ -3332,6 +3331,7 @@ textarea.is-invalid.datatable-input {
   width: auto;
   margin: auto;
   padding: 10px;
+  display: flex;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -13252,9 +13252,8 @@ body::-webkit-scrollbar-thumb:hover {
   margin: auto;
   border-radius: 10px;
   border: 1px solid #ebebeb;
-  font-size: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 360px;
+  font-size: 12px;
+  width: 450px;
 }
 
 .contenedor-firma p,
@@ -13266,17 +13265,14 @@ b {
   display: flex;
   padding: 10px;
   overflow: auto;
-  align-items: center;
   gap: 20px;
 }
 
-.card-firma .logo img {
-  width: 100px;
-  height: 100px;
+.card-firma img {
+  width: 80px;
+  height: 80px;
 }
-.card-firma img{
-  width: 20px;
-}
+
 .contenido {
   display: flex;
   flex-direction: column;
@@ -13284,15 +13280,18 @@ b {
 }
 
 .redes_sociales {
-  justify-content: space-between;
   display: flex;
-  margin: 10px;
-  gap: 10px;
+  justify-content: center;
+  gap: 5px;
 }
 
-.item {
-  display: flex;
+.redes_sociales img {
+  width: 20px;
+  height: 20px;
+}
+
+.item,
+b {
   gap: 15px;
   display: flex;
-  align-items: center;
 }

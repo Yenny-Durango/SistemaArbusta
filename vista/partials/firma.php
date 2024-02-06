@@ -24,14 +24,8 @@ try {
     <meta charset="utf-8">
     <title>Firma Arbusta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/Style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="./firmail.js"></script>
     <script>
         $(document).ready(function() {
@@ -53,11 +47,11 @@ try {
             <br>
             <div class="form-floating mb-3 mb-md-0">
                 <select class="form-select" type="text" name="loc" id="loc" placeholder="Selecciona tu sede" data-toggle="tooltip" title="Selecciona tu sede, (vacío para roles Staff)">
+                    <option value=""></option>
                     <option value="Buenos Aires, Argentina">Argentina - Buenos Aires</option>
                     <option value="Rosario, Argentina">Argentina - Rosario</option>
                     <option value="Medellin, Colombia">Colombia - Medellín</option>
                     <option value="Montevideo, Uruguay">Uruguay - Montevideo</option>
-                    <option value=""></option>
                 </select>
                 <label for="Sede">Sede</label>
             </div>
@@ -78,9 +72,10 @@ try {
             </div>
             <br>
             <div class="form-floating mb-3 mb-md-0" style="height:50px">
-                <button class="btn btn-outline-success" name="generar" id="generar" onclick="ejecutar();">Generar firma para insertar</button>
+                <button class="btn btn-primary" name="generar" id="generar" onclick="ejecutar();">Generar firma</button>
             </div>
-            <div id="firma" class="firma card"></div>
+            <br>
+            <div id="firma" class="firma"></div>
         </div>
     </div>
 </body>

@@ -31,7 +31,7 @@ function ejecutar() {
                 document.getElementById("firma").innerHTML = `
                     <div class='contenedor-firma'>
                     <div class='card-firma'>
-                    <img src="assets/img/arb_firma.gif" alt="LOGO ARBUSTA" class="logo">
+                    <img src="assets/img/arb_firma.gif" alt="" class="logo">
                     <div class="contenido">
                         <div class="item">
                             <p>${nombre}</p><b>/</b>
