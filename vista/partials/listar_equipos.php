@@ -96,8 +96,8 @@
               <td>" . $row["sistema_operativo"] . "</td>
               <td>" . $row["version_so"] . "</td>
               <td>" . $row["descripcion"] . "</td>
-              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"modificarEquipo(" . $row["id_equipo"] . ")\">Modificar</button></td>
-              <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"eliminarEquipo(" . $row["id_equipo"] . ")\">Eliminar</button></td>
+              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarEquipo(" . $row["id_equipo"] . ")\">Modificar</button></td>
+              <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarEquipo(" . $row["id_equipo"] . ")\">Eliminar</button></td>
             </tr>";
         }
         echo "
@@ -140,6 +140,17 @@
     }
     $pdo = null; // Cerrar la conexión
     ?>
+
+    <dialog id="modal">
+        <div class="modal-body">
+            ....
+        </div>
+        <br><br>
+        <div class="Boton">
+            <button class="btn btn-success" id="submitButton" onclick="ModificarEquipo()">Modificar</button>
+            <button class="btn btn-danger" onclick="CerrarModal()">Cancelar</button>
+        </div>
+    </dialog>
 
     <!-- Incluimos las bibliotecas de jQuery y DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

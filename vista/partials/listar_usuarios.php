@@ -54,7 +54,7 @@
             <td>" . $row["correo"] . "</td>
             <td>" . $row["telefono"] . "</td>
             <td>" . $row["tipo_usuario"] . "</td>
-            <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarUsuario(" . $row["id_usuario"] . ")\">Modificar</button></td>
+            <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"window.modal.showModal(); ModificarUsuario(" . $row['id_usuario'] . ")\">Modificar</button></td>
             <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
         </tr>";
         }
@@ -85,7 +85,7 @@
         </div>
         <br><br>
         <div class="Boton">
-            <button class="btn btn-success" id="submitButton" onclick="ModificarUsuario()">Aceptar</button>
+            <button class="btn btn-success" id="submitButton" onclick="ModificarUsuario()">Modificar</button>
             <button class="btn btn-danger" onclick="CerrarModal()">Cancelar</button>
         </div>
     </dialog>

@@ -415,3 +415,19 @@ function RegistrarEquipo() {
         }
     });
 }
+
+function ModificarEquipo(id_equipo) {
+    window.modal.showModal();
+    $.ajax({
+        type: 'POST',
+        url: "../controlador/equipo.controlador.php",
+        data: {
+            'id_equipo': id_equipo,
+            'Metodo': "ModificarEquipo"
+        },
+        success: function (data) {
+            $('.modal-body').text("");
+            $('.modal-body').append(data);
+        }
+    });
+}

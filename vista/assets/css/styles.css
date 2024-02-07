@@ -13337,17 +13337,12 @@ b {
   padding: 25px;
 }
 
-#dialog[open] {
+dialog[open] {
   animation: show 0.7s ease normal;
 }
 
-#dialog.hide {
+dialog.hide {
   animation: hide 0.3s ease normal;
-}
-
-#dialog::backdrop {
-  backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .Boton {
