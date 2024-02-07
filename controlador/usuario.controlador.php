@@ -129,31 +129,41 @@ function ModificarUsuario()
   session_start();
 
   // Obtiene los datos del formulario por POST
-  $nombre = $_POST['nombre'];
-  $apellido = $_POST['apellido'];
-  $correo = $_POST['correo'];
-  $telefono = $_POST['telefono'];
-  $contrasena = $_POST['contrasena'];
-  $nombre_completo = $apellido . ' , ' . $nombre;
+  $id_usuario = $_POST['id_usuario'];
 
   // Verifica si el correo electrónico ya existe en la base de datos
-  $sql = "UPDATE usuario SET nombre_completo = :nombre_completo, correo = :correo, telefono = :telefono, contrasena = :contrasena,tipo_usuario = tipo_usuario WHERE id_usuario == :id_usuario";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
-  $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
-  $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-  $stmt->bindParam(':contrasena', $contrasena_bd, PDO::PARAM_STR);
-  $stmt->execute();
+  $sql = "SELECT * FROM usuario WHERE id_usuario = $id_usuario";
+  $result = $pdo->query($sql);
+  foreach ($result as $key => $results) {
+    echo '
+    <form method="POST" action="">
+    <h1 class=".h1">MODIFICAR USUARIO</h1>
+    <br>
 
-  // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
-  if ($stmt->rowCount() > 0) {
-    echo "Modificado correctamente";
-  } else {
-    echo "Hubo un problema al intentar modificar la información";
+    <!-- Sección de datos personales -->
+    <div class="form-floating">
+      <input class="form-control" id="nombre_completo" name="nombre_completo" type="text" placeholder="nombre_completo" value="' . $results["nombre_completo"] . '"/>
+      <label for="Nombre Completo">Nombre Completo</label>
+      <!-- Mensaje de error para el campo de nombres -->
+      <span id="nombreError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+      <input class="form-control" id="correo" name="correo" type="text" placeholder="correo" value="' . $results["correo"] . '"/>
+      <label for="Correo">Correo</label>
+      <!-- Mensaje de error para el campo de nombres -->
+      <span id="correoError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+      <input class="form-control" id="telefono" name="telefono" type="text" placeholder="telefono" value="' . $results["telefono"] . '"/>
+      <label for="Telefono">Telefono</label>
+      <!-- Mensaje de error para el campo de nombres -->
+      <span id="telefonoError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    </form>';
   }
-
-  // Cierra la conexión a la base de datos
-  $pdo = null;
 }
 
 function EliminarUsuario()

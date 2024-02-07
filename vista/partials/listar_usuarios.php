@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
     <?php
     // Incluir archivo de conexión a la base de datos
     require "../../modelo/conexion.php";
@@ -35,50 +34,61 @@
 
     if ($result->rowCount() > 0) {
         echo "<h1 class=\"mt-4\">Listar usuarios</h1>
-        <table id=\"example\" class=\"display\" style=\"width:100%\">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre Completo</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Tipo de Usuario</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>";
+    <table id=\"example\" class=\"display\" style=\"width:100%\">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Tipo de Usuario</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>";
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr data-index=\"0\">
-              <td>" . $row["id_usuario"] . "</td>
-              <td>" . $row["nombre_completo"] . "</td>
-              <td>" . $row["correo"] . "</td>
-              <td>" . $row["telefono"] . "</td>
-              <td>" . $row["tipo_usuario"] . "</td>
-              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarUsuario(" . $row["id_usuario"] . ")\">Modificar</button></td>
-              <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
-            </tr>";
+            <td>" . $row["id_usuario"] . "</td>
+            <td>" . $row["nombre_completo"] . "</td>
+            <td>" . $row["correo"] . "</td>
+            <td>" . $row["telefono"] . "</td>
+            <td>" . $row["tipo_usuario"] . "</td>
+            <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarUsuario(" . $row["id_usuario"] . ")\">Modificar</button></td>
+            <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
+        </tr>";
         }
         echo "
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>ID</th>
-                <th>Nombre Completo</th>
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Tipo de Usuario</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-            </tr>
-        </tfoot>
-    </table>";
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Tipo de Usuario</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+    </tfoot>
+</table>";
     } else {
         echo "0 resultados";
     }
     // Cerrar la conexión a la base de datos
     $pdo = null;
     ?>
+
+    <dialog id="modal">
+        <div class="modal-body">
+            ....
+        </div>
+        <br><br>
+        <div class="Boton">
+            <button class="btn btn-success" id="submitButton" onclick="ModificarUsuario()">Aceptar</button>
+            <button class="btn btn-danger" onclick="CerrarModal()">Cancelar</button>
+        </div>
+    </dialog>
 
     <!-- Incluimos las bibliotecas de jQuery y DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

@@ -395,9 +395,20 @@ function mostrarContrasenaL() {
   }
 }
 
-function modificarUsuario(idUsuario){
-
-
+function ModificarUsuario(id_usuario) {
+  window.modal.showModal();
+  $.ajax({
+    type: 'POST',
+    url: "../controlador/usuario.controlador.php",
+    data: {
+      'id_usuario': id_usuario,
+      'Metodo': "ModificarUsuario"
+    },
+    success: function (data) {
+      $('.modal-body').text("");
+      $('.modal-body').append(data);
+    }
+  });
 }
 
 function EliminarUsuario(idUsuario) {

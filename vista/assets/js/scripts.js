@@ -7,6 +7,18 @@
 // Scripts
 // 
 
+// Cerrar modal
+function CerrarModal() {
+    event.preventDefault();
+    const modal = document.querySelector("#modal");
+    modal.classList.add("hide");
+    modal.addEventListener("animationend", function close() {
+        modal.classList.remove("hide");
+        modal.close();
+        modal.removeEventListener("animationend", close);
+    });
+}
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
