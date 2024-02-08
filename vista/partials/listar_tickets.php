@@ -87,6 +87,17 @@
     $pdo = null;
     ?>
 
+    <dialog id="modal">
+        <div class="modal-body">
+            ....
+        </div>
+        <br><br>
+        <div class="Boton">
+            <button class="btn btn-success" id="submitButton" onclick="ModificarTicket()">Modificar</button>
+            <button class="btn btn-danger" onclick="CerrarModal()">Cancelar</button>
+        </div>
+    </dialog>
+
     <!-- Incluimos las bibliotecas de jQuery y DataTables -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>

@@ -434,7 +434,7 @@ function mostrarImagen(event) {
     imagenes.style.width = '100%';
     imagen.style.width = '100%';
     imagen.style.height = '100%';
-    
+
 
     // Verificar que se haya seleccionado un archivo
     if (file) {
@@ -492,4 +492,20 @@ function prepararEnvio() {
   const inputImagenes = document.getElementById("inputImagenes");
   inputImagenes.value = JSON.stringify(imagenesSeleccionadas);
   return validarFormulario(); // Validar el formulario antes del envío
+}
+
+function ModificarTicket(id_usuario) {
+  window.modal.showModal();
+  $.ajax({
+    type: 'POST',
+    url: "../controlador/ticket.controlador.php",
+    data: {
+      'id_usuario': id_usuario,
+      'Metodo': "ModificarTicket"
+    },
+    success: function (data) {
+      $('.modal-body').text("");
+      $('.modal-body').append(data);
+    }
+  });
 }

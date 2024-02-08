@@ -155,16 +155,14 @@ $usuarios = $statement->fetchAll();
             <!-- Mensaje de error para el campo de fecha efectiva -->
             <span id="fechaError" class="alert alert-danger" hidden></span>
         </div>
-        <div class="checkboxes col-md-6">
+        <div class="checkboxes">
             <!-- Opciones de checkbox para alquilado, seguro y leasing -->
             <label class="form-check-label" for="Alquilado">Alquilado</label>
-            <input type="checkbox" name="alquilado" id="alquilado" value="ALQUILADO">
-            |
+            <input type="checkbox" name="alquilado" id="alquilado" value="'.$results[" alquilado"].'">
             <label class="form-check-label" for="Seguro">Seguro</label>
-            <input type="checkbox" name="seguro" id="seguro" value="SEGURO">
-            |
+            <input type="checkbox" name="seguro" id="seguro" value="'.$results[" seguro"].'">
             <label class="form-check-label" for="Leasing">Leasing</label>
-            <input type="checkbox" name="leasing" id="leasing" value="LEASING">
+            <input type="checkbox" name="leasing" id="leasing" value="'.$results[" leasing"].'">
         </div>
     </div>
 

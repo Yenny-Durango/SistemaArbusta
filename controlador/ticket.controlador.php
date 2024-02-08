@@ -63,59 +63,76 @@ function RegistrarTicket()
 // Función para modificar un ticket existente en la base de datos.
 function ModificarTicket()
 {
+  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
+  // Inicia la sesión
   session_start();
 
-  // Obtener datos del formulario por POST
-  $id_ticket = $_POST['id_ticket'];
-  $fecha_creacion = $_POST['fecha_creacion'];
-  $resumen_problema = $_POST['resumen_problema'];
-  $detalle_problema = $_POST['detalle_problema'];
-  $correo = $_POST['correo'];
-  $telefono = $_POST['telefono'];
-  $nombre_completo = $_POST['nombre_completo'];
+  // Obtiene los datos del formulario por POST
+  $id_usuario = $_POST['id_usuario'];
 
-  // Procesar cada imagen cargada
-  $imagePaths = [];
-  if (isset($_FILES["image_uploads"]) && count($_FILES["image_uploads"]["name"]) > 0) {
-    for ($i = 0; $i < count($_FILES["image_uploads"]["name"]); $i++) {
-      $targetDir = "../vista/assets/img/";
-      $targetFile = $targetDir . basename($_FILES["image_uploads"]["name"][$i]);
-      if (move_uploaded_file($_FILES["image_uploads"]["tmp_name"][$i], $targetFile)) {
-        $imagePaths[] = $targetFile;
-      }
-    }
+  // Verifica si el correo electrónico ya existe en la base de datos
+  $sql = "SELECT * FROM tickets WHERE id_usuario = $id_usuario";
+  $result = $pdo->query($sql);
+  foreach ($result as $key => $results) {
+    echo '
+    <form method="POST" action="" enctype="multipart/form-data">
+    <!-- Título del formulario -->
+    <h1 class=".h1">Modificar Ticket</h1>
+    <br>
+    <div class="form-floating">
+        <input class="form-control" id="fecha_creacion" name="fecha_creacion" type="date" placeholder="fecha_creacion" value="' . $results["fecha_creacion"] . '" onkeyup="ValidarFechaCreacion(this)" />
+        <label for="Fecha Creación">Fecha Creación</label>
+        <!-- Mensaje de error para el campo de fecha de creación -->
+        <span id="fechaCreacionError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input class="form-control" id="resumen_problema" name="resumen_problema" type="text" placeholder="resumen_problema" value="' . $results["resumen_problema"] . '" onkeyup="ValidarResumenProblema(this)" />
+        <label for="Resumen Problema">Resumen Problema</label>
+        <!-- Mensaje de error para el campo de resumen del problema -->
+        <span id="resumenProblemaError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+        <textarea class="form-control" id="detalle_problema" name="detalle_problema" cols="30" rows="10" class="form-control" placeholder="detalle_problema" style="height: 100px;" onkeyup="ValidarDetalleProblema(this)">' . $results["resumen_problema"] . '</textarea>
+        <label for="Detalle Problema">Detalle Problema</label>
+        <span id="detalleProblemaError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input type="file" name="imagenes" id="imagenes" onchange="mostrarImagen(event)" accept="image/*" class="form-control">
+        <label for="imagenes">Subir imágenes</label>
+        <input type="hidden" id="inputImagenes" name="inputImagenes">
+        <div id="imagenesPrevias" class="card mt-3"></div>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input class="form-control" id="correo" name="correo" type="email" placeholder="correo" onkeyup="ValidarCorreo(this)" value="' . $results["correo"] . '" />
+        <label for="Correo">Correo</label>
+        <!-- Mensaje de error para el campo de correo electrónico -->
+        <span id="correoError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" value="' . $results["telefono"] . '" onkeyup="ValidarTelefono(this)" />
+        <label for="Telefono">Telefono</label>
+        <!-- Mensaje de error para el campo de número de teléfono -->
+        <span id="telefonoError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <div class="form-floating">
+        <input class="form-control" id="nombre_completo" name="nombre_completo" type="text" placeholder="nombre_completo" onkeyup="ValidarNombreCompleto(this)" value="' . $results["nombre_completo"] . '" />
+        <label for="Nombre Completo">Nombre Completo</label>
+        <span id="nombreCompletoError" class="alert alert-danger" hidden></span>
+    </div>
+    <br>
+    <!-- Botón de envío del formulario -->
+    <div class="mt-4 mb-0">
+        <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarTicket()">Registrar Ticket</button></div>
+    </div>
+</form>
+    ';
   }
-
-  // Convertir rutas de imágenes a una cadena separada por comas
-  $imagePathsStr = implode(",", $imagePaths);
-
-  // Validar si todos los campos requeridos están completos
-  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo === '' || $telefono === '' || $nombre_completo === '') {
-    echo "Complete todos los campos";
-  } else {
-    // Preparar y ejecutar la consulta SQL para modificar el ticket existente
-    $sql = "UPDATE tickets SET fecha_creacion=:fecha_creacion, resumen_problema=:resumen_problema, detalle_problema=:detalle_problema, imagenes=:imagenes, correo=:correo, telefono=:telefono, nombre_completo=:nombre_completo WHERE id_ticket=:id_ticket";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
-    $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':imagenes', $imagePathsStr, PDO::PARAM_STR);
-    $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
-    $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-    $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
-    $stmt->bindParam(':id_ticket', $id_ticket, PDO::PARAM_INT);
-    $stmt->execute();
-
-    // Verificar si la modificación fue exitosa y mostrar un mensaje correspondiente
-    if ($stmt->rowCount() > 0) {
-      echo "Ticket modificado correctamente";
-    } else {
-      echo "Hubo un problema al intentar modificar el ticket";
-    }
-  }
-
-  // Cerrar la conexión a la base de datos
-  $pdo = null;
 }

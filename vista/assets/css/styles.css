@@ -13215,12 +13215,10 @@ body {
   display: flex;
   overflow: auto;
   justify-content: space-evenly;
-  border: 1px solid #ced4da;
   align-items: center;
   width: 480px;
   margin: auto;
   padding: 15px;
-  border-radius: 5px;
 }
 
 /* Estilos generales */
