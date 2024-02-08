@@ -40,7 +40,7 @@
             <th>ID</th>
             <th>Nombre Completo</th>
             <th>Correo</th>
-            <th>Telefono</th>
+            <th>Teléfono</th> 
             <th>Tipo de Usuario</th>
             <th>Modificar</th>
             <th>Eliminar</th>
@@ -65,7 +65,7 @@
             <th>ID</th>
             <th>Nombre Completo</th>
             <th>Correo</th>
-            <th>Telefono</th>
+            <th>Teléfono</th>
             <th>Tipo de Usuario</th>
             <th>Modificar</th>
             <th>Eliminar</th>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar usuarios</title>
+    <title>Listar tickets</title>
     <!-- Enlace al archivo de estilo de DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <!-- Agregamos estilos personalizados -->
@@ -43,7 +43,7 @@
                 <th>Detalle</th>
                 <th>Imagen/es</th>
                 <th>Correo</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Nombre</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
@@ -74,7 +74,7 @@
                 <th>Detalle</th>
                 <th>Imagen/es</th>
                 <th>Correo</th>
-                <th>Telefono</th>
+                <th>Teléfono</th>
                 <th>Nombre</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
