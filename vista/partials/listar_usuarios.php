@@ -40,7 +40,7 @@
             <th>ID</th>
             <th>Nombre Completo</th>
             <th>Correo</th>
-            <th>Teléfono</th> 
+            <th>Teléfono</th>
             <th>Tipo de Usuario</th>
             <th>Modificar</th>
             <th>Eliminar</th>
@@ -53,8 +53,12 @@
             <td>" . $row["nombre_completo"] . "</td>
             <td>" . $row["correo"] . "</td>
             <td>" . $row["telefono"] . "</td>
-            <td>" . $row["tipo_usuario"] . "</td>
-            <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"window.modal.showModal(); ModificarUsuario(" . $row['id_usuario'] . ")\">Modificar</button></td>
+            <td>"; if ($row["tipo_usuario"] == 0) {
+                echo "Empleado";
+            }else {
+                echo "Administrador";
+            } echo "</td>
+            <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"window.modal.showModal(); ConsultarUsuario(" . $row['id_usuario'] . ")\">Modificar</button></td>
             <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarUsuario(" . $row["id_usuario"] . ")\">Eliminar</button></td>
         </tr>";
         }

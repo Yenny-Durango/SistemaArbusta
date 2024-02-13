@@ -416,18 +416,124 @@ function RegistrarEquipo() {
     });
 }
 
-function ModificarEquipo(id_equipo) {
+// Cerrar modal
+function CerrarModal() {
+    event.preventDefault();
+    const modal = document.querySelector("#modal");
+    modal.classList.add("hide");
+    modal.addEventListener("animationend", function close() {
+        modal.classList.remove("hide");
+        modal.close();
+        modal.removeEventListener("animationend", close);
+    });
+}
+
+function ConsultarEquipo(id_equipo) {
     window.modal.showModal();
     $.ajax({
         type: 'POST',
         url: "../controlador/equipo.controlador.php",
         data: {
             'id_equipo': id_equipo,
-            'Metodo': "ModificarEquipo"
+            'Metodo': "ConsultarEquipo"
         },
         success: function (data) {
             $('.modal-body').text("");
             $('.modal-body').append(data);
+        }
+    });
+}
+
+function ModificarEquipo() {
+    event.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: "../controlador/equipo.controlador.php",
+        data: {
+            // compleatr esto
+            'id_equipo': $('#id_equipo').val(),
+            'equipo': $('#equipo').val(),
+            'categoria_equipo': $('#categoria_equipo').val(),
+            'compania': $('#compania').val(),
+            'usado_por': $('#usado_por').val(),
+            'id_usuario': $('#id_usuario').val(),
+            'ubicacion_uso': $('#ubicacion_uso').val(),
+            'proveedor': $('#proveedor').val(),
+            'referencia_proveedor': $('#referencia_proveedor').val(),
+            'modelo': $('#modelo').val(),
+            'numero_serie': $('#numero_serie').val(),
+            'fecha_efectiva': $('#fecha_efectiva').val(),
+            'alquilado': $('#alquilado').val(),
+            'seguro': $('#seguro').val(),
+            'leasing': $('#leasing').val(),
+            'valoracion': $('#valoracion').val(),
+            'procesador': $('#procesador').val(),
+            'ram': $('#ram').val(),
+            'almacenamiento': $('#almacenamiento').val(),
+            'mac_address': $('#mac_address').val(),
+            'bateria': $('#bateria').val(),
+            'adaptador': $('#adaptador').val(),
+            'sistema_operativo': $('#sistema_operativo').val(),
+            'version_so': $('#version_so').val(),
+            'descripcion': $('#descripcion').val(),
+            'Metodo': 'ModificarEquipo'
+        },
+        success: function (data) {
+            let title, text, icon;
+            if (data === "Modificado correctamente") {
+                title = "¡Exito!";
+                text = "Modificado correctamente";
+                icon = "success";
+                console.log(data);
+            } else if (data === "No fue posible modificar") {
+                title = "Error";
+                text = "No fue posible modificar";
+                icon = "error";
+                console.log(data);
+                CerrarModal();
+            } else {
+                // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+                title = "Fallo";
+                text = "Algo esta fallando";
+                icon = "question";
+                console.log(data);
+            }
+            console.log(data);
+            // Mostrar la alerta de SweetAlert5
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                timer: 2000,
+                timerProgressBar: true,
+                confirmButtonText: 'Aceptar',
+            });
+            // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
+            $('#equipo').val('');
+            $('#categoria_equipo').val('');
+            $('#compania').val('');
+            $('#usado_por').val('');
+            $('#ubicacion_uso').val('');
+            $('#proveedor').val('');
+            $('#referencia_proveedor').val('');
+            $('#modelo').val('');
+            $('#numero_serie').val('');
+            $('#fecha_efectiva').val('');
+            $('#alquilado').val('');
+            $('#seguro').val('');
+            $('#leasing').val('');
+            $('#valoracion').val('');
+            $('#procesador').val('');
+            $('#ram').val('');
+            $('#almacenamiento').val('');
+            $('#mac_address').val('');
+            $('#bateria').val('');
+            $('#adaptador').val('');
+            $('#sistema_operativo').val('');
+            $('#version_so').val('');
+            $('#descripcion').val('');
+            $('#id_usuario').val('');
+            CerrarModal();
         }
     });
 }

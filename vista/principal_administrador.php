@@ -13,7 +13,6 @@ $name = $_SESSION['nombre_completo'];
 	<meta name="description" content="sitio arbusta" />
 	<meta name="author" content="Yenny Durango" />
 	<title>ARBUSTA</title>
-	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 	<link href="./assets/css/styles.css" rel="stylesheet" />
 	<link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -122,27 +121,17 @@ $name = $_SESSION['nombre_completo'];
 		</div>
 	</div>
 
-	<!-- archivos javascript -->
+	<!-- Only load necessary scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script src="./assets/js/datatables-simple-demo.js"></script>
-	<script src="./assets/js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script>
 	<script src="./assets/js/scripts.js"></script>
+	<script src="./assets/js/equipo.js"></script>
 	<script src="./assets/js/ticket.js"></script>
 	<script src="./assets/js/usuario.js"></script>
-	<script src="./assets/js/equipo.js"></script>
 	<script src="./assets/js/firmail.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-	<script src="./assets/demo/datatables-demo.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-
-	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

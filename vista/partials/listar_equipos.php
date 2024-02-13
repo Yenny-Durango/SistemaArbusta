@@ -96,7 +96,7 @@
               <td>" . $row["sistema_operativo"] . "</td>
               <td>" . $row["version_so"] . "</td>
               <td>" . $row["descripcion"] . "</td>
-              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ModificarEquipo(" . $row["id_equipo"] . ")\">Modificar</button></td>
+              <td><button type=\"button\" class=\"btn btn-warning btn-block\" onclick=\"ConsultarEquipo(" . $row["id_equipo"] . ")\">Modificar</button></td>
               <td><button type=\"button\" class=\"btn btn-danger btn-block\" onclick=\"EliminarEquipo(" . $row["id_equipo"] . ")\">Eliminar</button></td>
             </tr>";
         }

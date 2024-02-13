@@ -21,10 +21,9 @@ try {
 }
 
 ?>
-<br><br>
+<br>
 <form action="">
     <h1 class="h1">INFORMACIÓN DEL PRODUCTO</h1>
-    <br>
     <?php
     if ($results) {
     ?>
@@ -82,48 +81,11 @@ try {
     <?php
     } else {
     ?>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="proveedor" name="proveedor" type="text" placeholder="proveedor" value="no asignado" disabled />
-                    <label for="proveedor">Proveedor</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="referencia_proveedor" name="referencia_proveedor" type="text" placeholder="referencia_proveedor" value="no asignado" disabled />
-                    <label for="referencia-proveedor">Referencia de proveedor</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="modelo" name="modelo" type="text" placeholder="modelo" value="no asignado" disabled />
-                    <label for="modelo">Modelo</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="numero_serie" name="numero_serie" type="text" placeholder="numero_serie" value="no asignado" disabled />
-                    <label for="numero-serie">Número de serie</label> <!-- Corregido el texto de la etiqueta -->
-                </div>
-            </div>
-        </div>
-        <div class="form-floating">
-            <input class="form-control" id="fecha_efectiva" name="fecha_efectiva" type="text" placeholder="fecha_efectiva" value="no asignado" disabled />
-            <label for="fecha-efectiva">Fecha efectiva</label>
-        </div>
-        <br><br>
-        <div class="checkboxes">
-            <label class="form-check-label" for="alquilado">Alquilado</label>
-            <input class="form-check-input" id="alquilado" name="alquilado" type="checkbox" value="no asignado">
-            |
-            <label class="form-check-label" for="seguro">Seguro</label>
-            <input class="form-check-input" id="seguro" name="seguro" type="checkbox" value="no asignado">
-            |
-            <label class="form-check-label" for="leasing">Leasing</label>
-            <input class="form-check-input" id="leasing" name="leasing" type="checkbox" value="no asignado"> <!-- Corregido el name del checkbox -->
+        <div class="card-body no_tickets">
+            <h1 class="h1">
+                Aún no te han asignado ningun equipo
+            </h1>
+            <img src="assets/img/device.png" alt="imagen">
         </div>
     <?php
     }

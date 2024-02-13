@@ -4,6 +4,9 @@ switch ($_POST['Metodo']) {
   case 'RegistrarUsuario':
     RegistrarUsuario();
     break;
+  case 'ConsultarUsuario':
+    ConsultarUsuario();
+    break;
   case 'ModificarUsuario':
     ModificarUsuario();
     break;
@@ -120,7 +123,7 @@ function Ingresar()
   $pdo = null; // Cerrar la conexion
 }
 
-function ModificarUsuario()
+function ConsultarUsuario()
 {
   // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
@@ -136,9 +139,10 @@ function ModificarUsuario()
   $result = $pdo->query($sql);
   foreach ($result as $key => $results) {
     echo '
-    <form method="POST" action="">
+    <form method="POST">
     <h1 class=".h1">MODIFICAR USUARIO</h1>
     <br>
+    <input id="id_usuario" type="hidden" value="' . $results["id_usuario"] . '">
 
     <!-- Sección de datos personales -->
     <div class="form-floating">
@@ -162,7 +166,50 @@ function ModificarUsuario()
       <span id="telefonoError" class="alert alert-danger" hidden></span>
     </div>
     <br>
+    <div class="form-floating">';
+    if ($results["tipo_usuario"] == 1) {
+      echo '<select name="tipo_usuario" id="tipo_usuario" class="form-select" onkeyup="ValidarCategoriaEquipo(this)">
+              <!-- Opciones de categoría del equipo -->
+              <option value="1">Administrador</option>
+              <option value="0">Empleado</option>
+            </select>';
+    } else {
+      echo '<select name="tipo_usuario" id="tipo_usuario" class="form-select" onkeyup="ValidarCategoriaEquipo(this)">
+              <!-- Opciones de categoría del equipo -->
+              <option value="0">Empleado</option>
+              <option value="1">Administrador</option>
+            </select>';
+    }
+    echo '<label for="tipo_usuario">Tipo Usuario</label>
+    </div>
+    <br>
     </form>';
+  }
+}
+
+function ModificarUsuario()
+{
+  // Requiere el archivo de conexión a la base de datos
+  require "../modelo/conexion.php";
+
+  $id_usuario = $_POST["id_usuario"];
+  $nombre_completo = $_POST["nombre_completo"];
+  $correo = $_POST["correo"];
+  $telefono = $_POST["telefono"];
+  $tipo_usuario = $_POST["tipo_usuario"];
+
+  $sql = "UPDATE usuario SET nombre_completo = '" . $nombre_completo . "',
+    correo = '" . $correo . "',
+    telefono = '" . $telefono . "',
+    tipo_usuario = '" . $tipo_usuario . "'
+    WHERE id_usuario = " . $id_usuario;
+
+  $data = $pdo->query($sql);
+
+  if ($data == true) {
+    echo "Modificado correctamente";
+  } else {
+    echo "No fue posible modificar";
   }
 }
 
@@ -171,27 +218,17 @@ function EliminarUsuario()
   // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
-  // Inicia la sesión
-  session_start();
+  $id_usuario = $_POST['id_usuario'];
 
-  // Verifica si se envió un ID de usuario por POST
-  if (isset($_POST['id_usuario'])) {
-    // Obtiene el ID de usuario a eliminar
-    $idUsuario = $_POST['id_usuario'];
+  // Prepara la consulta SQL para eliminar al usuario
+  $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
+  $data = $pdo->query($sql);
 
-    // Prepara la consulta SQL para eliminar al usuario
-    $sql = "DELETE FROM usuario WHERE id_usuario = :id_usuario";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id_usuario', $idUsuario, PDO::PARAM_INT);
-
-    // Ejecuta la consulta
-    if ($stmt->execute()) {
-      echo "Usuario eliminado correctamente";
-    } else {
-      echo "Hubo un problema al intentar eliminar la información";
-    }
+  // Ejecuta la consulta
+  if ($data) {
+    echo "Usuario eliminado correctamente";
   } else {
-    echo "No se proporcionó un ID de usuario válido";
+    echo "Hubo un problema al intentar eliminar la información";
   }
 
   // Cierra la conexión a la base de datos

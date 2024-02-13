@@ -319,22 +319,6 @@ function Ingresar() {
         text = "El correo no está registrado en la base de datos.";
         icon = "warning";
         console.log(data);
-      } else if (data.trim() === "ingresaste correctamente admin") {
-        Swal.fire({
-          title: "¡Exito!",
-          text: "ingresaste correctamente admin",
-          icon: "success",
-          confirmButtonText: '¡Ingreso Exitoso!'
-        }).then(function () {
-          window.location.href = "principal_administrador.php";
-        });
-        console.log(data);
-      } else if (data.trim() === "ingresaste correctamente usuario") {
-        title = "¡Éxito!";
-        text = "Ingresaste correctamente Usuario";
-        icon = "success";
-        window.location.href = "principal.php";
-        console.log(data);
       } else if (data === "Credenciales incorrectas") {
         title = "Error";
         text = "Correo o contraseña incorrecta";
@@ -395,14 +379,14 @@ function mostrarContrasenaL() {
   }
 }
 
-function ModificarUsuario(id_usuario) {
+function ConsultarUsuario(id_usuario) {
   window.modal.showModal();
   $.ajax({
     type: 'POST',
     url: "../controlador/usuario.controlador.php",
     data: {
       'id_usuario': id_usuario,
-      'Metodo': "ModificarUsuario"
+      'Metodo': "ConsultarUsuario"
     },
     success: function (data) {
       $('.modal-body').text("");
@@ -411,24 +395,38 @@ function ModificarUsuario(id_usuario) {
   });
 }
 
-function EliminarUsuario(idUsuario) {
+function ModificarUsuario() {
+  event.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: "../controlador/usuario.controlador.php",
+        data: {
+            'id_usuario': $('#id_usuario').val(),
+            'nombre_completo': $('#nombre_completo').val(),
+            'correo': $('#correo').val(),
+            'telefono': $('#telefono').val(),
+            'tipo_usuario': $('#tipo_usuario').val(),
+            'Metodo': 'ModificarUsuario'
+        },
+        success: function (data) {
+            alert(data);
+            CerrarModal();
+        }
+    });
+}
+
+function EliminarUsuario(id_Usuario) {
   // Aquí puedes realizar las acciones necesarias para eliminar el usuario con el id proporcionado
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
     url: "../controlador/usuario.controlador.php",
     data: {
-      'id_usuario': idUsuario,
+      'id_usuario': id_Usuario,
       'Metodo': 'EliminarUsuario'
     },
-    success: function (response) {
-      // Puedes manejar la respuesta del servidor aquí
-      console.log(response);
-      // Recargar la página o actualizar la tabla después de la eliminación si es necesario
-    },
-    error: function (error) {
-      // Manejar errores si los hay
-      console.error(error);
+    success: function (data) {
+      alert(data);
     }
   });
 }

@@ -78,11 +78,18 @@
                 <th>Nombre</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
-            </tr>   
+            </tr>
         </tfoot>
     </table>";
     } else {
-        echo "0 resultados";
+        echo "
+        <div class=\"card-body no_tickets\">
+        <h1 class=\"h1\">
+        Aún no has registrado ningún ticket
+        </h1>
+        <img src=\"assets/img/empty.png\" alt=\"imagen\">
+        </div>
+        ";
     }
     $pdo = null;
     ?>

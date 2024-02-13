@@ -17,10 +17,9 @@ try {
 }
 
 ?>
-<br><br>
+<br>
 <form action="">
     <h1 class="h1">DATOS TÉCNICOS</h1>
-    <br>
     <?php
     if ($results) {
     ?>
@@ -96,65 +95,11 @@ try {
     <?php
     } else {
     ?>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="valoracion" name="valoracion" type="text" placeholder="valoracion" value="no asignado" disabled />
-                    <label for="valoración">Valoración</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="procesador" name="procesador" type="text" placeholder="procesador" value="no asignado" disabled />
-                    <label for="Procesador">Procesador</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="ram" name="ram" type="text" placeholder="ram" value="no asignado" disabled />
-                    <label for="RAM">RAM</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="almacenamiento" name="almacenamiento" type="text" placeholder="almacenamiento" value="no asignado" disabled />
-                    <label for="Almacenamiento">Almacenamiento</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="mac_address" name="mac_address" type="text" placeholder="mac_address" value="no asignado" disabled />
-                    <label for="mac_address">MAC address</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="bateria" name="bateria" type="text" placeholder="bateria" value="no asignado" disabled />
-                    <label for="Batería">Batería</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="form-floating mb-3 mb-md-0">
-                    <input class="form-control" id="adaptador" name="adaptador" type="text" placeholder="adaptador" value="no asignado" disabled />
-                    <label for="Adaptador">Adaptador</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input class="form-control" id="sistema_operativo" name="sistema_operativo" type="text" placeholder="sistema_operativo" value="no asignado" disabled />
-                    <label for="sistema_operativo">Sistema operativo (SO)</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-floating">
-            <input class="form-control" id="version_so" name="version_so" type="text" placeholder="version_so" value="no asignado" disabled />
-            <label for="so_version">SO Version</label>
+        <div class="card-body no_tickets">
+            <h1 class="h1">
+                Aún no te han asignado ningun equipo
+            </h1>
+            <img src="assets/img/device.png" alt="imagen">
         </div>
     <?php
     }

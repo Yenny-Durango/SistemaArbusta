@@ -1,10 +1,16 @@
 <?php
+// Incluir el archivo de conexión
 require "../../modelo/conexion.php";
+
+// Iniciar sesión
 session_start();
 
 try {
+    // Crear una nueva instancia de PDO
     $pdo = new PDO($dsn, $username, $password);
+    // Configurar PDO para que lance excepciones en caso de errores
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     // Preparar y ejecutar la consulta SQL para obtener información del usuario
     $stmt = $pdo->query("SELECT nombre_completo, correo, telefono FROM usuario WHERE id_usuario = " . $_SESSION["id_usuario"]);
     $stmt->execute();
@@ -12,6 +18,7 @@ try {
     // Obtener los resultados de la consulta
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
+    // En caso de error, mostrar un mensaje de error
     echo "Error: " . $e->getMessage();
 }
 
@@ -24,10 +31,13 @@ try {
     <meta charset="utf-8">
     <title>Firma Arbusta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Incluir jQuery y Popper.js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Incluir el archivo firmail.js -->
     <script type="text/javascript" src="./firmail.js"></script>
     <script>
+        // Función para inicializar los tooltips
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
@@ -81,6 +91,7 @@ try {
                 <button class="btn btn-primary" name="generar" id="generar" onclick="ejecutar();">Generar firma</button>
             </div>
             <br>
+            <!-- Div para mostrar la firma generada -->
             <div id="firma" class="firma"></div>
         </div>
     </div>

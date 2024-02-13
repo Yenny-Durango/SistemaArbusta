@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="vista/assets/css/styles.css">
+   <style>
+      .no_tickets {
+         padding: 50px;
+         margin: 20px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .no_tickets img {
+         width: 200px;
+         margin-top: 20px;
+      }
+
+      .card-firma {
+         font-size: xx-small;
+         width: 270px;
+         margin: auto;
+         padding: 5px;
+         overflow: auto;
+      }
+
+      .card-firma .imagen-datospersona {
+         display: flex;
+         gap: 10px;
+      }
+      .card-firma .imagen-datospersona{
+         justify-content: center;
+         display: flex;
+         align-items: center;
+      }
+
+      .card-firma .item {
+         display: flex;
+         gap: 5px;
+      }
+
+      .card-firma .icon-firma {
+         width: 10px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="card-body no_tickets">
+      <h1 class="h1">
+         Aún no has registrado ningún ticket
+      </h1>
+      <img src="vista/assets/img/empty.png" alt="">
+   </div>
+
+
+   <div class="card card-firma">
+      <div class="imagen-datospersona">
+         <img src="vista/assets/img/arb_firma.gif" alt="" width="60px" height="60px">
+         <div class="items">
+            <div class="item nombre-cargo">
+               <b>Nombre, Apellido</b>
+               /
+               <p>Rol de trabajo</p>
+            </div>
+            <div class="item correo-telefono">
+               <p>nombre.apellido@arbusta.net</p>
+               /
+               <p>1234567890</p>
+            </div>
+            <div class="item sitio-sede">
+               <a href=""> Arbusta
+                  <div class="item sitio-sede">
+                     <a href=""><img src="vista/assets/img/facebook.png" alt="facebook" class="icon-firma"></a>
+                     <a href=""><img src="vista/assets/img/signo-de-twitter.png" alt="twitter" class="icon-firma"></a>
+                     <a href=""><img src="vista/assets/img/linkedin.png" alt="linkedin" class="icon-firma"></a>
+                     <a href=""><img src="vista/assets/img/github.png" alt="github" class="icon-firma"></a>
+                     <a href=""><img src="vista/assets/img/instagram.png" alt="instagram" class="icon-firma"></a>
+                  </div>
+               </a>
+               /
+               <b>Ciudad, Pais</b>
+            </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</body>
+
+</html>
