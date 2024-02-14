@@ -115,22 +115,7 @@ $name = $_SESSION['nombre_completo'];
                             <div class="card-body">
                                 <h5 class="card-title">Bienvenido/a <?php echo $name; ?></h5>
                                 <hr>
-                                <p class="card-subtitle">Gracias por visitar nuestro sitio.</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="grid-container">
-                            <div class="card-opciones">
-                                <h1>Equipo</h1>
-                                <img src="assets/img/smart-devices.png" alt="">
-                            </div>
-                            <div class="card-opciones">
-                                <h1>Tickets</h1>
-                                <img src="assets/img/entradas.png" alt="">
-                            </div>
-                            <div class="card-opciones">
-                                <h1>Firma</h1>
-                                <img src="assets/img/firma-digital.png" alt="">
+                                <p class="card-subtitle">La única forma de hacer un gran trabajo es amar lo que haces</p>
                             </div>
                         </div>
                     </div>

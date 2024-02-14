@@ -300,7 +300,7 @@ function ValidarConfimarContrasenaUsuario(elemento) {
 
 function Ingresar() {
   event.preventDefault();
-  let redirectTo; // Declare redirectTo outside the success function
+  let redirijirA;
 
   $.ajax({
     type: "POST",
@@ -329,6 +329,18 @@ function Ingresar() {
         text = "Complete todos los campos";
         icon = "info";
         console.log(data);
+      } else if (data === "ingresaste correctamente admin") {
+        title = "Exito";
+        text = "ingresaste correctamente admin";
+        icon = "success";
+        redirijirA = "../vista/principal_administrador.php"
+        console.log(data);
+      } else if (data === "ingresaste correctamente usuario") {
+        title = "Exito";
+        text = "ingresaste correctamente usuario";
+        icon = "success";
+        redirijirA = "../vista/principal.php"
+        console.log(data);
       } else {
         // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
@@ -345,6 +357,8 @@ function Ingresar() {
         timer: 2000,
         timerProgressBar: true,
         confirmButtonText: 'Aceptar',
+      }).then(function () {
+        window.location.href = redirijirA;
       });
     }
   }); // Add the missing closing parenthesis
@@ -397,22 +411,22 @@ function ConsultarUsuario(id_usuario) {
 
 function ModificarUsuario() {
   event.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: "../controlador/usuario.controlador.php",
-        data: {
-            'id_usuario': $('#id_usuario').val(),
-            'nombre_completo': $('#nombre_completo').val(),
-            'correo': $('#correo').val(),
-            'telefono': $('#telefono').val(),
-            'tipo_usuario': $('#tipo_usuario').val(),
-            'Metodo': 'ModificarUsuario'
-        },
-        success: function (data) {
-            alert(data);
-            CerrarModal();
-        }
-    });
+  $.ajax({
+    type: 'POST',
+    url: "../controlador/usuario.controlador.php",
+    data: {
+      'id_usuario': $('#id_usuario').val(),
+      'nombre_completo': $('#nombre_completo').val(),
+      'correo': $('#correo').val(),
+      'telefono': $('#telefono').val(),
+      'tipo_usuario': $('#tipo_usuario').val(),
+      'Metodo': 'ModificarUsuario'
+    },
+    success: function (data) {
+      alert(data);
+      CerrarModal();
+    }
+  });
 }
 
 function EliminarUsuario(id_Usuario) {

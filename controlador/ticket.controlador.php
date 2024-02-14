@@ -16,47 +16,7 @@ switch ($_POST['Metodo']) {
 function RegistrarTicket()
 {
   require "../modelo/conexion.php";
-
-  session_start();
-
-  // Obtener datos del formulario por POST
-  $fecha_creacion = $_POST['fecha_creacion'];
-  $resumen_problema = $_POST['resumen_problema'];
-  $detalle_problema = $_POST['detalle_problema'];
-  $imagenes = $_FILES['imagenes'];
-  $correo = $_POST['correo'];
-  $telefono = $_POST['telefono'];
-  $nombre_completo = $_POST['nombre_completo'];
-  $id_usuario = $_SESSION['id_usuario'];
-
-  // Validar si todos los campos requeridos están completos
-  if ($fecha_creacion === '' || $resumen_problema === '' || $detalle_problema === '' || $correo === '' || $telefono === '' || $nombre_completo === '' || $imagenes === '') {
-    echo "Complete todos los campos";
-  } else {
-    // Preparar y ejecutar la consulta SQL para insertar el nuevo ticket
-    $sql = "INSERT INTO tickets (fecha_creacion, resumen_problema, detalle_problema, imagenes, correo, telefono, nombre_completo, id_usuario) VALUES (:fecha_creacion, :resumen_problema, :detalle_problema, :imagenes, :correo, :telefono, :nombre_completo, :id_usuario)";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':fecha_creacion', $fecha_creacion, PDO::PARAM_STR);
-    $stmt->bindParam(':resumen_problema', $resumen_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':detalle_problema', $detalle_problema, PDO::PARAM_STR);
-    $stmt->bindParam(':imagenes', $imagenes, PDO::PARAM_STR);
-    $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
-    $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
-    $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
-    $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_STR);
-    $stmt->execute();
-
-    // Verificar si la inserción fue exitosa y mostrar un mensaje correspondiente
-    if ($stmt->rowCount() > 0) {
-      echo "Registrado correctamente";
-    } else {
-      echo "Hubo un problema al intentar registrar la información";
-    }
-  }
-
-  // Cerrar la conexión a la base de datos
-  $pdo = null;
+  
 }
 
 

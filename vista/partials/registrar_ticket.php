@@ -20,7 +20,7 @@ try {
 ?>
 <link rel="stylesheet" href="../assets/css/styles.css">
 <br>
-<form method="POST" action="" enctype="multipart/form-data">
+<form action="" method="POST" action="" enctype="multipart/form-data">
     <!-- Título del formulario -->
     <h1 class=".h1">REGISTRAR TICKET</h1>
     <br>
