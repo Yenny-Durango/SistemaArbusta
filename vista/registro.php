@@ -14,9 +14,9 @@
     <!-- Enlace al estilo de Simple Datatables -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <!-- Enlace al archivo de estilos personalizados para formularios -->
-    <link href="./assets/css/styles-formularios.css" rel="stylesheet" />
+    <link href="./css/styles-formularios.css" rel="stylesheet" />
     <!-- Icono del sitio -->
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <!-- Script para cargar Font Awesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
@@ -119,12 +119,12 @@
 
     <!-- Only load necessary scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src=partials/assets/js/jquery-3.7.1.min.js"></script>
-    <script src="partials/assets/js/scripts.js"></script>
-    <script src="partials/assets/js/equipo.js"></script>
-    <script src="partials/assets/js/ticket.js"></script>
-    <script src="partials/assets/js/usuario.js"></script>
-    <script src="partials/assets/js/firmail.js"></script>
+    <script type="text/javascript" src=partials/js/jquery-3.7.1.min.js"></script>
+    <script src="partials/js/scripts.js"></script>
+    <script src="partials/js/equipo.js"></script>
+    <script src="partials/js/ticket.js"></script>
+    <script src="partials/js/usuario.js"></script>
+    <script src="partials/js/firmail.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>

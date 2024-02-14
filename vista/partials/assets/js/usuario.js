@@ -111,7 +111,6 @@ function ValidarContrasenaUsuarioR(elemento) {
   }
 }
 
-
 function ValidarConfimarContrasenaUsuarioR(elemento) {
   let inputValue = elemento.value.trim();
   let contrasena = document.getElementById("contrasena").value.trim();
@@ -153,7 +152,7 @@ function RegistrarUsuario() {
   event.preventDefault();
   $.ajax({
     type: "POST",
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'nombre': $('#nombre').val(),
       'apellido': $('#apellido').val(),
@@ -304,7 +303,7 @@ function Ingresar() {
 
   $.ajax({
     type: "POST",
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'correo': $('#correo').val(),
       'contrasena': $('#contrasena').val(),
@@ -364,7 +363,7 @@ function Ingresar() {
         window.location.href = redirijirA;
       });
     }
-  }); 
+  });
 }
 
 function mostrarContrasena() {
@@ -400,7 +399,7 @@ function ConsultarUsuario(id_usuario) {
   window.modal.showModal();
   $.ajax({
     type: 'POST',
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'id_usuario': id_usuario,
       'Metodo': "ConsultarUsuario"
@@ -416,7 +415,7 @@ function ModificarUsuario() {
   event.preventDefault();
   $.ajax({
     type: 'POST',
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'id_usuario': $('#id_usuario').val(),
       'nombre_completo': $('#nombre_completo').val(),
@@ -426,6 +425,46 @@ function ModificarUsuario() {
       'Metodo': 'ModificarUsuario'
     },
     success: function (data) {
+      let title, text, icon;
+      if (data === "modificado correctamente") {
+        title = "¡Exito!";
+        text = "Modificado correctamente";
+        icon = "success";
+        redirijirA = "listar_usuarios.php";
+        console.log(data);
+      } else if (data === "no fue posible modificar") {
+        title = "Error";
+        text = "No fue posible modificar";
+        icon = "error";
+        redirijirA = "listar_usuarios.php";
+        console.log(data);
+        CerrarModal();
+      } else {
+        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+        title = "Fallo";
+        text = "Algo esta fallando";
+        icon = "question";
+        console.log(data);
+      }
+      console.log(data);
+      // Mostrar la alerta de SweetAlert5
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        timer: 3000,
+        timerProgressBar: true,
+        confirmButtonText: 'Aceptar',
+      }).then(function () {
+        window.location.href = redirijirA;
+      });
+
+      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
+      $('#id_usuario').val('');
+      $('#nombre_completo').val('');
+      $('#correo').val('');
+      $('#telefono').val('');
+      $('#tipo_usuario').val('');
       alert(data);
       CerrarModal();
     }
@@ -437,7 +476,7 @@ function EliminarUsuario(id_Usuario) {
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'id_usuario': id_Usuario,
       'Metodo': 'EliminarUsuario'

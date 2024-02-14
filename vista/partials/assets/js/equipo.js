@@ -318,7 +318,7 @@ function RegistrarEquipo() {
     event.preventDefault();
     $.ajax({
         type: "POST",
-        url: "../controlador/equipo.controlador.php",
+        url: "../../controlador//equipo.controlador.php",
         data: {
             'equipo': $('#equipo').val(),
             'categoria_equipo': $('#categoria_equipo').val(),
@@ -431,7 +431,7 @@ function ConsultarEquipo(id_equipo) {
     window.modal.showModal();
     $.ajax({
         type: 'POST',
-        url: "../controlador/equipo.controlador.php",
+        url: "../../controlador//equipo.controlador.php",
         data: {
             'id_equipo': id_equipo,
             'Metodo': "ConsultarEquipo"
@@ -449,7 +449,7 @@ function ModificarEquipo() {
 
     $.ajax({
         type: 'POST',
-        url: "../controlador/equipo.controlador.php",
+        url: "../../controlador//equipo.controlador.php",
         data: {
             'id_equipo': $('#id_equipo').val(),
             'equipo': $('#equipo').val(),
@@ -484,13 +484,13 @@ function ModificarEquipo() {
                 title = "¡Exito!";
                 text = "Modificado correctamente";
                 icon = "success";
-                redirijirA = "../vista/partials/listar_equipos.php";
+                redirijirA = "listar_equipos.php";
                 console.log(data);
             } else if (data === "No fue posible modificar") {
                 title = "Error";
                 text = "No fue posible modificar";
                 icon = "error";
-                redirijirA = "../vista/partials/listar_equipos.php";
+                redirijirA = "listar_equipos.php";
                 console.log(data);
                 CerrarModal();
             } else {

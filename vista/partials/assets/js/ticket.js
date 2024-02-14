@@ -275,7 +275,7 @@ function ModificarTicket(id_usuario) {
   window.modal.showModal();
   $.ajax({
     type: 'POST',
-    url: "../controlador/ticket.controlador.php",
+    url: "../../controlador/ticket.controlador.php",
     data: {
       'id_usuario': id_usuario,
       'Metodo': "ModificarTicket"

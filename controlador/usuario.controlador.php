@@ -146,21 +146,21 @@ function ConsultarUsuario()
 
     <!-- Sección de datos personales -->
     <div class="form-floating">
-      <input class="form-control" id="nombre_completo" name="nombre_completo" type="text" placeholder="nombre_completo" value="' . $results["nombre_completo"] . '"/>
+      <input class="form-control" id="nombre_completo" name="nombre_completo" type="text" placeholder="nombre_completo" value="' . $results["nombre_completo"] . '" onkeyup="ValidarNombreUsuario(this)"/>
       <label for="Nombre Completo">Nombre Completo</label>
       <!-- Mensaje de error para el campo de nombres -->
       <span id="nombreError" class="alert alert-danger" hidden></span>
     </div>
     <br>
     <div class="form-floating">
-      <input class="form-control" id="correo" name="correo" type="text" placeholder="correo" value="' . $results["correo"] . '"/>
+      <input class="form-control" id="correo" name="correo" type="text" placeholder="correo" value="' . $results["correo"] . '" onkeyup="ValidarCorreoUsuario(this)"/>
       <label for="Correo">Correo</label>
       <!-- Mensaje de error para el campo de nombres -->
       <span id="correoError" class="alert alert-danger" hidden></span>
     </div>
     <br>
     <div class="form-floating">
-      <input class="form-control" id="telefono" name="telefono" type="text" placeholder="telefono" value="' . $results["telefono"] . '"/>
+      <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" value="' . $results["telefono"] . '" onkeyup="ValidarTelefonoUsuario(this)"/>
       <label for="Telefono">Telefono</label>
       <!-- Mensaje de error para el campo de nombres -->
       <span id="telefonoError" class="alert alert-danger" hidden></span>
@@ -207,9 +207,9 @@ function ModificarUsuario()
   $data = $pdo->query($sql);
 
   if ($data == true) {
-    echo "Modificado correctamente";
+    echo "modificado correctamente";
   } else {
-    echo "No fue posible modificar";
+    echo "no fue posible modificar";
   }
 }
 
