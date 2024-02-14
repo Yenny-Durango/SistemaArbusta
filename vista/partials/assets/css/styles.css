@@ -13365,3 +13365,18 @@ dialog::backdrop {
 }
 
 /* fin estilo card firma */
+
+/* estilos datatable */
+#example {
+  width: 100%;
+  overflow: auto;
+  /* Añadir overflow auto para permitir el desplazamiento */
+}
+
+#example th,
+#example td {
+  text-align: center;
+  /* Centrar el texto en las celdas */
+}
+
+/* fin estilos datatable */

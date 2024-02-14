@@ -1,4 +1,5 @@
 <?php
+require "header-admin.php";
 require "../../modelo/conexion.php";
 
 // Obtener la lista de usuarios para el campo de selección
@@ -6,13 +7,11 @@ $sql = "SELECT id_usuario, nombre_completo FROM usuario";
 $statement = $pdo->query($sql);
 $usuarios = $statement->fetchAll();
 ?>
-
-<br><br>
+<br>
 <form method="post" action="">
     <!-- Título del formulario -->
     <h1 class=".h1">EQUIPO</h1>
     <br>
-
     <!-- Sección de información del equipo -->
     <div class="row mb-3">
         <div class="col-md-6">
@@ -158,11 +157,11 @@ $usuarios = $statement->fetchAll();
         <div class="checkboxes">
             <!-- Opciones de checkbox para alquilado, seguro y leasing -->
             <label class="form-check-label" for="Alquilado">Alquilado</label>
-            <input type="checkbox" name="alquilado" id="alquilado" value="'.$results[" alquilado"].'">
+            <input type="checkbox" name="alquilado" id="alquilado" value="">
             <label class="form-check-label" for="Seguro">Seguro</label>
-            <input type="checkbox" name="seguro" id="seguro" value="'.$results[" seguro"].'">
+            <input type="checkbox" name="seguro" id="seguro" value="">
             <label class="form-check-label" for="Leasing">Leasing</label>
-            <input type="checkbox" name="leasing" id="leasing" value="'.$results[" leasing"].'">
+            <input type="checkbox" name="leasing" id="leasing" value="">
         </div>
     </div>
 
@@ -288,3 +287,6 @@ $usuarios = $statement->fetchAll();
         <div class="d-grid"><button type="submit" id="submitButton" class="btn btn-primary btn-block" onclick="RegistrarEquipo()">Registrar equipo</button></div>
     </div>
 </form>
+<?php
+require "footer-scripts.php";
+?>

@@ -181,7 +181,6 @@ function ValidarValoracion(elemento) {
     ValidarCamposEquipo();
 }
 
-
 function ValidarProcesador(elemento) {
     let inputValue = elemento.value.trim();
     let errorSpan = document.getElementById("procesadorError");
@@ -446,11 +445,12 @@ function ConsultarEquipo(id_equipo) {
 
 function ModificarEquipo() {
     event.preventDefault();
+    let redirijirA;
+
     $.ajax({
         type: 'POST',
         url: "../controlador/equipo.controlador.php",
         data: {
-            // compleatr esto
             'id_equipo': $('#id_equipo').val(),
             'equipo': $('#equipo').val(),
             'categoria_equipo': $('#categoria_equipo').val(),
@@ -484,11 +484,13 @@ function ModificarEquipo() {
                 title = "¡Exito!";
                 text = "Modificado correctamente";
                 icon = "success";
+                redirijirA = "../vista/partials/listar_equipos.php";
                 console.log(data);
             } else if (data === "No fue posible modificar") {
                 title = "Error";
                 text = "No fue posible modificar";
                 icon = "error";
+                redirijirA = "../vista/partials/listar_equipos.php";
                 console.log(data);
                 CerrarModal();
             } else {
@@ -507,7 +509,10 @@ function ModificarEquipo() {
                 timer: 2000,
                 timerProgressBar: true,
                 confirmButtonText: 'Aceptar',
+            }).then(function () {
+                window.location.href = redirijirA;
             });
+
             // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
             $('#equipo').val('');
             $('#categoria_equipo').val('');

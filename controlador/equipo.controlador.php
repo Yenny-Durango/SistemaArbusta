@@ -157,18 +157,18 @@ function ConsultarEquipo()
     <div class="form-floating">
 
     <select name="categoria_equipo" id="categoria_equipo" class="form-select">';
-            $categorias = ['Notebooks', 'Desktops', 'Celulares', 'Tablets', 'Conectividad', 'Impresoras', 'Accesorios', 'Monitores', 'Personal'];
-            foreach ($categorias as $categoria) {
-                if ($categoria == $results["categoria_equipo"]) {
-                    echo '<option value="' . $categoria . '" selected>' . $categoria . '</option>';
-                } else {
-                    echo '<option value="' . $categoria . '">' . $categoria . '</option>';
-                }
+        $categorias = ['Notebooks', 'Desktops', 'Celulares', 'Tablets', 'Conectividad', 'Impresoras', 'Accesorios', 'Monitores', 'Personal'];
+        foreach ($categorias as $categoria) {
+            if ($categoria == $results["categoria_equipo"]) {
+                echo '<option value="' . $categoria . '" selected>' . $categoria . '</option>';
+            } else {
+                echo '<option value="' . $categoria . '">' . $categoria . '</option>';
             }
-            echo '</select>
+        }
+        echo '</select>
         <label for="categoria_equipo">Categoría del equipo </label>
     </div>';
-echo '<br>
+        echo '<br>
     <!-- Campo de compañía -->
     <div class="form-floating">
         <select name="compania" id="compania" class="form-select">

@@ -1,6 +1,6 @@
 <?php
 require "../../modelo/conexion.php";
-session_start();
+require "header-user.php";
 
 try {
     $pdo = new PDO($dsn, $username, $password);
@@ -105,3 +105,6 @@ try {
     }
     ?>
 </form>
+<?php
+require "footer-scripts.php";
+?>

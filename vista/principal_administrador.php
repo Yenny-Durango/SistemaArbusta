@@ -13,15 +13,15 @@ $name = $_SESSION['nombre_completo'];
 	<meta name="description" content="sitio arbusta" />
 	<meta name="author" content="Yenny Durango" />
 	<title>ARBUSTA</title>
-	<link href="./assets/css/styles.css" rel="stylesheet" />
-	<link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+	<link href="partials/assets/css/styles.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="partials/assets/img/logo.png" type="image/x-icon">
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="principal_administrador.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
+		<a class="navbar-brand ps-3" href="principal_administrador.php"><img src="partials/assets/img/image.webp" alt="" style="width: 100px;"></a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 		<!-- Navbar-->
@@ -33,7 +33,7 @@ $name = $_SESSION['nombre_completo'];
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
-					<li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
+					<li><a class="dropdown-item" href="../cerrar_sesion.php">Cerrar sesión</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -57,11 +57,11 @@ $name = $_SESSION['nombre_completo'];
 						</a>
 						<div class="collapse" id="collapseEquipos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" onclick='Metodo("partials/registrar_equipo.php")'>
+								<a class="nav-link" href="partials/registrar_equipo.php">
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-keyboard"></i></div>
 									Nuevo equipo
 								</a>
-								<a class="nav-link" onclick='Metodo("partials/listar_equipos.php")'>
+								<a class="nav-link" href="partials/listar_equipos.php">
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-computer"></i></div>
 									Listar equipos
 								</a>
@@ -76,11 +76,11 @@ $name = $_SESSION['nombre_completo'];
 						</a>
 						<div class="collapse" id="collapseUsuarios" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" onclick='Metodo("partials/registrar_usuario.php")'>
+								<a class="nav-link" href="partials/registrar_usuario.php">
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-user-plus"></i></div>
 									Nuevo usuario
 								</a>
-								<a class="nav-link" onclick='Metodo("partials/listar_usuarios.php")'>
+								<a class="nav-link" href="partials/listar_usuarios.php">
 									<div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
 									Listar usuarios
 								</a>
@@ -89,7 +89,7 @@ $name = $_SESSION['nombre_completo'];
 
 						<div class="sb-sidenav-menu-heading">Firma Arbusta</div>
 						<!-- FIRMA -->
-						<a class="nav-link" onclick='Metodo("partials/firma.php")'>
+						<a class="nav-link" href="partials/firma.php">
 							<div class="sb-nav-link-icon"><i class="fa-solid fa-signature"></i></div>
 							Firma
 						</a>
@@ -112,7 +112,7 @@ $name = $_SESSION['nombre_completo'];
 							<div class="card-body">
 								<h5 class="card-title">Bienvenido/a <?php echo $name; ?></h5>
 								<hr>
-								<p class="card-subtitle">Gracias por visitar nuestro sitio.</p>
+								<p class="card-subtitle">La única forma de hacer un gran trabajo es amar lo que haces</p>
 							</div>
 						</div>
 					</div>
@@ -123,12 +123,12 @@ $name = $_SESSION['nombre_completo'];
 
 	<!-- Only load necessary scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script>
-	<script src="./assets/js/scripts.js"></script>
-	<script src="./assets/js/equipo.js"></script>
-	<script src="./assets/js/ticket.js"></script>
-	<script src="./assets/js/usuario.js"></script>
-	<script src="./assets/js/firmail.js"></script>
+	<script type="text/javascript" src=partials/assets/js/jquery-3.7.1.min.js"></script>
+	<script src="partials/assets/js/scripts.js"></script>
+	<script src="partials/assets/js/equipo.js"></script>
+	<script src="partials/assets/js/ticket.js"></script>
+	<script src="partials/assets/js/usuario.js"></script>
+	<script src="partials/assets/js/firmail.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>

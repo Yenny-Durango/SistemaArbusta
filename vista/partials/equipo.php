@@ -1,6 +1,6 @@
 <?php
 require "../../modelo/conexion.php";
-session_start();
+require "header-user.php";
 
 try {
     $pdo = new PDO($dsn, $username, $password);
@@ -15,8 +15,8 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-
 ?>
+
 <br>
 <form action="">
     <h1 class="h1">MI EQUIPO</h1>
@@ -89,3 +89,6 @@ try {
     }
     ?>
 </form>
+<?php
+require "footer-scripts.php";
+?>

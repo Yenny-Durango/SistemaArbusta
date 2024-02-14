@@ -1,8 +1,7 @@
 <?php
 // Se requiere el archivo de conexión
 require "../../modelo/conexion.php";
-// Se inicia la sesión
-session_start();
+require "header-user.php";
 
 try {
     // Se crea una instancia de PDO para conectarse a la base de datos
@@ -91,3 +90,7 @@ try {
     }
     ?>
 </form>
+
+<?php
+require "footer-scripts.php";
+?>

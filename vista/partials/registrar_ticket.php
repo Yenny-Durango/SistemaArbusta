@@ -1,10 +1,6 @@
 <?php
-session_start();
-
 require "../../modelo/conexion.php";
-$name = $_SESSION['nombre_completo'];
-$email = $_SESSION['correo'];
-
+require "header-user.php";
 try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,7 +14,6 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
-<link rel="stylesheet" href="../assets/css/styles.css">
 <br>
 <form action="" method="POST" action="" enctype="multipart/form-data">
     <!-- Título del formulario -->
@@ -97,4 +92,6 @@ try {
         <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarTicket()">Registrar Ticket</button></div>
     </div>
 </form>
-<script src="../assets/js/ticket.js"></script>
+<?php
+require "footer-scripts.php";
+?>

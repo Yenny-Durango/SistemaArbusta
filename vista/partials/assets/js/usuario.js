@@ -318,28 +318,31 @@ function Ingresar() {
         title = "Advertencia";
         text = "El correo no está registrado en la base de datos.";
         icon = "warning";
+        redirijirA = "";
         console.log(data);
       } else if (data === "Credenciales incorrectas") {
         title = "Error";
         text = "Correo o contraseña incorrecta";
         icon = "error";
+        redirijirA = "";
         console.log(data);
       } else if (data === "Complete todos los campos") {
         title = "Alerta";
         text = "Complete todos los campos";
         icon = "info";
+        redirijirA = "";
         console.log(data);
       } else if (data === "ingresaste correctamente admin") {
         title = "Exito";
         text = "ingresaste correctamente admin";
         icon = "success";
-        redirijirA = "../vista/principal_administrador.php"
+        redirijirA = "../vista/principal_administrador.php";
         console.log(data);
       } else if (data === "ingresaste correctamente usuario") {
         title = "Exito";
         text = "ingresaste correctamente usuario";
         icon = "success";
-        redirijirA = "../vista/principal.php"
+        redirijirA = "../vista/principal.php";
         console.log(data);
       } else {
         // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
@@ -354,14 +357,14 @@ function Ingresar() {
         title: title,
         text: text,
         icon: icon,
-        timer: 2000,
+        timer: 1000,
         timerProgressBar: true,
         confirmButtonText: 'Aceptar',
       }).then(function () {
         window.location.href = redirijirA;
       });
     }
-  }); // Add the missing closing parenthesis
+  }); 
 }
 
 function mostrarContrasena() {
