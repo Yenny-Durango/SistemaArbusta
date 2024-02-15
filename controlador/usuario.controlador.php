@@ -4,6 +4,9 @@ switch ($_POST['Metodo']) {
   case 'RegistrarUsuario':
     RegistrarUsuario();
     break;
+  case 'RegistrarUsuarioAdmin':
+    RegistrarUsuarioAdmin();
+    break;
   case 'ConsultarUsuario':
     ConsultarUsuario();
     break;
@@ -19,6 +22,58 @@ switch ($_POST['Metodo']) {
 }
 
 // Función para registrar un nuevo usuario en la base de datos.
+function RegistrarUsuarioAdmin()
+{
+  // Requiere el archivo de conexión a la base de datos
+  require "../modelo/conexion.php";
+
+  // Inicia la sesión
+  session_start();
+
+  // Obtiene los datos del formulario por POST
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $correo = $_POST['correo'];
+  $telefono = $_POST['telefono'];
+  $contrasena = $_POST['contrasena'];
+  $confirmar_contrasena = $_POST['confirmar_contrasena'];
+  $tipo_usuario = $_POST['tipo_usuario'];
+  $nombre_completo = $apellido . ' , ' . $nombre;
+
+  // Verifica si el correo electrónico ya existe en la base de datos
+  $sql = "SELECT * FROM usuario WHERE correo = :correo";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+  $stmt->execute();
+
+  if ($stmt->rowCount() > 0) {
+    // El correo electrónico ya existe, muestra un mensaje de alerta
+    echo "El correo ya está registrado";
+  } else if ($nombre === '' || $apellido === '' || $correo === '' || $contrasena === '' || $confirmar_contrasena === '' || $tipo_usuario === '') {
+    echo "Complete todos los campos";
+  } else {
+    // La consulta preparada con parámetros para insertar el nuevo usuario
+    $contrasena_bd = md5($contrasena);
+    $sql = "INSERT INTO usuario(nombre_completo, correo, telefono, contrasena, tipo_usuario) VALUES (:nombre_completo, :correo, :telefono, :contrasena, :tipo_usuario)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nombre_completo', $nombre_completo, PDO::PARAM_STR);
+    $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+    $stmt->bindParam(':telefono', $telefono, PDO::PARAM_STR);
+    $stmt->bindParam(':contrasena', $contrasena_bd, PDO::PARAM_STR);
+    $stmt->bindParam(':tipo_usuario', $tipo_usuario, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
+    if ($stmt->rowCount() > 0) {
+      echo "Registrado correctamente";
+    } else {
+      echo "Hubo un problema al intentar registrar la información";
+    }
+  }
+
+  // Cierra la conexión a la base de datos
+  $pdo = null;
+}
 function RegistrarUsuario()
 {
   // Requiere el archivo de conexión a la base de datos

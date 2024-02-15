@@ -318,7 +318,7 @@ function RegistrarEquipo() {
     event.preventDefault();
     $.ajax({
         type: "POST",
-        url: "../../../../controlador/equipo.controlador.php",
+        url: "../../controlador/equipo.controlador.php",
         data: {
             'equipo': $('#equipo').val(),
             'categoria_equipo': $('#categoria_equipo').val(),
@@ -449,7 +449,7 @@ function ModificarEquipo() {
 
     $.ajax({
         type: 'POST',
-        url: "../../controlador/equipo.controlador.php",
+        url: "../../../../controlador/equipo.controlador.php",
         data: {
             'id_equipo': $('#id_equipo').val(),
             'equipo': $('#equipo').val(),
@@ -538,6 +538,55 @@ function ModificarEquipo() {
             $('#version_so').val('');
             $('#descripcion').val('');
             $('#id_usuario').val('');
+            CerrarModal();
+        }
+    });
+}
+
+function EliminarEquipo(id_equipo) {
+    // Aquí puedes realizar las acciones necesarias para eliminar el usuario con el id proporcionado
+    // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
+    $.ajax({
+        type: "POST",
+        url: "../../../../controlador/equipo.controlador.php",
+        data: {
+            'id_equipo': id_equipo,
+            'Metodo': 'EliminarEquipo'
+        },
+        success: function (data) {
+            let title, text, icon;
+            if (data === "Equipo eliminado correctamente") {
+                title = "¡Exito!";
+                text = "Equipo eliminado correctamente";
+                icon = "success";
+                redirijirA = "listar_equipos.php";
+                console.log(data);
+            } else if (data === "Hubo un problema al intentar eliminar la información") {
+                title = "Error";
+                text = "Hubo un problema al intentar eliminar la información";
+                icon = "error";
+                redirijirA = "listar_equipos.php";
+                console.log(data);
+                CerrarModal();
+            } else {
+                // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+                title = "Fallo";
+                text = "Algo esta fallando";
+                icon = "question";
+                console.log(data);
+            }
+            console.log(data);
+            // Mostrar la alerta de SweetAlert5
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                timer: 3000,
+                timerProgressBar: true,
+                confirmButtonText: 'Aceptar',
+            }).then(function () {
+                window.location.href = redirijirA;
+            });
             CerrarModal();
         }
     });

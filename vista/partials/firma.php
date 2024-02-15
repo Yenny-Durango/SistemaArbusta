@@ -4,22 +4,17 @@ require "../../modelo/conexion.php";
 require "header-admin.php";
 
 try {
-    // Crear una nueva instancia de PDO
     $pdo = new PDO($dsn, $username, $password);
-    // Configurar PDO para que lance excepciones en caso de errores
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Preparar y ejecutar la consulta SQL para obtener información del usuario
-    $stmt = $pdo->query("SELECT nombre_completo, correo, telefono FROM usuario WHERE id_usuario = " . $_SESSION["id_usuario"]);
+    // Preparar y ejecutar la consulta SQL
+    $stmt = $pdo->query("SELECT * FROM usuario");
     $stmt->execute();
 
-    // Obtener los resultados de la consulta
+    // Obtener los resultados
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    // En caso de error, mostrar un mensaje de error
     echo "Error: " . $e->getMessage();
 }
-
 ?>
 <br>
 <h1 class="h1">GENERADOR DE FIRMA</h1>

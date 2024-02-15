@@ -135,7 +135,6 @@ function ConsultarEquipo()
     // Obtiene los datos del formulario por POST
     $id_equipo = $_POST['id_equipo'];
 
-    // Verifica si el correo electrónico ya existe en la base de datos
     $sql = "SELECT * FROM equipo WHERE id_equipo = $id_equipo";
     $result = $pdo->query($sql);
     foreach ($result as $key => $results) {
@@ -171,46 +170,61 @@ function ConsultarEquipo()
         echo '<br>
     <!-- Campo de compañía -->
     <div class="form-floating">
-        <select name="compania" id="compania" class="form-select">
-            <!-- Opciones de compañía -->
-            <option value="' . $results["compania"] . '">' . $results["compania"] . '</option>
-            <option value="ARBUSTA S.R.L">ARBUSTA S.R.L.</option>
-            <option value="ARBUSTA S.A.S">ARBUSTA S.A.S.</option>
-            <option value="Sumilar S.A">Sumilar S.A.</option>
-        </select>
+        <select name="compania" id="compania" class="form-select">';
+        $companias = ['Arbusta S.A.S', 'Arbusta S.R.L', 'Sumilar S.A.'];
+        foreach ($companias as $compania) {
+            if ($compania == $results["compania"]) {
+                echo '<option value="' . $compania . '" selected>' . $compania . '</option>';
+            } else {
+                echo '<option value="' . $compania . '">' . $compania . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Compañía">Compañía </label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
-        <select name="usado_por" id="usado_por" class="form-select">
-            <!-- Opciones de uso del equipo -->
-            <option value="' . $results["usado_por"] . '">' . $results["usado_por"] . '</option>
-            <option value="Departamento">Departamento</option>
-            <option value="Empleado">Empleado</option>
-        </select>
+        <select name="usado_por" id="usado_por" class="form-select">';
+        $usadopor = ['Departamento', 'Empleado'];
+        foreach ($usadopor as $usado_por) {
+            if ($usado_por == $results["usado_por"]) {
+                echo '<option value="' . $usado_por . '" selected>' . $usado_por . '</option>';
+            } else {
+                echo '<option value="' . $usado_por . '">' . $usado_por . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Usado por:">Usado por: </label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
-        <select name="id_usuario" id="id_usuario" class="form-select">
-            <!-- Opción vacía y opciones de usuarios -->
-            <option value="' . $results["id_usuario"] . '">' . $results["id_usuario"] . '</option>
-        </select>
+        <select name="id_usuario" id="id_usuario" class="form-select">';
+        $empleados = [$id_usuario];
+        foreach ($empleados as $empleado) {
+            if ($empleado == $results["empleado"]) {
+                echo '<option value="' . $empleado . '" selected>' . $empleado . '</option>';
+            } else {
+                echo '<option value="' . $empleado . '">' . $empleado . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Empleado">Empleado </label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
-        <select name="ubicacion_uso" id="ubicacion_uso" class="form-select">
-            <!-- Opciones de ubicación de uso -->
-            <option value="' . $results["ubicacion_uso"] . '">' . $results["ubicacion_uso"] . '</option>
-            <option value="BUE">BUE</option>
-            <option value="ROS">ROS</option>
-            <option value="MED">MED</option>
-            <option value="MON">MON</option>
-        </select>
+        <select name="ubicacion_uso" id="ubicacion_uso" class="form-select">';
+        $ubicacionuso = ['BUE', 'ROS', 'MED', 'MON'];
+        foreach ($ubicacionuso as $ubicacion_uso) {
+            if ($ubicacion_uso == $results["ubicacion_uso"]) {
+                echo '<option value="' . $ubicacion_uso . '" selected>' . $ubicacion_uso . '</option>';
+            } else {
+                echo '<option value="' . $ubicacion_uso . '">' . $ubicacion_uso . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Ubicación de uso">Ubicación de uso </label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
         <input class="form-control" id="proveedor" name="proveedor" type="text" placeholder="proveedor" value="' . $results["proveedor"] . '" onkeyup="ValidarProveedor(this)" />
         <label for="Proveedor">Proveedor</label>
@@ -279,19 +293,19 @@ function ConsultarEquipo()
     </div>
     <br>
     <div class="form-floating">
-        <select name="almacenamiento" id="almacenamiento" class="form-select">
-            <!-- Opciones de almacenamiento -->
-            <option>' . $results["almacenamiento"] . '</option>
-            <option value="HDD 250GB">HDD 250GB</option>
-            <option value="HDD 500GB">HDD 500GB</option>
-            <option value="HDD 1TB">HDD 1TB</option>
-            <option value="SDD 120GB">SDD 120GB</option>
-            <option value="SDD 240GB">SDD 240GB</option>
-            <option value="SDD 500GB">SDD 500GB</option>
-        </select>
+        <select name="almacenamiento" id="almacenamiento" class="form-select">';
+        $almacenamientos = ['HDD 250GB', 'HDD 500GB', 'HDD 1TB', 'SDD 120GB', 'SDD 240GB', 'SDD 500GB'];
+        foreach ($almacenamientos as $almacenamiento) {
+            if ($almacenamiento == $results["almacenamiento"]) {
+                echo '<option value="' . $almacenamiento . '" selected>' . $almacenamiento . '</option>';
+            } else {
+                echo '<option value="' . $almacenamiento . '">' . $almacenamiento . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Almacenamiento">Almacenamiento</label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
         <input class="form-control" id="mac_address" name="mac_address" type="text" placeholder="mac_address" value="' . $results["mac_address"] . '" onkeyup="ValidarMacAddress(this)" />
         <label for="Mac address">Mac address</label>
@@ -314,17 +328,19 @@ function ConsultarEquipo()
     </div>
     <br>
     <div class="form-floating">
-        <select name="sistema_operativo" id="sistema_operativo" class="form-select">
-            <!-- Opciones de sistema operativo -->
-            <option value="' . $results["sistema_operativo"] . '">' . $results["sistema_operativo"] . '</option>
-            <option value="Android">Android</option>
-            <option value="iOS">iOS</option>
-            <option value="Linux">Linux</option>
-            <option value="Windows">Windows</option>
-        </select>
+        <select name="sistema_operativo" id="sistema_operativo" class="form-select">';
+        $sistemas_operativos = ['Android', 'iOS', 'Linux', 'Windows'];
+        foreach ($sistemas_operativos as $sistema_operativo) {
+            if ($sistema_operativo == $results["sistema_operativo"]) {
+                echo '<option value="' . $sistema_operativo . '" selected>' . $sistema_operativo . '</option>';
+            } else {
+                echo '<option value="' . $sistema_operativo . '">' . $sistema_operativo . '</option>';
+            }
+        }
+        echo '</select>
         <label for="Sistema operativo">Sistema operativo (SO)</label>
-    </div>
-    <br>
+    </div>';
+        echo '<br>
     <div class="form-floating">
         <input class="form-control" id="version_so" name="version_so" type="text" placeholder="version_so" value="' . $results["version_so"] . '" onkeyup="ValidarVersionSo(this)" />
         <label for="Version SO">Versión SO </label>
@@ -414,15 +430,15 @@ function EliminarEquipo()
     // Requiere el archivo de conexión a la base de datos
     require "../modelo/conexion.php";
 
-    $id_usuario = $_POST['id_usuario'];
+    $id_equipo = $_POST['id_equipo'];
 
     // Prepara la consulta SQL para eliminar al usuario
-    $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
+    $sql = "DELETE FROM equipo WHERE id_equipo = $id_equipo";
     $data = $pdo->query($sql);
 
     // Ejecuta la consulta
     if ($data) {
-        echo "Usuario eliminado correctamente";
+        echo "Equipo eliminado correctamente";
     } else {
         echo "Hubo un problema al intentar eliminar la información";
     }

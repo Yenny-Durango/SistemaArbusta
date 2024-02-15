@@ -12,7 +12,7 @@ require "header-admin.php";
         <div class="col-md-6">
             <!-- Campo de nombres -->
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="nombre" name="nombre" type="text" placeholder="nombre" onkeyup="ValidarNombreUsuario(this)" />
+                <input class="form-control" id="nombre" name="nombre" type="text" placeholder="nombre" onkeyup="ValidarNombreUsuarioR(this)" />
                 <label for="nombre">Nombres</label>
             </div>
             <!-- Mensaje de error para el campo de nombres -->
@@ -21,7 +21,7 @@ require "header-admin.php";
         <div class="col-md-6">
             <!-- Campo de apellidos -->
             <div class="form-floating">
-                <input class="form-control" id="apellido" name="apellido" type="text" placeholder="apellido" onkeyup="ValidarApellidoUsuario(this)" />
+                <input class="form-control" id="apellido" name="apellido" type="text" placeholder="apellido" onkeyup="ValidarApellidoUsuarioR(this)" />
                 <label for="apellido">Apellido</label>
             </div>
             <!-- Mensaje de error para el campo de apellidos -->
@@ -34,7 +34,7 @@ require "header-admin.php";
         <div class="col-md-6">
             <!-- Campo de correo electrónico -->
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" onkeyup="ValidarCorreoUsuario(this)" />
+                <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" value="@arbusta.net" onkeyup="ValidarCorreoUsuarioR(this)" />
                 <label for="correo">Correo</label>
             </div>
             <!-- Mensaje de error para el campo de correo electrónico -->
@@ -43,7 +43,7 @@ require "header-admin.php";
         <div class="col-md-6">
             <!-- Campo de número de teléfono -->
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" onkeyup="ValidarTelefonoUsuario(this)" />
+                <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" onkeyup="ValidarTelefonoUsuarioR(this)" />
                 <label for="Teléfono">Teléfono</label>
             </div>
             <!-- Mensaje de error para el campo de número de teléfono -->
@@ -56,7 +56,7 @@ require "header-admin.php";
         <div class="col-md-6">
             <!-- Campo de contraseña -->
             <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="contrasena" onkeyup="ValidarContrasenaUsuario(this)" />
+                <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="contrasena" onkeyup="ValidarContrasenaUsuarioR(this)" />
                 <label for="Contraseña">Contraseña</label>
             </div>
             <!-- Mensaje de error para el campo de contraseña -->
@@ -71,6 +71,17 @@ require "header-admin.php";
             <!-- Mensaje de error para el campo de confirmación de contraseña -->
             <span id="confirmarContrasenaError" class="alert alert-danger" hidden></span>
         </div>
+       <hr>
+        <div class="form-floating">
+            <div class="form-floating mb-3 mb-md-0">
+                <select name="tipo_usuario" id="tipo_usuario" class="form-select">
+                    <!-- Opciones de categoría del equipo -->
+                    <option value="1">Administrador</option>
+                    <option value="0">Usuario</option>
+                </select>
+                <label for="Tipo de usuario">Tipo de usuario</label>
+            </div>
+        </div>
     </div>
 
     <!-- Botón para mostrar/ocultar la contraseña -->
@@ -78,7 +89,7 @@ require "header-admin.php";
 
     <!-- Botón de envío del formulario -->
     <div class="mt-4 mb-0">
-        <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarUsuario()">Registrar usuario</button></div>
+        <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarUsuarioAdmin()">Registrar usuario</button></div>
     </div>
 </form>
 

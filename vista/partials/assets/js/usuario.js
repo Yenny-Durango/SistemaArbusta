@@ -217,6 +217,77 @@ function RegistrarUsuario() {
   });
 }
 
+function RegistrarUsuarioAdmin() {
+  event.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: "../../controlador/usuario.controlador.php",
+    data: {
+      'nombre': $('#nombre').val(),
+      'apellido': $('#apellido').val(),
+      'correo': $('#correo').val(),
+      'contrasena': $('#contrasena').val(),
+      'confirmar_contrasena': $('#confirmar_contrasena').val(),
+      'telefono': $('#telefono').val(),
+      'tipo_usuario': $('#tipo_usuario').val(),
+      'Metodo': 'RegistrarUsuarioAdmin'
+    },
+
+    success: function (data) {
+      let title, text, icon;
+
+      if (data === "El correo ya está registrado") {
+        title = "Advertencia";
+        text = "El correo ya está registrado. Por favor, utiliza otro correo.";
+        icon = "warning";
+        console.log(data);
+      } else if (data === "Registrado correctamente") {
+        title = "Éxito";
+        text = "Registrado correctamente. ¡Bienvenido!";
+        icon = "success";
+        console.log(data);
+      } else if (data === "Complete todos los campos") {
+        title = "Alerta";
+        text = "Complete todos los campos";
+        icon = "info";
+        console.log(data);
+      } else if (data === "Hubo un problema al intentar registrar la información") {
+        title = "Error";
+        text = "Hubo un problema al intentar registrar la información. Por favor, inténtalo de nuevo más tarde.";
+        icon = "error";
+        console.log(data);
+      } else {
+        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+        title = "Fallo";
+        text = "Algo esta fallando";
+        icon = "question";
+        console.log(data);
+      }
+
+      console.log(data);
+
+      // Mostrar la alerta de SweetAlert2
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        timer: 2000,
+        timerProgressBar: true,
+        confirmButtonText: 'Aceptar',
+      });
+
+      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
+      $('#nombre').val('');
+      $('#apellido').val('');
+      $('#correo').val('');
+      $('#contrasena').val('');
+      $('#confirmar_contrasena').val('');
+      $('#telefono').val('');
+      $('#tipo_usuario').val('');
+    }
+  });
+}
+
 // LOGIN
 function ValidarCamposUsuarioLogin() {
   let correo = document.getElementById("correo").value.trim();
@@ -465,7 +536,6 @@ function ModificarUsuario() {
       $('#correo').val('');
       $('#telefono').val('');
       $('#tipo_usuario').val('');
-      alert(data);
       CerrarModal();
     }
   });
@@ -476,13 +546,46 @@ function EliminarUsuario(id_Usuario) {
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
-    url: "../controlador/usuario.controlador.php",
+    url: "../../controlador/usuario.controlador.php",
     data: {
       'id_usuario': id_Usuario,
       'Metodo': 'EliminarUsuario'
     },
     success: function (data) {
-      alert(data);
+      let title, text, icon;
+      if (data === "Usuario eliminado correctamente") {
+        title = "¡Exito!";
+        text = "Usuario eliminado correctamente";
+        icon = "success";
+        redirijirA = "listar_usuarios.php";
+        console.log(data);
+      } else if (data === "Hubo un problema al intentar eliminar la información") {
+        title = "Error";
+        text = "Hubo un problema al intentar eliminar la información";
+        icon = "error";
+        redirijirA = "listar_usuarios.php";
+        console.log(data);
+        CerrarModal();
+      } else {
+        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+        title = "Fallo";
+        text = "Algo esta fallando";
+        icon = "question";
+        console.log(data);
+      }
+      console.log(data);
+      // Mostrar la alerta de SweetAlert5
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        timer: 3000,
+        timerProgressBar: true,
+        confirmButtonText: 'Aceptar',
+      }).then(function () {
+        window.location.href = redirijirA;
+      });
+      CerrarModal();
     }
   });
 }
