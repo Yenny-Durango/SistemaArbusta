@@ -33,7 +33,7 @@ $name = $_SESSION['nombre_completo'];
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
-					<li><a class="dropdown-item" href="../cerrar_sesion.php">Cerrar sesión</a></li>
+					<li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
 				</ul>
 			</li>
 		</ul>

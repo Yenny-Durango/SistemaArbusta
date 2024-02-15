@@ -13,15 +13,15 @@ $name = $_SESSION['nombre_completo'];
     <meta name="description" content="Sitio Arbusta" /> <!-- Corregí la ortografía de "sitio" -->
     <meta name="author" content="Yenny Durango" />
     <title>ARBUSTA</title>
-    <link href="./assets/css/styles.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <link href="./partials/assets/css/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./partials/assets/img/logo.png" type="image/x-icon">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand -->
-        <a class="navbar-brand ps-3" href="principal.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
+        <a class="navbar-brand ps-3" href="principal.php"><img src="partials/assets/img/image.webp" alt="" style="width: 100px;"></a>
         <!-- Sidebar Toggle -->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar -->
@@ -33,7 +33,7 @@ $name = $_SESSION['nombre_completo'];
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../cerrar_sesion.php">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>

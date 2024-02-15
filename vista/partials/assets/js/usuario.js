@@ -152,7 +152,7 @@ function RegistrarUsuario() {
   event.preventDefault();
   $.ajax({
     type: "POST",
-    url: "../../controlador/usuario.controlador.php",
+    url: "../controlador/usuario.controlador.php",
     data: {
       'nombre': $('#nombre').val(),
       'apellido': $('#apellido').val(),
@@ -303,7 +303,7 @@ function Ingresar() {
 
   $.ajax({
     type: "POST",
-    url: "../../controlador/usuario.controlador.php",
+    url: "../controlador/usuario.controlador.php",
     data: {
       'correo': $('#correo').val(),
       'contrasena': $('#contrasena').val(),
@@ -476,7 +476,7 @@ function EliminarUsuario(id_Usuario) {
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
-    url: "../../controlador/usuario.controlador.php",
+    url: "../controlador/usuario.controlador.php",
     data: {
       'id_usuario': id_Usuario,
       'Metodo': 'EliminarUsuario'
