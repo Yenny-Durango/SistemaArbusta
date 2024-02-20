@@ -271,12 +271,19 @@ function ConsultarEquipo()
     </div>
     <br>
     <div class="form-floating">
-        <input class="form-control" id="valoracion" name="valoracion" type="number" placeholder="valoracion" value="' . $results["valoracion"] . '" onkeyup="ValidarValoracion(this)" />
-        <label for="Valoracion">Valoración</label>
-        <!-- Mensaje de error para el campo de valoración -->
-        <span id="valoracionError" class="alert alert-danger" hidden></span>
-    </div>
-    <br>
+                <select name="valoracion" id="valoracion" class="form-select">';
+        $valoraciones = ['Inaceptable', 'Insatisfactorio', 'Aceptable', 'Bueno', 'Excelente'];
+        foreach ($valoraciones as $valoracion) {
+            if ($valoracion == $results["valoracion"]) {
+                echo '<option value="' . $valoracion . '" selected>' . $valoracion . '</option>';
+            } else {
+                echo '<option value="' . $valoracion . '">' . $valoracion . '</option>';
+            }
+        }
+        echo '</select>
+                <label for="Valoración">Valoración</label>
+            </div>';
+        echo '<br>
     <div class="form-floating">
             <input class="form-control" id="procesador" name="procesador" type="text" placeholder="procesador" value="' . $results["procesador"] . '" onkeyup="ValidarProcesador(this)" />
             <label for="Procesador">Procesador</label>

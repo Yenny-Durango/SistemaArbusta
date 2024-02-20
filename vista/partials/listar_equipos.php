@@ -127,7 +127,6 @@ $pdo = null; // Cerrar la conexión
 <?php
 require "footer-scripts.php";
 ?>
-<script src="../assets/js/equipo.js"></script>
 </body>
 
 </html>

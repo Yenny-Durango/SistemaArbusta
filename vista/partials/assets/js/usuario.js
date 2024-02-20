@@ -484,6 +484,8 @@ function ConsultarUsuario(id_usuario) {
 
 function ModificarUsuario() {
   event.preventDefault();
+  let redirijirA;
+  
   $.ajax({
     type: 'POST',
     url: "../../controlador/usuario.controlador.php",

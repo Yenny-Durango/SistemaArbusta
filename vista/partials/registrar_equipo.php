@@ -169,9 +169,16 @@ $usuarios = $statement->fetchAll();
     <div class="row mb-3">
         <div class="col-md-6">
             <!-- Campo de valoración -->
-            <div class="form-floating mb-3 mb-md-0">
-                <input class="form-control" id="valoracion" name="valoracion" type="number" placeholder="valoracion" onkeyup="ValidarValoracion(this)" />
-                <label for="Valoracion">Valoración</label>
+            <div class="form-floating">
+                <select name="valoracion" id="valoracion" class="form-select">
+                    <!-- Opciones de categoría del equipo -->
+                    <option value="Inaceptable">Inaceptable</option>
+                    <option value="Insatisfactorio">Insatisfactorio</option>
+                    <option value="Aceptable">Aceptable</option>
+                    <option value="Bueno">Bueno</option>
+                    <option value="Excelente">Excelente</option>
+                </select>
+                <label for="Valoración">Valoración</label>
             </div>
             <!-- Mensaje de error para el campo de valoración -->
             <span id="valoracionError" class="alert alert-danger" hidden></span>
