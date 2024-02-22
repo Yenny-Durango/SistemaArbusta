@@ -134,8 +134,9 @@ function ConsultarEquipo()
 
     // Obtiene los datos del formulario por POST
     $id_equipo = $_POST['id_equipo'];
-
-    $sql = "SELECT * FROM equipo WHERE id_equipo = $id_equipo";
+    $sql = "SELECT * FROM equipo INNER JOIN usuario ON equipo.id_usuario = usuario.id_usuario WHERE id_equipo = $id_equipo";
+    $sqly = "SELECT * FROM usuario";
+    $resulta = $pdo->query($sqly);
     $result = $pdo->query($sql);
     foreach ($result as $key => $results) {
         echo '
@@ -198,16 +199,15 @@ function ConsultarEquipo()
     </div>';
         echo '<br>
     <div class="form-floating">
-        <select name="id_usuario" id="id_usuario" class="form-select">';
-        $empleados = [$id_usuario];
-        foreach ($empleados as $empleado) {
-            if ($empleado == $results["empleado"]) {
-                echo '<option value="' . $empleado . '" selected>' . $empleado . '</option>';
-            } else {
-                echo '<option value="' . $empleado . '">' . $empleado . '</option>';
+        <select name="id_usuario" id="id_usuario" class="form-select">
+            <option value="' . $results["id_usuario"] . '" selected>' . $results["nombre_completo"] . '</option>';
+        foreach ($resulta as $sqly => $resultados) {
+            if ($results["id_usuario"] != $resultados["id_usuario"]) {
+                echo '<option value="' . $resultados["id_usuario"] . '" selected>' . $resultados["nombre_completo"] . '</option>';
             }
         }
-        echo '</select>
+        echo '
+        </select>
         <label for="Empleado">Empleado </label>
     </div>';
         echo '<br>
@@ -375,7 +375,6 @@ function ModificarEquipo()
     $categoria_equipo = $_POST["categoria_equipo"];
     $compania = $_POST["compania"];
     $usado_por = $_POST["usado_por"];
-    $id_usuario = $_POST["id_usuario"];
     $ubicacion_uso = $_POST["ubicacion_uso"];
     $proveedor = $_POST["proveedor"];
     $referencia_proveedor = $_POST["referencia_proveedor"];
@@ -395,40 +394,16 @@ function ModificarEquipo()
     $sistema_operativo = $_POST["sistema_operativo"];
     $version_so = $_POST["version_so"];
     $descripcion = $_POST["descripcion"];
+    $id_usuario = $_POST["id_usuario"];
 
-    $sql = "UPDATE equipo SET
-    equipo='" . $equipo . "',
-    categoria_equipo='" . $categoria_equipo . "',
-    compania='" . $compania . "',
-    usado_por='" . $usado_por . "',
-    ubicacion_uso='" . $ubicacion_uso . "',
-    proveedor='" . $proveedor . "',
-    referencia_proveedor='" . $referencia_proveedor . "',
-    modelo='" . $modelo . "',
-    numero_serie='" . $numero_serie . "',
-    fecha_efectiva='" . $fecha_efectiva . "',
-    alquilado='" . $alquilado . "',
-    seguro='" . $seguro . "',
-    leasing='" . $leasing . "',
-    valoracion='" . $valoracion . "',
-    procesador='" . $procesador . "',
-    ram='" . $ram . "',
-    almacenamiento='" . $almacenamiento . "',
-    mac_address='" . $mac_address . "',
-    bateria='" . $bateria . "',
-    adaptador='" . $adaptador . "',
-    sistema_operativo='" . $sistema_operativo . "',
-    version_so='" . $version_so . "',
-    descripcion='" . $descripcion . "',
-    id_usuario='" . $id_usuario . "'
-    WHERE id_equipo = '" . $id_equipo . "'";
+    $sql = "UPDATE equipo SET equipo='" . $equipo . "',categoria_equipo= '" . $categoria_equipo . "',compania= '" . $compania . "',usado_por= '" . $usado_por . "',ubicacion_uso= '" . $ubicacion_uso . "',proveedor= '" . $proveedor . "',referencia_proveedor= '" . $referencia_proveedor . "',modelo= '" . $modelo . "',numero_serie = '" . $numero_serie . "',fecha_efectiva='" . $fecha_efectiva . "',alquilado='" . $alquilado . "',seguro='" . $seguro . "',leasing='" . $leasing . "',valoracion='" . $valoracion . "',procesador='" . $procesador . "',ram='" . $ram . "',almacenamiento='" . $almacenamiento . "',mac_address='" . $mac_address . "',bateria='" . $bateria . "',adaptador='" . $adaptador . "',sistema_operativo='" . $sistema_operativo . "',version_so='" . $version_so . "',descripcion='" . $descripcion . "',id_usuario=" . $id_usuario . " WHERE id_equipo = " . $id_equipo;
 
     $data = $pdo->query($sql);
 
     if ($data == true) {
-        echo "Modificado correctamente";
+        echo "modificado correctamente";
     } else {
-        echo "No fue posible modificar";
+        echo "no fue posible modificar";
     }
 }
 

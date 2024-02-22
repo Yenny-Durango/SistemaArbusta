@@ -15,18 +15,20 @@ function ValidarCamposEquipo() {
   let version_so = document.getElementById("version_so").value.trim();
   let descripcion = document.getElementById("descripcion").value.trim();
 
-  let equipoValido = /^.{5,100}$/.test(equipo);
-  let proveedorValido = /^.{5,100}$/.test(proveedor);
-  let referencia_proveedorValido = /^.{5,100}$/.test(referencia_proveedor);
-  let modeloValido = /^.{5,100}$/.test(modelo);
-  let numero_serieValido = /^.{5,100}$/.test(numero_serie);
-  let procesadorValido = /^.{5,100}$/.test(procesador);
-  let ramValido = /^.{5,100}$/.test(ram);
-  let mac_addressValido = /^.{5,100}$/.test(mac_address);
-  let bateriaValido = /^.{5,100}$/.test(bateria);
-  let adaptadorValido = /^.{5,100}$/.test(adaptador);
-  let version_soValido = /^.{5,100}$/.test(version_so);
-  let descripcionValido = /^.{5,100}$/.test(descripcion);
+  let equipoValido = equipo.length >= 5 && equipo.length <= 100;
+  let proveedorValido = proveedor.length >= 5 && proveedor.length <= 100;
+  let referencia_proveedorValido =
+    referencia_proveedor.length >= 5 && referencia_proveedor.length <= 100;
+  let modeloValido = modelo.length >= 5 && modelo.length <= 100;
+  let numero_serieValido =
+    numero_serie.length >= 5 && numero_serie.length <= 100;
+  let procesadorValido = procesador.length >= 5 && procesador.length <= 100;
+  let ramValido = ram.length >= 5 && ram.length <= 100;
+  let mac_addressValido = mac_address.length >= 5 && mac_address.length <= 100;
+  let bateriaValido = bateria.length >= 5 && bateria.length <= 100;
+  let adaptadorValido = adaptador.length >= 5 && adaptador.length <= 100;
+  let version_soValido = version_so.length >= 1 && version_so.length <= 100;
+  let descripcionValido = descripcion.length >= 1 && descripcion.length <= 100;
 
   let submitButton = document.getElementById("submitButton");
   if (
@@ -113,10 +115,7 @@ function ValidarNombreEquipo(elemento) {
   let inputValue = elemento.value.trim();
   let errorSpan = document.getElementById("equipoError");
 
-  // Validación de longitud
-  let equipoValido = /^.{5,100}$/.test(inputValue);
-
-  if (!equipoValido) {
+  if (inputValue.length < 5 || inputValue.length > 100) {
     // No cumple con la longitud requerida
     elemento.style.borderColor = "red";
     errorSpan.textContent = "Nombre: 5-100 caracteres.";
@@ -138,12 +137,12 @@ function ValidarProveedor(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "Proveedor: 5-100 caracteres";
-    mostrarElemento("proveedorError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("proveedorError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("proveedorError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("proveedorError");
   }
   ValidarCamposEquipo();
 }
@@ -157,12 +156,12 @@ function ValidarReferenciaProveedor(elemento) {
     elemento.style.borderColor = "red";
     errorSpan.textContent =
       "La referencia del proveedor debe tener entre 5 y 100 caracteres";
-    mostrarElemento("referenciaProveedorError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("referenciaProveedorError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("referenciaProveedorError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("referenciaProveedorError");
   }
   ValidarCamposEquipo();
 }
@@ -175,12 +174,12 @@ function ValidarModelo(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "El modelo debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("modeloError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("modeloError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("modeloError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("modeloError");
   }
   ValidarCamposEquipo();
 }
@@ -194,12 +193,12 @@ function ValidarNumeroSerie(elemento) {
     elemento.style.borderColor = "red";
     errorSpan.textContent =
       "El número de serie debe contener entre 5 y 100 caracteres.";
-    mostrarElemento("numeroSerieError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("numeroSerieError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("numeroSerieError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("numeroSerieError");
   }
   ValidarCamposEquipo();
 }
@@ -213,12 +212,12 @@ function ValidarProcesador(elemento) {
     elemento.style.borderColor = "red";
     errorSpan.textContent =
       "El procesador debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("procesadorError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("procesadorError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("procesadorError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("procesadorError");
   }
   ValidarCamposEquipo();
 }
@@ -231,12 +230,12 @@ function ValidarRam(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "La ram debe tener entre 3 y 100 caracteres.";
-    mostrarElemento("ramError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("ramError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("ramError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("ramError");
   }
   ValidarCamposEquipo();
 }
@@ -250,12 +249,12 @@ function ValidarMacAddress(elemento) {
     elemento.style.borderColor = "red";
     errorSpan.textContent =
       "El mac address debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("macAddressError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("macAddressError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("macAddressError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("macAddressError");
   }
   ValidarCamposEquipo();
 }
@@ -268,12 +267,12 @@ function ValidarBateria(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "La bateria debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("bateriaError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("bateriaError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("bateriaError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("bateriaError");
   }
   ValidarCamposEquipo();
 }
@@ -286,12 +285,12 @@ function ValidarAdaptador(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "El adaptador debe tener entre 5 y 100 caracteres";
-    mostrarElemento("adaptadorError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("adaptadorError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("adaptadorError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("adaptadorError");
   }
   ValidarCamposEquipo();
 }
@@ -304,12 +303,12 @@ function ValidarVersionSo(elemento) {
     // No cumple con las reglas
     elemento.style.borderColor = "red";
     errorSpan.textContent = "La version SO debe tener entre 2 y 50 caracteres";
-    mostrarElemento("versionSoError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("versionSoError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("versionSoError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("versionSoError");
   }
   ValidarCamposEquipo();
 }
@@ -323,12 +322,12 @@ function ValidarDescripcion(elemento) {
     elemento.style.borderColor = "red";
     errorSpan.textContent =
       "La descripcion debe tener entre 1 y 500 caracteres";
-    mostrarElemento("descripcionError"); // Corregido: se pasa el id como cadena
+    mostrarElemento("descripcionError");
   } else {
     // Cumple con las reglas
     elemento.style.borderColor = "green";
     errorSpan.textContent = "";
-    ocultarElemento("descripcionError"); // Corregido: se pasa el id como cadena
+    ocultarElemento("descripcionError");
   }
   ValidarCamposEquipo();
 }
@@ -452,16 +451,16 @@ function CerrarModal() {
 function ConsultarEquipo(id_equipo) {
   window.modal.showModal();
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: "../../controlador/equipo.controlador.php",
     data: {
-      id_equipo: id_equipo,
-      Metodo: "ConsultarEquipo",
+      'id_equipo': id_equipo,
+      'Metodo': "ConsultarEquipo"
     },
     success: function (data) {
-      $(".modal-body").text("");
-      $(".modal-body").append(data);
-    },
+      $('.modal-body').text("");
+      $('.modal-body').append(data);
+    }
   });
 }
 
@@ -470,45 +469,45 @@ function ModificarEquipo() {
   let redirijirA;
 
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: "../../controlador/equipo.controlador.php",
     data: {
-      id_equipo: $("#id_equipo").val(),
-      equipo: $("#equipo").val(),
-      categoria_equipo: $("#categoria_equipo").val(),
-      compania: $("#compania").val(),
-      usado_por: $("#usado_por").val(),
-      id_usuario: $("#id_usuario").val(),
-      ubicacion_uso: $("#ubicacion_uso").val(),
-      proveedor: $("#proveedor").val(),
-      referencia_proveedor: $("#referencia_proveedor").val(),
-      modelo: $("#modelo").val(),
-      numero_serie: $("#numero_serie").val(),
-      fecha_efectiva: $("#fecha_efectiva").val(),
-      alquilado: $("#alquilado").val(),
-      seguro: $("#seguro").val(),
-      leasing: $("#leasing").val(),
-      valoracion: $("#valoracion").val(),
-      procesador: $("#procesador").val(),
-      ram: $("#ram").val(),
-      almacenamiento: $("#almacenamiento").val(),
-      mac_address: $("#mac_address").val(),
-      bateria: $("#bateria").val(),
-      adaptador: $("#adaptador").val(),
-      sistema_operativo: $("#sistema_operativo").val(),
-      version_so: $("#version_so").val(),
-      descripcion: $("#descripcion").val(),
-      Metodo: "ModificarEquipo",
+      'id_equipo': $('#id_equipo').val(),
+      'equipo': $('#equipo').val(),
+      'categoria_equipo': $('#categoria_equipo').val(),
+      'compania': $('#compania').val(),
+      'usado_por': $('#usado_por').val(),
+      'ubicacion_uso': $('#ubicacion_uso').val(),
+      'proveedor': $('#proveedor').val(),
+      'referencia_proveedor': $('#referencia_proveedor').val(),
+      'modelo': $('#modelo').val(),
+      'numero_serie': $('#numero_serie').val(),
+      'fecha_efectiva': $('#fecha_efectiva').val(),
+      'alquilado': $('#alquilado').val(),
+      'seguro': $('#seguro').val(),
+      'leasing': $('#leasing').val(),
+      'valoracion': $('#valoracion').val(),
+      'procesador': $('#procesador').val(),
+      'ram': $('#ram').val(),
+      'almacenamiento': $('#almacenamiento').val(),
+      'mac_address': $('#mac_address').val(),
+      'bateria': $('#bateria').val(),
+      'adaptador': $('#adaptador').val(),
+      'sistema_operativo': $('#sistema_operativo').val(),
+      'version_so': $('#version_so').val(),
+      'descripcion': $('#descripcion').val(),
+      'id_usuario': $('#id_usuario').val(),
+      'Metodo': 'ModificarEquipo'
     },
     success: function (data) {
       let title, text, icon;
-      if (data === "Modificado correctamente") {
+      if (data === "modificado correctamente") {
         title = "¡Exito!";
         text = "Modificado correctamente";
         icon = "success";
         redirijirA = "listar_equipos.php";
         console.log(data);
-      } else if (data === "No fue posible modificar") {
+      } else if (data === "no fue posible modificar") {
         title = "Error";
         text = "No fue posible modificar";
         icon = "error";
@@ -528,40 +527,41 @@ function ModificarEquipo() {
         title: title,
         text: text,
         icon: icon,
-        timer: 2000,
+        timer: 3000,
         timerProgressBar: true,
-        confirmButtonText: "Aceptar",
+        confirmButtonText: 'Aceptar',
       }).then(function () {
         window.location.href = redirijirA;
       });
 
       // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
-      $("#equipo").val("");
-      $("#categoria_equipo").val("");
-      $("#compania").val("");
-      $("#usado_por").val("");
-      $("#ubicacion_uso").val("");
-      $("#proveedor").val("");
-      $("#referencia_proveedor").val("");
-      $("#modelo").val("");
-      $("#numero_serie").val("");
-      $("#fecha_efectiva").val("");
-      $("#alquilado").val("");
-      $("#seguro").val("");
-      $("#leasing").val("");
-      $("#valoracion").val("");
-      $("#procesador").val("");
-      $("#ram").val("");
-      $("#almacenamiento").val("");
-      $("#mac_address").val("");
-      $("#bateria").val("");
-      $("#adaptador").val("");
-      $("#sistema_operativo").val("");
-      $("#version_so").val("");
-      $("#descripcion").val("");
-      $("#id_usuario").val("");
+      $('#id_equipo').val('');
+      $('#equipo').val('');
+      $('#categoria_equipo').val('');
+      $('#compania').val('');
+      $('#usado_por').val('');
+      $('#ubicacion_uso').val('');
+      $('#proveedor').val('');
+      $('#referencia_proveedor').val('');
+      $('#modelo').val('');
+      $('#numero_serie').val('');
+      $('#fecha_efectiva').val('');
+      $('#alquilado').val('');
+      $('#seguro').val('');
+      $('#leasing').val('');
+      $('#valoracion').val('');
+      $('#procesador').val('');
+      $('#ram').val('');
+      $('#almacenamiento').val('');
+      $('#mac_address').val('');
+      $('#bateria').val('');
+      $('#adaptador').val('');
+      $('#sistema_operativo').val('');
+      $('#version_so').val('');
+      $('#descripcion').val('');
+      $('#id_usuario').val('');
       CerrarModal();
-    },
+    }
   });
 }
 
@@ -570,7 +570,7 @@ function EliminarEquipo(id_equipo) {
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
-    url: "../../../../controlador/equipo.controlador.php",
+    url: "../../controlador/equipo.controlador.php",
     data: {
       id_equipo: id_equipo,
       Metodo: "EliminarEquipo",

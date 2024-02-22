@@ -14,68 +14,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
+  --black: #06000b;
+  --dark-black: #17151c;
+  --light-black: #3e3d42;
+  --purple: #8c2198;
+  --dark-purple: #6a1f66;
+  --light-purple: #ad7fa3;
+  --lightest-purple: #ecdaff;
+  --indigo: #28026b;
+  --dark-indigo: #140036;
+  --light-indigo: #39009c;
+  --lighter-indigo: #b285ff;
+  --green: #006400;
+  --dark-green: #003c00;
+  --darker-green: #002a00;
+  --light-green: #008000;
+  --lightest-green: #acffac;
+  --red: #ff0000;
+  --dark-red: #8b0000;
+  --light-red: #ffc3c3;
+  --lightest-red: #ffffff;
+  --darker-red: #bf0000;
+  --yellow: #ffff00;
+  --dark-yellow: #bf8000;
+  --light-yellow: #ffff80;
+  --lightest-yellow: #fffab5;
+  --darker-yellow: #806000;
+  --blue: #0000ee;
+  --dark-blue: #000080;
+  --light-blue: #add8e6;
+  --lighter-blue: #e6faf1;
+  --darker-blue: #000064;
+  --white: #fff;
+  --dark-white: #fafafa;
+  --light-white: #eff3f6;
+  --grey: #777;
+  --dark-grey: #333;
+  --light-grey: #ccc;
 
-  /* colores arbusta */
-  --morado: #8C2198;
-  --blanco: #FFFFFF;
-  --negro: #06000B;
-  --moraazul: #28026B;
+  --background-button-success: var(--dark-green);
+  --color-button-success: var(--lightest-green);
+  --border-button-success: 1px solid var(--dark-green);
 
-  --bs-blue: #0d6efd;
-  --bs-indigo: #6610f2;
-  --bs-purple: #6f42c1;
-  --bs-pink: #d63384;
-  --bs-red: #dc3545;
-  --bs-orange: #fd7e14;
-  --bs-yellow: #ffc107;
-  --bs-green: #198754;
-  --bs-teal: #20c997;
-  --bs-cyan: #0dcaf0;
-  --bs-black: #000;
-  --bs-white: #fff;
-  --bs-primary: #8C2198;
-  --bs-secondary: #28026B;
-  --bs-success: #2ad100;
-  --bs-info: #0dcaf0;
-  --bs-warning: #fff67c;
-  --bs-danger: #ff7b7b;
-  --bs-light: #f0f0f0;
-  --bs-dark: #1a1a1a;
-  --bs-primary-rgb: rgba(140, 33, 152, 0.801);
-  --bs-secondary-rgb: rgba(41, 2, 107, 0.801);
-  --bs-success-rgb: rgba(42, 209, 0, 0.801);
-  --bs-info-rgb: 13, 202, 240;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
-  --bs-light-rgb: 248, 249, 250;
-  --bs-dark-rgb: 33, 37, 41;
-  --bs-white-rgb: 255, 255, 255;
-  --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: 'Rubik', sans-serif;
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 1rem;
-  --bs-body-font-weight: 400;
-  --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
-  --bs-body-bg: #fff;
-  --bs-border-width: 1px;
-  --bs-border-style: solid;
-  --bs-border-color: #dee2e6;
-  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-  --bs-border-radius: 0.375rem;
-  --bs-border-radius-sm: 0.25rem;
-  --bs-border-radius-lg: 0.5rem;
-  --bs-border-radius-xl: 1rem;
-  --bs-border-radius-2xl: 2rem;
-  --bs-border-radius-pill: 50rem;
-  --bs-link-color: #8C2198;
-  --bs-link-hover-color: #c332d3;
-  --bs-code-color: #d63384;
-  --bs-highlight-bg: #fff3cd;
+  /* success hover */
+  --bg-hover-button-success: var(--lightest-green);
+  --color-hover-button-success: var(--dark-green);
+  --border-hover-button-success: 1px solid var(--light-green);
+
+  /* success button active */
+  --bg-active-button-success: var(--dark-green);
+  --color-active-button-success: var(--white);
+
+  /* success button disabled */
+  --color-disabled-button-success: var(--dark-grey);
+  --bg-disabled-button-success: rgba(255, 255, 255, 0.12);
+
+  --background-button-warning: var(--light-yellow);
+  --color-button-warning: var(--dark-yellow);
+  --border-button-warning: 1px dashed var(--light-yellow);
+
+  /* warning hover */
+  --bg-hover-button-warning: var(--lightest-yellow);
+  --color-hover-button-warning: var(--dark-yellow);
+  --border-hover-button-warning: 1px dashed var(--light-yellow);
+
+  /* warning button active */
+  --bg-active-button-warning: var(--lightest-yellow);
+  --color-active-button-warning: var(--dark-yellow);
+
+  /* warning button disabled */
+  --color-disabled-button-warning: var(--dark-grey);
+  --bg-disabled-button-warning: rgba(255, 255, 255, 0.12);
+
+  --background-button-danger: var(--red);
+  --color-button-danger: var(--white);
+  --border-button-danger: 1px solid var(--dark-red);
+
+  /* danger hover */
+  --bg-hover-button-danger: var(--light-red);
+  --color-hover-button-danger: var(--dark-red);
+  --border-hover-button-danger: 1px solid var(--light-red);
+
+  /* danger button active */
+  --bg-active-button-danger: var(--lightest-red);
+  --color-active-button-danger: var(--black);
+
+  /* danger button disabled */
+  --color-disabled-button-danger: var(--dark-grey);
+  --bg-disabled-button-danger: rgba(255, 255, 255, 0.12);
+
+  --background-button-purple: var(--dark-purple);
+  --color-button-purple: var(--white);
+  --border-button-purple: none;
+
+  /* purple hover */
+  --bg-hover-button-purple: var(--lighter-purple);
+  --color-hover-button-purple: var(--dark-purple);
+  --border-hover-button-purple: 1px dotted var(--dark-purple);
+
+  /* purple button active */
+  --bg-active-button-purple: var(--lightest-purple);
+  --color-active-button-purple: var(--dark-purple);
+
+  --background-button-indigo: var(--dark-indigo);
+  --color-button-indigo: var(--white);
+  --border-button-indigo: 1px dotted var(--dark-indigo);
+
+  /* indigo hover */
+  --bg-hover-button-indigo: var(--lighter-indigo);
+  --color-hover-button-indigo: var(--dark-indigo);
+  --border-hover-button-indigo: 1px solid var(--dark-indigo);
+
+  --background-alert-success: var(--light-green);
+  --color-alert-success: var(--dark-green);
+
+  /* alert success hover */
+  --bg-hover-alert-success: var(--lightest-green);
+  --color-hover-alert-success: var(--darker-green);
+
+  --background-alert-info: var(--light-blue);
+  --color-alert-info: var(--dark-blue);
+
+  /* alert info hover */
+  --bg-hover-alert-info: var(--lighter-blue);
+  --color-hover-alert-info: var(--darker-blue);
+
+  --background-alert-warning: var(--light-yellow);
+  --color-alert-warning: var(--dark-yellow);
+
+  /* alert warning hover */
+  --bg-hover-alert-warning: var(--lightest-yellow);
+  --color-hover-alert-warning: var(--darker-yellow);
+
+  --background-alert-danger: var(--light-red);
+  --color-alert-danger: var(--dark-red);
+
+  /* alert danger hover */
+  --bg-hover-alert-danger: var(--lightest-red);
+  --color-hover-alert-danger: var(--darker-red);
+
+  --font-family: "Rubik", sans-serif;
+  --font-size: 16px;
+  --text-primary: var(--dark-black);
+  --text-secondary: var(--dark-grey);
+  --bg-default: transparent;
+  --font-weight: normal;
+  --line-height: 1.5;
+  --text-align: left;
+  --heading-font-weight: bold;
 }
 
 *,
@@ -8701,7 +8787,7 @@ fieldset:disabled .btn {
   text-decoration: none;
 }
 
-.text-primary:hover{
+.text-primary:hover {
   text-decoration: underline;
   color: #db4dff;
 }

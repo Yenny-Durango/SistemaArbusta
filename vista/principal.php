@@ -14,6 +14,7 @@ $name = $_SESSION['nombre_completo'];
     <meta name="author" content="Yenny Durango" />
     <title>ARBUSTA</title>
     <link href="./partials/assets/css/styles.css" rel="stylesheet" />
+    <!-- <link href="./partials/assets/css/styles-copy.css" rel="stylesheet" /> -->
     <link rel="shortcut icon" href="./partials/assets/img/logo.png" type="image/x-icon">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>

@@ -15,7 +15,8 @@ $email = $_SESSION['correo'];
     <meta name="author" content="Yenny Durango" />
     <title>ARBUSTA</title>
     <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="assets/css/styles-copy.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>

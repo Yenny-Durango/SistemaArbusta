@@ -14,6 +14,7 @@ $name = $_SESSION['nombre_completo'];
 	<meta name="author" content="Yenny Durango" />
 	<title>ARBUSTA</title>
 	<link href="partials/assets/css/styles.css" rel="stylesheet" />
+	<!-- <link href="partials/assets/css/styles-copy.css" rel="stylesheet" /> -->
 	<link rel="shortcut icon" href="partials/assets/img/logo.png" type="image/x-icon">
 	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -114,6 +115,22 @@ $name = $_SESSION['nombre_completo'];
 								<hr>
 								<p class="card-subtitle">La única forma de hacer un gran trabajo es amar lo que haces</p>
 							</div>
+						</div>
+						<a href="">Link</a>
+						<div class="botones" style="display: flex; gap:10px;">
+							<button class="btn btn-primary">primary</button>
+							<button class="btn btn-secondary">secondary</button>
+							<button class="btn btn-success">success</button>
+							<button class="btn btn-warning">warning</button>
+							<button class="btn btn-danger">danger</button>
+						</div>
+						<br>
+						<div class="botones" style="display: flex; gap:10px;">
+							<button class="btn btn-primary" disabled>primary</button>
+							<button class="btn btn-secondary" disabled>secondary</button>
+							<button class="btn btn-success" disabled>success</button>
+							<button class="btn btn-warning" disabled>warning</button>
+							<button class="btn btn-danger" disabled>danger</button>
 						</div>
 					</div>
 				</div>
