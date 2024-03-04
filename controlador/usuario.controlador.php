@@ -127,12 +127,27 @@ function RegistrarUsuario()
 
 function Ingresar()
 {
-  // Requiere el archivo de conexión a la base de datos
+  //  Establece una conexión a la base de datos
   require "../modelo/conexion.php";
-
-  // Inicia la sesión
   session_start();
 
+  // // define la clave secreta del recapcha 
+  // define('CLAVE', '6LcytIApAAAAABDxT854LCPhNGeZUjJWKnOv59R5');
+
+  // $token = $_POST['token'];
+
+  // $cu = curl_init();
+  // curl_setopt($cu, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+  // curl_setopt($cu, CURLOPT_POST, 1);
+  // curl_setopt($cu, CURLOPT_POSTFIELDS, http_build_query(array('secret' => CLAVE, 'response' => $token)));
+  // curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
+  // $response = curl_exec($cu);
+  // curl_close($cu);
+
+  // $datos = json_decode($response, true);
+
+  // if ($datos['success'] == 1 && $datos['score'] >= 0.5) {
+  //   if ($datos['action'] == 'validarUsuario') {
   // Obtén las credenciales del formulario
   $correo = $_POST['correo'];
   $contrasena = $_POST['contrasena'];
@@ -141,7 +156,6 @@ function Ingresar()
     echo "Complete todos los campos";
     return;
   }
-
   // Consulta preparada con parámetros
   $sql = "SELECT id_usuario, correo, contrasena, nombre_completo, tipo_usuario FROM usuario WHERE correo = :correo";
   $stmt = $pdo->prepare($sql);
@@ -174,8 +188,12 @@ function Ingresar()
     // Usuario no existe
     echo 'El usuario no existe';
   }
-
   $pdo = null; // Cerrar la conexion
+  //   echo "CAPTCHA VALIDO";
+  // } else {
+  //   echo "SHU SHU ROBOT";
+  // }
+
 }
 
 function ConsultarUsuario()

@@ -7,11 +7,9 @@ $sql = "SELECT id_usuario, nombre_completo FROM usuario";
 $statement = $pdo->query($sql);
 $usuarios = $statement->fetchAll();
 ?>
-<br>
 <form method="post" action="">
     <!-- Título del formulario -->
-    <h1 class=".h1">EQUIPO</h1>
-    <br>
+    <h1 class=".h1">REGISTRAR EQUIPO</h1>
     <!-- Sección de información del equipo -->
     <div class="row mb-3">
         <div class="col-md-6">

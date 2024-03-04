@@ -14,13 +14,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
+  /* COLORES */
   --black: #06000b;
   --dark-black: #17151c;
   --light-black: #3e3d42;
   --purple: #8c2198;
   --dark-purple: #6a1f66;
   --light-purple: #ad7fa3;
-  --lightest-purple: #ecdaff;
   --indigo: #28026b;
   --dark-indigo: #140036;
   --light-indigo: #39009c;
@@ -51,81 +51,89 @@
   --grey: #777;
   --dark-grey: #333;
   --light-grey: #ccc;
+  /* FIN COLORES */
 
+  /* BOTON SUCCESS */
   --background-button-success: var(--dark-green);
   --color-button-success: var(--lightest-green);
   --border-button-success: 1px solid var(--dark-green);
 
-  /* success hover */
   --bg-hover-button-success: var(--lightest-green);
   --color-hover-button-success: var(--dark-green);
   --border-hover-button-success: 1px solid var(--light-green);
 
-  /* success button active */
   --bg-active-button-success: var(--dark-green);
   --color-active-button-success: var(--white);
+  /* FIN BOTON SUCCESS */
 
-  /* success button disabled */
-  --color-disabled-button-success: var(--dark-grey);
-  --bg-disabled-button-success: rgba(255, 255, 255, 0.12);
-
+  /* BOTON WARNING */
   --background-button-warning: var(--light-yellow);
   --color-button-warning: var(--dark-yellow);
   --border-button-warning: 1px dashed var(--light-yellow);
 
-  /* warning hover */
   --bg-hover-button-warning: var(--lightest-yellow);
   --color-hover-button-warning: var(--dark-yellow);
   --border-hover-button-warning: 1px dashed var(--light-yellow);
 
-  /* warning button active */
   --bg-active-button-warning: var(--lightest-yellow);
   --color-active-button-warning: var(--dark-yellow);
+  /* FIN BOTON WARNING */
 
-  /* warning button disabled */
-  --color-disabled-button-warning: var(--dark-grey);
-  --bg-disabled-button-warning: rgba(255, 255, 255, 0.12);
-
+  /* BOTON DANGER */
   --background-button-danger: var(--red);
   --color-button-danger: var(--white);
   --border-button-danger: 1px solid var(--dark-red);
 
-  /* danger hover */
   --bg-hover-button-danger: var(--light-red);
   --color-hover-button-danger: var(--dark-red);
   --border-hover-button-danger: 1px solid var(--light-red);
 
-  /* danger button active */
   --bg-active-button-danger: var(--lightest-red);
   --color-active-button-danger: var(--black);
+  /* FIN BOTON DANGER */
 
-  /* danger button disabled */
-  --color-disabled-button-danger: var(--dark-grey);
-  --bg-disabled-button-danger: rgba(255, 255, 255, 0.12);
-
+  /* BOTON MORADO */
   --background-button-purple: var(--dark-purple);
   --color-button-purple: var(--white);
   --border-button-purple: none;
 
-  /* purple hover */
-  --bg-hover-button-purple: var(--lighter-purple);
+  --bg-hover-button-purple: var(--light-purple);
   --color-hover-button-purple: var(--dark-purple);
   --border-hover-button-purple: 1px dotted var(--dark-purple);
 
-  /* purple button active */
-  --bg-active-button-purple: var(--lightest-purple);
+  --bg-active-button-purple: var(--light-purple);
   --color-active-button-purple: var(--dark-purple);
+  /* FIN BOTON MORADO */
 
+  /* BOTON INDIGO */
   --background-button-indigo: var(--dark-indigo);
   --color-button-indigo: var(--white);
   --border-button-indigo: 1px dotted var(--dark-indigo);
 
-  /* indigo hover */
   --bg-hover-button-indigo: var(--lighter-indigo);
   --color-hover-button-indigo: var(--dark-indigo);
   --border-hover-button-indigo: 1px solid var(--dark-indigo);
 
-  --background-alert-success: var(--light-green);
+  --bg-active-button-indigo: var(--light-indigo);
+  --color-active-button-indigo: var(--dark-indigo);
+  /* FIN BOTON INDIGO */
+
+
+  /* BOTON DESHABILITADO */
+  --background-button-disabled: var(--dark-grey);
+  --color-button-disabled: var(--white);
+  --border-button-disabled: none;
+
+  --bg-hover-button-disabled: var(--light-grey);
+  --color-hover-button-disabled: var(--dark-grey);
+  --border-hover-button-disabled: 1px dotted var(--dark-grey);
+
+  --bg-active-button-purple: var(--light-grey);
+  --color-active-button-purple: var(var(--dark-grey))
+    /* FIN BOTON DESHABILITADO */
+
+    /* ALERTAS */
+    --background-alert-success: var(--light-green);
   --color-alert-success: var(--dark-green);
 
   /* alert success hover */
@@ -178,12 +186,12 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
   color: #000;
-  text-align: var(--bs-body-text-align);
+  text-align: var(--text-align);
   background-image: url("../img/fondo-lavandas.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -3279,10 +3287,9 @@ textarea.is-invalid.datatable-input {
 }
 
 .btn {
-  --bs-btn-font-family: 'Rubik', sans-serif;
-  ;
+  --bs-btn-font-family: "Rubik", sans-serif;
   --bs-btn-font-size: 1rem;
-  --bs-btn-font-weight: 400;
+  --bs-btn-font-weight: bold;
   --bs-btn-line-height: 1.5;
   --bs-btn-color: #212529;
   --bs-btn-bg: transparent;
@@ -3290,11 +3297,11 @@ textarea.is-invalid.datatable-input {
   --bs-btn-border-color: transparent;
   --bs-btn-border-radius: 0.375rem;
   --bs-btn-hover-border-color: transparent;
-  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.075);
   --bs-btn-disabled-opacity: 0.65;
-  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
   display: inline-block;
-  padding: 10px;
   font-family: var(--bs-btn-font-family);
   font-size: var(--bs-btn-font-size);
   font-weight: var(--bs-btn-font-weight);
@@ -3310,9 +3317,13 @@ textarea.is-invalid.datatable-input {
   border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
   border-radius: var(--bs-btn-border-radius);
   background-color: var(--bs-btn-bg);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  width: 50%;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: auto;
   margin: auto;
+  padding: 15px;
+  display: flex;
+  text-transform: uppercase;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3368,28 +3379,90 @@ textarea.is-invalid.datatable-input {
 .btn:disabled,
 .btn.disabled,
 fieldset:disabled .btn {
-  color: var(--bs-btn-disabled-color);
-  pointer-events: none;
-  background-color: var(--bs-btn-disabled-bg);
-  border-color: var(--bs-btn-disabled-border-color);
-  opacity: var(--bs-btn-disabled-opacity);
+  color: var(--color-button-disabled);
+  background-color: var(--background-button-disabled);
+  border-color: var(--border-button-disabled);
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #8c00ff;
-  --bs-btn-border-color: #8c00ff;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #43007a;
-  --bs-btn-hover-border-color: #43007a;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: var(--blanco);
-  --bs-btn-active-border-color: var(--blanco);
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--negro);
-  --bs-btn-disabled-border-color: var(var(--negro))
+  --bs-btn-color: var(--color-button-purple);
+  --bs-btn-bg: var(--background-button-purple);
+  --bs-btn-border-color: var(--border-button-purple);
+  --bs-btn-hover-color: var(--color-hover-button-purple);
+  --bs-btn-hover-bg: var(--bg-hover-button-purple);
+  --bs-btn-hover-border-color: var(--border-button-purple);
+  --bs-btn-focus-shadow-rgb: 93, 126, 174;
+  --bs-btn-active-color: var(--color-active-button-purple);
+  --bs-btn-active-bg: var(--bg-active-button-purple);
+  --bs-btn-disabled-color: var(--color-button-disabled);
+  --bs-btn-disabled-bg: var(--background-button-disabled);
+  --bs-btn-disabled-border: var(var(--border-button-disabled));
+}
+
+.btn-secondary {
+  --bs-btn-color: var(--color-button-indigo);
+  --bs-btn-bg: var(--background-button-indigo);
+  --bs-btn-border-color: var(--border-button-indigo);
+  --bs-btn-hover-color: var(--color-hover-button-indigo);
+  --bs-btn-hover-bg: var(--bg-hover-button-indigo);
+  --bs-btn-hover-border-color: var(--border-button-indigo);
+  --bs-btn-focus-shadow-rgb: 93, 126, 174;
+  --bs-btn-active-color: var(--color-active-button-indigo);
+  --bs-btn-active-bg: var(--bg-active-button-indigo);
+  --bs-btn-disabled-color: var(--color-button-disabled);
+  --bs-btn-disabled-bg: var(--background-button-disabled);
+  --bs-btn-disabled-border: var(var(--border-button-disabled));
+}
+
+.btn-success {
+  --bs-btn-color: var(--color-button-success);
+  --bs-btn-bg: var(--background-button-success);
+  --bs-btn-border-color: var(--border-button-success);
+  --bs-btn-hover-color: var(--color-hover-button-success);
+  --bs-btn-hover-bg: var(--bg-hover-button-success);
+  --bs-btn-hover-border-color: var(--border-button-success);
+  --bs-btn-focus-shadow-rgb: 93, 126, 174;
+  --bs-btn-active-color: var(--color-active-button-success);
+  --bs-btn-active-bg: var(--bg-active-button-success);
+  --bs-btn-disabled-color: var(--color-button-disabled);
+  --bs-btn-disabled-bg: var(--background-button-disabled);
+  --bs-btn-disabled-border: var(var(--border-button-disabled));
+}
+
+.btn-warning {
+  --bs-btn-color: var(--color-button-warning);
+  --bs-btn-bg: var(--background-button-warning);
+  --bs-btn-border-color: var(--border-button-warning);
+  --bs-btn-hover-color: var(--color-hover-button-warning);
+  --bs-btn-hover-bg: var(--bg-hover-button-warning);
+  --bs-btn-hover-border-color: var(--border-button-warning);
+  --bs-btn-focus-shadow-rgb: 93, 126, 174;
+  --bs-btn-active-color: var(--color-active-button-warning);
+  --bs-btn-active-bg: var(--bg-active-button-warning);
+  --bs-btn-disabled-color: var(--color-button-disabled);
+  --bs-btn-disabled-bg: var(--background-button-disabled);
+  --bs-btn-disabled-border: var(var(--border-button-disabled));
+}
+
+.btn-danger {
+  --bs-btn-color: var(--color-button-danger);
+  --bs-btn-bg: var(--background-button-danger);
+  --bs-btn-border-color: var(--border-button-danger);
+  --bs-btn-hover-color: var(--color-hover-button-danger);
+  --bs-btn-hover-bg: var(--bg-hover-button-danger);
+  --bs-btn-hover-border-color: var(--border-button-danger);
+  --bs-btn-focus-shadow-rgb: 93, 126, 174;
+  --bs-btn-active-color: var(--color-active-button-danger);
+  --bs-btn-active-bg: var(--bg-active-button-danger);
+  --bs-btn-disabled-color: var(--color-button-disabled);
+  --bs-btn-disabled-bg: var(--background-button-disabled);
+  --bs-btn-disabled-border: var(var(--border-button-disabled));
+}
+
+.btn-link {
+  --bs-btn-color: inherit;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: none;
 }
 
 .collapse:not(.show) {
@@ -5063,27 +5136,15 @@ fieldset:disabled .btn {
 }
 
 .alert {
-  --bs-alert-bg: transparent;
-  --bs-alert-padding-x: 1rem;
-  --bs-alert-padding-y: 1rem;
-  --bs-alert-margin-bottom: 1rem;
-  --bs-alert-color: inherit;
-  --bs-alert-border-color: transparent;
-  --bs-alert-border: 1px solid var(--bs-alert-border-color);
-  --bs-alert-border-radius: 0.375rem;
-  position: relative;
-  padding: 4px;
-  margin-top: 5px;
-  margin-bottom: var(--bs-alert-margin-bottom);
+  padding: 5px;
+  margin: 5px;
   color: var(--bs-alert-color);
   background-color: var(--bs-alert-bg);
-  border: var(--bs-alert-border);
-  border-radius: var(--bs-alert-border-radius);
   text-align: center;
   display: flex;
-  width: auto;
   justify-content: center;
-  align-items: center;
+  font-size: 12px;
+  font-family: monospace;
 }
 
 .alert-heading {
@@ -8779,17 +8840,19 @@ fieldset:disabled .btn {
 
 /* rtl:end:remove */
 .text-primary {
-  color: #c485f7;
+  font-family: monospace;
+  color: #8800cc;
   text-align: center;
-  cursor: pointer;
   display: block;
-  margin: 10px;
+  font-size: 15px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .text-primary:hover {
   text-decoration: underline;
-  color: #db4dff;
+  color: #aa00ff;
+  font-weight: bold;
 }
 
 .bg-primary {

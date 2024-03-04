@@ -1,153 +1,4 @@
-
-
-// REGISTRO
-function ValidarCamposUsuario() {
-  let nombre = document.getElementById("nombre").value.trim();
-  let apellido = document.getElementById("apellido").value.trim();
-  let correo = document.getElementById("correo").value.trim();
-  let contrasena = document.getElementById("contrasena").value.trim();
-  let confirmar_contrasena = document.getElementById("confirmar_contrasena").value.trim();
-
-  let nombreValido = nombre.length >= 2 && nombre.length <= 20 && /^[a-zA-Z\s]+$/.test(nombre) && !/^\s/.test(nombre) && !/\s$/.test(nombre) && !/\s\s/.test(nombre);
-  let apellidoValido = apellido.length >= 3 && apellido.length <= 20 && /^[a-zA-Z\s]+$/.test(apellido) && !/^\s/.test(apellido) && !/\s$/.test(apellido) && !/\s\s/.test(apellido);
-  let correoValido = /^[a-zA-Z0-9._%+-]+@arbusta\.net$/.test(correo);
-  let contrasenaValido = contrasena.length >= 5 && contrasena.length <= 20 &&
-    /^(?=.*[!@#$%^&*()_-])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{5,20}$/.test(contrasena) &&
-    /[a-z]+.*[A-Z]+|[A-Z]+.*[a-z]+.*[!@#$%^&*()_-]+.*\d+|\d+.*[!@#$%^&*()_-]+.*[a-z]+.*[A-Z]+/.test(contrasena);
-  let confirmarContrasenaValido = contrasena === confirmar_contrasena;
-
-  let submitButton = document.getElementById("submitButton");
-  console.log(nombreValido, ' && ', apellidoValido, ' && ', correoValido, ' && ', contrasenaValido, ' && ', confirmarContrasenaValido);
-  if (nombreValido && apellidoValido && correoValido && contrasenaValido && confirmarContrasenaValido) {
-    submitButton.disabled = false;
-  } else {
-    submitButton.disabled = true;
-  }
-}
-
-function mostrarElemento(id) {
-  document.getElementById(id).hidden = false;
-}
-
-function ocultarElemento(id) {
-  document.getElementById(id).hidden = true;
-}
-
-function ValidarNombreUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("nombreError");
-
-  if (inputValue.length < 2 || inputValue.length > 20 || !/^[a-zA-Z\s]+$/.test(inputValue) || /^\s/.test(inputValue) || /\s$/.test(inputValue) || /\s\s/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Nombre: 2-20 caracteres, sin números ni caracteres especiales.";
-    mostrarElemento("nombreError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("nombreError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
-function ValidarApellidoUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("apellidoError");
-
-  if (inputValue.length < 3 || inputValue.length > 20 || !/^[a-zA-Z\s]+$/.test(inputValue) || /^\s/.test(inputValue) || /\s$/.test(inputValue) || /\s\s/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Apellido: 3-20 caracteres, sin números ni caracteres especiales.";
-    mostrarElemento("apellidoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("apellidoError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
-function ValidarCorreoUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("correoError");
-
-  if (!/^[a-zA-Z0-9._%+-]+@arbusta\.net$/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Ingrese un correo electrónico válido con el dominio @arbusta.net.";
-    mostrarElemento("correoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("correoError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
-function ValidarContrasenaUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("contrasenaError");
-
-  if (
-    inputValue.length < 5 ||
-    inputValue.length > 20 ||
-    !/^(?=.*[!@#$%^&*()_-])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{5,20}$/.test(inputValue) ||
-    !/[a-z]+.*[A-Z]+|[A-Z]+.*[a-z]+/.test(inputValue) ||
-    !/\d+/.test(inputValue)
-  ) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Contraseña: 5-20 caracteres, 1 especial, 1 mayúscula, 1 minúscula, 1 número.";
-    mostrarElemento("contrasenaError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("contrasenaError");
-    ValidarCamposUsuario();
-  }
-}
-
-function ValidarConfimarContrasenaUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let contrasena = document.getElementById("contrasena").value.trim();
-  let errorSpan = document.getElementById("confirmarContrasenaError");
-
-  if (inputValue !== contrasena) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Las contraseñas deben coincidir.";
-    mostrarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
-function ValidarTelefonoUsuarioR(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("telefonoError");
-
-  if (!/^[0-9]{10,10}$/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El teléfono debe tener 10 números.";
-    mostrarElemento("telefonoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("telefonoError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
+// REGISTRAR USUARIO ----------------------------------------------------------
 function RegistrarUsuario() {
   event.preventDefault();
   $.ajax({
@@ -187,7 +38,6 @@ function RegistrarUsuario() {
         icon = "error";
         console.log(data);
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
@@ -196,7 +46,6 @@ function RegistrarUsuario() {
 
       console.log(data);
 
-      // Mostrar la alerta de SweetAlert2
       Swal.fire({
         title: title,
         text: text,
@@ -206,7 +55,6 @@ function RegistrarUsuario() {
         confirmButtonText: 'Aceptar',
       });
 
-      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
       $('#nombre').val('');
       $('#apellido').val('');
       $('#correo').val('');
@@ -216,7 +64,9 @@ function RegistrarUsuario() {
     }
   });
 }
+// FIN REGISTRAR USUARIO ----------------------------------------------------------
 
+// REGISTRAR USUARIO DESDE  EL ADMINISTRADOR ----------------------------------------------------------
 function RegistrarUsuarioAdmin() {
   event.preventDefault();
   $.ajax({
@@ -257,7 +107,6 @@ function RegistrarUsuarioAdmin() {
         icon = "error";
         console.log(data);
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
@@ -266,7 +115,6 @@ function RegistrarUsuarioAdmin() {
 
       console.log(data);
 
-      // Mostrar la alerta de SweetAlert2
       Swal.fire({
         title: title,
         text: text,
@@ -276,7 +124,6 @@ function RegistrarUsuarioAdmin() {
         confirmButtonText: 'Aceptar',
       });
 
-      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
       $('#nombre').val('');
       $('#apellido').val('');
       $('#correo').val('');
@@ -287,87 +134,10 @@ function RegistrarUsuarioAdmin() {
     }
   });
 }
+// FIN REGISTRAR USUARIO DESDE  EL ADMINISTRADOR ----------------------------------------------------------
 
-// LOGIN
-function ValidarCamposUsuarioLogin() {
-  let correo = document.getElementById("correo").value.trim();
-  let contrasena = document.getElementById("contrasena").value.trim();
 
-  let correoValido = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,20}$/.test(correo);
-  let contrasenaValido = contrasena.length >= 5 && contrasena.length <= 20;
-
-  let submitButton = document.getElementById("submitButton");
-
-  if (correoValido && contrasenaValido) {
-    submitButton.disabled = false;
-    console.log('boton enabled');
-  } else {
-    submitButton.disabled = true;
-    console.log('boton disabled');
-  }
-}
-
-function ValidarCorreoUsuario(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("correoError");
-
-  if (!/^[a-zA-Z0-9._%+-]+@arbusta\.net$/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Ingrese un correo electrónico válido con el dominio @arbusta.net.";
-    mostrarElemento("correoError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("correoError");
-  }
-  ValidarCamposUsuarioLogin();
-}
-
-function ValidarContrasenaUsuario(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("contrasenaError");
-
-  if (
-    inputValue.length < 5 ||
-    inputValue.length > 20 ||
-    !/^(?=.*[!@#$%^&*()_-])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{5,20}$/.test(inputValue) ||
-    !/[a-z]+.*[A-Z]+|[A-Z]+.*[a-z]+/.test(inputValue) ||
-    !/\d+/.test(inputValue)
-  ) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Contraseña: 5-20 caracteres, 1 especial, 1 mayúscula, 1 minúscula, 1 número.";
-    mostrarElemento("contrasenaError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("contrasenaError");
-  }
-  ValidarCamposUsuarioLogin();
-}
-
-function ValidarConfimarContrasenaUsuario(elemento) {
-  let inputValue = elemento.value.trim();
-  let contrasena = document.getElementById("contrasena").value.trim();
-  let errorSpan = document.getElementById("confirmarContrasenaError");
-
-  if (inputValue !== contrasena) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Las contraseñas deben coincidir.";
-    mostrarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("confirmarContrasenaError");  // Corregido: se pasa el id como cadena
-    ValidarCamposUsuario();
-  }
-}
-
+// INGRESAR AL APLICATIVO DEL USUARIO ----------------------------------------------------------------
 function Ingresar() {
   event.preventDefault();
   let redirijirA;
@@ -378,6 +148,8 @@ function Ingresar() {
     data: {
       'correo': $('#correo').val(),
       'contrasena': $('#contrasena').val(),
+      'token': $('#token').val(),
+      'action': $('#action').val(),
       'Metodo': 'Ingresar'
     },
 
@@ -415,19 +187,17 @@ function Ingresar() {
         redirijirA = "../vista/principal.php";
         console.log(data);
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo está fallando";
         icon = "question";
         console.log(data);
       }
 
-      // Mostrar la alerta de SweetAlert2
       Swal.fire({
         title: title,
         text: text,
         icon: icon,
-        timer: 1000,
+        timer: 3000,
         timerProgressBar: true,
         confirmButtonText: 'Aceptar',
       }).then(function () {
@@ -436,36 +206,42 @@ function Ingresar() {
     }
   });
 }
+// FIN INGRESAR AL APLICATIVO DEL USUARIO ----------------------------------------------------------------
 
+// MOSTRAR CONTRASEÑA DEL FORMULARIO DE REGISTRO  ----------------------------------------------------------
 function mostrarContrasena() {
   var contrasena = document.getElementById("contrasena");
   var confirmar_contrasena = document.getElementById("confirmar_contrasena");
-  var verContrasena = document.getElementById("verContrasena");
+  var VerContrasena = document.getElementById("VerContrasena");
 
   if (contrasena.type === "password") {
     contrasena.type = "text";
     confirmar_contrasena.type = "text";
-    verContrasena.textContent = "Ocultar contraseña";
+    VerContrasena.textContent = "Ocultar contraseña";
   } else {
     contrasena.type = "password";
     confirmar_contrasena.type = "password";
-    verContrasena.textContent = "Ver contraseña";
+    VerContrasena.textContent = "Ver contraseña";
   }
 }
+// FIN MOSTRAR CONTRASEÑA DEL FORMULARIO DE REGISTRO  ----------------------------------------------------------
 
-function mostrarContrasenaL() {
+// MOSTRAR CONTRASEÑA DEL FORMULARIO DEL LOGIN  -----------------------------------------------------------
+function MostrarContrasenaLogin() {
   var contrasena = document.getElementById("contrasena");
-  var verContrasena = document.getElementById("verContrasena");
+  var VerContrasena = document.getElementById("VerContrasena");
 
   if (contrasena.type === "password") {
     contrasena.type = "text";
-    verContrasena.textContent = "Ocultar contraseña";
+    VerContrasena.textContent = "Ocultar contraseña";
   } else {
     contrasena.type = "password";
-    verContrasena.textContent = "Ver contraseña";
+    VerContrasena.textContent = "Ver contraseña";
   }
 }
+// FIN MOSTRAR CONTRASEÑA DEL FORMULARIO DEL LOGIN  -----------------------------------------------------------
 
+// CONSULTAR USUARIO (MUESTRA LOS DATOS DEL USUARIO A MODIFICAR EN UN MODAL)  -----------------------
 function ConsultarUsuario(id_usuario) {
   window.modal.showModal();
   $.ajax({
@@ -481,11 +257,13 @@ function ConsultarUsuario(id_usuario) {
     }
   });
 }
+// FIN CONSULTAR USUARIO (MUESTRA LOS DATOS DEL USUARIO A MODIFICAR EN UN MODAL)  -----------------------
 
+// MODIFICAR USUARIO   --------------------------------------------------------------------------------
 function ModificarUsuario() {
   event.preventDefault();
   let redirijirA;
-  
+
   $.ajax({
     type: 'POST',
     url: "../../controlador/usuario.controlador.php",
@@ -513,14 +291,12 @@ function ModificarUsuario() {
         console.log(data);
         CerrarModal();
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
         console.log(data);
       }
       console.log(data);
-      // Mostrar la alerta de SweetAlert5
       Swal.fire({
         title: title,
         text: text,
@@ -532,7 +308,6 @@ function ModificarUsuario() {
         window.location.href = redirijirA;
       });
 
-      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
       $('#id_usuario').val('');
       $('#nombre_completo').val('');
       $('#correo').val('');
@@ -542,10 +317,10 @@ function ModificarUsuario() {
     }
   });
 }
+// FIN MODIFICAR USUARIO   --------------------------------------------------------------------------------
 
+// ELIMINAR USUARIO --------------------------------------------------------------------------------
 function EliminarUsuario(id_Usuario) {
-  // Aquí puedes realizar las acciones necesarias para eliminar el usuario con el id proporcionado
-  // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
   $.ajax({
     type: "POST",
     url: "../../controlador/usuario.controlador.php",
@@ -569,14 +344,12 @@ function EliminarUsuario(id_Usuario) {
         console.log(data);
         CerrarModal();
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
         console.log(data);
       }
       console.log(data);
-      // Mostrar la alerta de SweetAlert5
       Swal.fire({
         title: title,
         text: text,
@@ -591,3 +364,75 @@ function EliminarUsuario(id_Usuario) {
     }
   });
 }
+// FIN ELIMINAR USUARIO --------------------------------------------------------------------------------
+
+// MOSTRAR ELEMENTO Y OCULTAR ELEMENTO  ---------------
+function MostrarElemento(id) {
+  document.getElementById(id).hidden = false;
+}
+
+function OcultarElemento(id) {
+  document.getElementById(id).hidden = true;
+}
+// FIN MOSTRAR ELEMENTO Y OCULTAR ELEMENTO  ---------------
+
+// VALIDACIONES DE LOS CAMPOS CORREO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL LOGIN  ----------------------
+function ValidarCamposLogin() {
+  let correo = document.getElementById("correo").value;
+  let contrasena = document.getElementById("contrasena").value;
+
+  let CorreoValido = /^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(correo);
+  let ContrasenaValida = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,20}$/.test(contrasena);
+
+  let BotonEnviarLogin = document.getElementById('BotonEnviarLogin');
+  console.log('CorreoValido', CorreoValido, 'ContrasenaValida', ContrasenaValida);
+  if (CorreoValido && ContrasenaValida) {
+    BotonEnviarLogin.disabled = false;
+    console.log("boton habilitado")
+  } else if (CorreoValido === "" && ContrasenaValida === "") {
+    BotonEnviarLogin.disabled = false;
+    console.log("campo vacio");
+  } else {
+    BotonEnviarLogin.disabled = true;
+    console.log("boton deshabilitado");
+  };
+}
+
+function ValidarCorreoLogin(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("CorreoError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("CorreoError");
+  } else if (!(/^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El correo debe contener el dominio @arbusta.net";
+    MostrarElemento("CorreoError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("CorreoError");
+    ValidarCamposLogin();
+  }
+}
+
+function ValidarContrasenaLogin(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ContrasenaError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ContrasenaError");
+  } else if (!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,20}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. La contraseña debe ser de mínimo 5 caracteres y máximo 20, debe contener al menos 1 carácter especial, 1 minúscula, 1 mayúscula y 1 numero";
+    MostrarElemento("ContrasenaError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("ContrasenaError");
+    ValidarCamposLogin();
+  }
+}
+// FIN VALIDACIONES DE LOS CAMPOS CORREO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL LOGIN  ----------------------

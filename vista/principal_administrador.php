@@ -88,6 +88,25 @@ $name = $_SESSION['nombre_completo'];
 							</nav>
 						</div>
 
+						<!-- CRUD TICKETS -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTickets" aria-expanded="false" aria-controls="collapseUsuarios">
+							<div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+							Tickets
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseTickets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="partials/registrar_ticket-admin.php">
+									<div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+									Nuevo Ticket
+								</a>
+								<a class="nav-link" href="partials/listar_tickets-admin.php">
+									<div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+									Listar Tickets
+								</a>
+							</nav>
+						</div>
+
 						<div class="sb-sidenav-menu-heading">Firma Arbusta</div>
 						<!-- FIRMA -->
 						<a class="nav-link" href="partials/firma.php">
@@ -112,28 +131,34 @@ $name = $_SESSION['nombre_completo'];
 						<div class="card">
 							<div class="card-body">
 								<h5 class="card-title">Bienvenido/a <?php echo $name; ?></h5>
-								<hr>
 								<p class="card-subtitle">La única forma de hacer un gran trabajo es amar lo que haces</p>
 							</div>
 						</div>
-						<a href="">Link</a>
-						<div class="botones" style="display: flex; gap:10px;">
-							<button class="btn btn-primary">primary</button>
-							<button class="btn btn-secondary">secondary</button>
-							<button class="btn btn-success">success</button>
-							<button class="btn btn-warning">warning</button>
-							<button class="btn btn-danger">danger</button>
-						</div>
-						<br>
-						<div class="botones" style="display: flex; gap:10px;">
-							<button class="btn btn-primary" disabled>primary</button>
-							<button class="btn btn-secondary" disabled>secondary</button>
-							<button class="btn btn-success" disabled>success</button>
-							<button class="btn btn-warning" disabled>warning</button>
-							<button class="btn btn-danger" disabled>danger</button>
+						<hr>
+						<div class="row gtr-uniform">
+							<div class="card-pequeña">
+								<div class="card-body">
+									<p class="card-title">200</p>
+									<img src="partials/assets/img/device.png" class="card-img-center" alt="...">
+									<h5 class="card-text">Registrados en el sistema</h5>
+								</div>
+							</div>
+							<div class="card-pequeña">
+								<div class="card-body">
+									<p class="card-title">200</p>
+									<img src="partials/assets/img/grupo.png" class="card-img-center" alt="...">
+									<h5 class="card-text">Registrados en el sistema</h5>
+								</div>
+							</div>
+							<div class="card-pequeña">
+								<div class="card-body">
+									<p class="card-title">200</p>
+									<img src="partials/assets/img/boleto.png" class="card-img-center" alt="...">
+									<h5 class="card-text">Registrados en el sistema</h5>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
 			</main>
 		</div>
 	</div>

@@ -53,20 +53,6 @@ function RegistrarEquipo()
     $version_so = $_POST['version_so'];
     $descripcion = $_POST['descripcion'];
 
-    // Suponiendo que estos son los nombres de tus checkboxes
-    $checkboxes = ['alquilado', 'seguro', 'leasing'];
-
-    foreach ($checkboxes as $checkbox) {
-        if (isset($_POST[$checkbox]) && $_POST[$checkbox] == 'on') {
-            // The checkbox is checked and its value is 1
-            $$checkbox = 1;
-        } else {
-            // The checkbox is not checked and its value is 0
-            $$checkbox = 0;
-        }
-    }
-
-
     // Verifica si el equipo ya existe en la base de datos
     $sql = "SELECT * FROM equipo WHERE equipo = :equipo";
     $stmt = $pdo->prepare($sql);

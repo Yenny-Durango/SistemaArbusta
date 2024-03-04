@@ -24,7 +24,7 @@ $name = $_SESSION['nombre_completo'];
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="principal_administrador.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
+        <a class="navbar-brand ps-3" href="../principal_administrador.php"><img src="assets/img/image.webp" alt="" style="width: 100px;"></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
@@ -88,6 +88,25 @@ $name = $_SESSION['nombre_completo'];
                                 <a class="nav-link" href="listar_usuarios.php">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
                                     Listar usuarios
+                                </a>
+                            </nav>
+                        </div>
+                        
+                        <!-- CRUD TICKETS -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTickets" aria-expanded="false" aria-controls="collapseUsuarios">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                            Tickets
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseTickets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="registrar_ticket-admin.php">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Nuevo Ticket
+                                </a>
+                                <a class="nav-link" href="listar_tickets-admin.php">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Listar Tickets
                                 </a>
                             </nav>
                         </div>

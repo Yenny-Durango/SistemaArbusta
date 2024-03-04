@@ -10,190 +10,6 @@ function agregarCampoImagen() {
   contenedor.appendChild(input);
 }
 
-function ValidarCamposTicket() {
-  let fecha_creacion = document.getElementById("fecha_creacion").value.trim();
-  let resumen_problema = document.getElementById("resumen_problema").value.trim();
-  let detalle_problema = document.getElementById("detalle_problema").value.trim();
-  let correo = document.getElementById("correo").value.trim();
-  let telefono = document.getElementById("telefono").value.trim();
-  let nombre_completo = document.getElementById("nombre_completo").value.trim();
-  let imagenes = document.getElementById('imagenes')[0].value;
-
-
-  let fechaCreacionValido = fecha_creacion.length >= 5 && fecha_creacion.length <= 100;
-  let resumenProblemaValido = resumen_problema.length >= 5 && resumen_problema.length <= 100;
-  let detalleProblemaValido = detalle_problema.length >= 5 && detalle_problema.length <= 500;
-  let detalleNoIgualResumen = detalle_problema !== resumen_problema;
-  let correoValido = /^[\w.-]+@arbusta\.net$/.test(correo);
-  let telefonoValido = /^[0-9]{10}$/.test(telefono);
-  let nombreCompletoValido = nombre_completo.length >= 5 && nombre_completo.length <= 100;
-  let imagenesValidas = mostrarImagen(imagenes);
-
-  let submitButton = document.getElementById("submitButton");
-  if (fechaCreacionValido & resumenProblemaValido && detalleProblemaValido && detalleNoIgualResumen && correoValido && telefonoValido && nombreCompletoValido) {
-    submitButton.disabled = false;
-    console.log('boton disabled')
-  } else {
-    submitButton.disabled = true;
-    console.log('boton enabled')
-  }
-}
-
-function mostrarElemento(id) {
-  document.getElementById(id).hidden = false;
-}
-
-function ocultarElemento(id) {
-  document.getElementById(id).hidden = true;
-}
-
-function ValidarFechaCreacion(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("fechaCreacionError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "La fecha debe tener el formato YYYY-MM-DD.";
-    mostrarElemento("fechaCreacionError");
-  } else {
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("fechaCreacionError");
-  }
-
-  ValidarCamposTicket();
-}
-
-function ValidarResumenProblema(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("resumenProblemaError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El resumen del problema debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("resumenProblemaError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("resumenProblemaError");  // Corregido: se pasa el id como cadena
-  }
-  ValidarCamposTicket();
-}
-function ValidarDetalleProblema(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("detalleProblemaError");
-  let resumenProblemaValue = document.getElementById("resumen_problema").value.trim();  // Obtén el valor del campo resumen_problema
-
-  // Dividir la cadena en palabras
-  let palabras = inputValue.split(/\s+/);
-
-  if (inputValue.length < 5 || inputValue.length > 500 || palabras.length < 3 || inputValue === resumenProblemaValue) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-
-    if (inputValue.length < 5 || inputValue.length > 500) {
-      errorSpan.textContent = "El detalle del problema debe tener entre 5 y 500 caracteres.";
-    } else if (palabras.length < 3) {
-      errorSpan.textContent = "El detalle del problema debe tener al menos 3 palabras.";
-    } else {
-      errorSpan.textContent = "El detalle del problema no puede ser igual al resumen del problema.";
-    }
-
-    mostrarElemento("detalleProblemaError");  // Asumo que esta función está definida en tu código
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("detalleProblemaError");  // Asumo que esta función está definida en tu código
-  }
-
-  ValidarCamposTicket();
-}
-
-function ValidarImagenes() {
-  let elemento = document.getElementById("imagenes");
-  let archivos = elemento.querySelectorAll('img'); // Obtén todas las imágenes dentro del div
-
-  let errorSpan = document.getElementById("imagenesError");
-
-  // Validar que solo se permitan imágenes
-  let soloImagenes = Array.from(archivos).every(function (imagen) {
-    return imagen.src.toLowerCase().match(/\.(jpeg|jpg|gif|png)$/) !== null;
-  });
-
-  if (!soloImagenes || archivos.length < 1 || archivos.length > 5) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Se permiten máximo 5 imágenes y solo se permiten archivos de imagen (jpeg, jpg, gif, png).";
-    mostrarElemento("imagenesError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("imagenesError");
-  }
-  ValidarCamposTicket();
-}
-
-
-function ValidarCorreo(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("correoError");
-
-  if (!/^[a-zA-Z0-9._%+-]+@arbusta\.net$/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Ingrese un correo electrónico válido con el dominio @arbusta.net.";
-    mostrarElemento("correoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("correoError");  // Corregido: se pasa el id como cadena
-
-  }
-  ValidarCamposTicket();
-}
-
-function ValidarTelefono(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("telefonoError");
-
-  if (!/^[0-9]{10,10}$/.test(inputValue)) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El Teléfono debe contener solo números y tener una longitud de 10 caracteres.";
-    mostrarElemento("telefonoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("telefonoError");  // Corregido: se pasa el id como cadena
-
-  }
-  ValidarCamposTicket();
-}
-
-function ValidarNombreCompleto(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("nombreCompletoError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El nombre debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("nombreCompletoError");  // Corregido: se pasa el id como cadena
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("nombreCompletoError");  // Corregido: se pasa el id como cadena
-  }
-  ValidarCamposTicket();
-}
-
 function mostrarImagen(event) {
   if (imagenCount < 5) {
     const imagenesPrevias = document.getElementById("imagenesPrevias");
@@ -204,7 +20,7 @@ function mostrarImagen(event) {
     var imagenes = document.getElementById("imagenesPrevias");
 
     imagenes.style.display = 'grid';
-    imagenes.style.gridTemplateColumns = 'repeat(2, 1fr)';
+    imagenes.style.gridTemplateColumns = 'repeat(5, 1fr)';
     imagenes.style.gap = '10px';
     imagenes.style.backgroundColor = '#ffffff21';
     imagenes.style.overflow = 'auto';
@@ -233,34 +49,26 @@ function mostrarImagen(event) {
       // Estilos del botón eliminar imagen (Bootstrap)
       eliminarBtn.className = 'btn btn-danger btn-sm';
       eliminarBtn.title = 'Eliminar';
-      eliminarBtn.style.display = 'flex';
-      eliminarBtn.style.margin = '5px auto';
-      eliminarBtn.style.width = '50%';
-      eliminarBtn.style.textAlign = 'center';
-      eliminarBtn.style.justifyContent = 'center';
-      eliminarBtn.style.alignItems = 'center';
-      eliminarBtn.style.fontSize = '15px';
-
 
       const contenedor = document.createElement("div");
       contenedor.className = 'position-relative'; // Estilo Bootstrap adicional para posicionar el botón sobre la imagen
       contenedor.appendChild(imagen);
       contenedor.appendChild(eliminarBtn);
       imagenesPrevias.appendChild(contenedor);
-
       imagenCount++;
 
       // Almacenar el nombre del archivo en el array al mostrar la imagen
       imagenesSeleccionadas.push(file.name);
-
-      // Verificar que se haya seleccionado un archivo y que el campo no esté vacío
-      if (!file || file.trim() === '') {
-        alert("Por favor, inserta una imagen de referencia");
-        return false; // Detener el envío del formulario
-      }
     }
   } else {
-    alert("Solo se permiten hasta 5 imágenes.");
+    // alerta con sweetalert2
+    Swal.fire({
+      icon: 'warning',
+      title: 'Aviso',
+      text: 'Solo puedes subir maximo 5 imágenes!',
+      timer: 2000,
+      timerProgressBar: true,
+    });
   }
 }
 
@@ -271,18 +79,231 @@ function prepararEnvio() {
   return validarFormulario(); // Validar el formulario antes del envío
 }
 
-function ModificarTicket(id_usuario) {
-  window.modal.showModal();
+// validar campos
+function ValidarCamposTicket() {
+  let resumen_problema = document.getElementById("resumen_problema").value;
+  let detalle_problema = document.getElementById("detalle_problema").value;
+  let imagenes = document.getElementById('imagenes').value;
+  let correo = document.getElementById('correo').value;
+  let telefono = document.getElementById('telefono').value;
+  let nombre_completo = document.getElementById('nombre_completo').value;
+
+  // validacion resumen del problema debe tener minimo 1 palabra maximo 10
+  let resumeProblemaValido = /^[\wñáéíóú]{1,10}\s?[\wñáéíóú]+$/i.test(resumen_problema);
+  let detalleProblemaValido = /^([\wñáéíóú.,?!;:/"'{}[\]()\-]+\s){2,499}[\wñáéíóú.,?!;:/"'{}[\]()\-]+$/i.test(detalle_problema);
+  // validacion imagenes, debe permitir maximo 5 imagenes, solo formato  jpeg,png,jpg
+  let imagenesValidas = ArchivosPermitidos(imagenes, "image/jpeg", "image/png", "image/gif");
+  // validacion correo, debe permitir solo el dominio @arbusta.net
+  let correoValido = /^\w+([.-]?\w+)@arbusta\.net$/.test(correo);
+  // validacion telefono, debe tner maximo 10 caracteres
+  let telefonoValido = /^\d{1,10}$/.test(telefono);
+  // validacion nombre completo, debe permitir solo letras y espacios en blanco
+  let nombreCompletoValido = /^[\w áéíóúÀÈÌÒÙäëïöüÄËÏÖÜàèìòù]{1,70}$/i.test(nombre_completo);
+
+  let submitButton = document.getElementById('submitButton');
+  console.log('resumeProblemaValido', resumeProblemaValido, 'detalleProblemaValido', detalleProblemaValido, 'imagenesValidas', imagenesValidas, 'correoValido', correoValido, 'telefonoValido', telefonoValido, 'nombreCompletoValido', nombreCompletoValido);
+  if (resumeProblemaValido && detalleProblemaValido && imagenesValidas && correoValido && telefonoValido && nombreCompletoValido) {
+    submitButton.disabled = false;
+    console.log("button enabled");
+  } else {
+    submitButton.disabled = true;
+    console.log("button disabled");
+  }
+}
+function ArchivosPermitidos() {
+  var archivos = arguments;
+  var contador = 0;
+  for (var i = 0; i < archivos.length; i++) {
+    if (!archivos[i].type in archivos) {
+      alert("El tipo de archivo: " + archivos[i].type + " no es permitido.");
+      return false;
+    } else {
+      contador++;
+    }
+  }
+}
+
+function mostrarElemento(id) {
+  document.getElementById(id).hidden = false;
+}
+
+function ocultarElemento(id) {
+  document.getElementById(id).hidden = true;
+}
+
+function ValidarFechaTicket(elemento) {
+  let inputValue = elemento.value.trim();
+  let errorSpan = document.getElementById("fechaTicketError");
+  if (inputValue == "") {
+    errorSpan.textContent = "* Campo obligatorio.";
+    mostrarElemento("fechaTicketError");
+  } else if (!(/^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-\d{4}$/.test(inputValue))) {
+    errorSpan.textContent = "* Formato incorrecto. Debe ser dd-mm-yyyy.";
+    mostrarElemento("fechaTicketError");
+  } else {
+    errorSpan.textContent = "";
+    ocultarElemento("fechaTicketError");
+    ValidarCamposTicket();
+  }
+}
+
+function ValidarResumenProblema(elemento) {
+  let inputValue = elemento.value.trim().length;
+  let errorSpan = document.getElementById("resumenProblemaError");
+  if (inputValue < 5 || inputValue > 600) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* Longitud del campo incorrecta. Debe tener entre 5 y 600 caracteres.";
+    mostrarElemento("resumenProblemaError");
+  } else {
+    elemento.style.borderColor = "green";
+    errorSpan.textContent = "";
+    ocultarElemento("resumenProblemaError");
+    ValidarCamposTicket();
+  }
+}
+
+// validacion detalle del problema, no debe ser igual a resumen del problema y debe tener como minimo  5 palabras mas que el resumen
+function ValidarDetalleProblema(elemento) {
+  let resumen_problema = document.getElementById('resumen_problema').value.trim();
+  let inputValue = elemento.value.trim();
+  let errorSpan = document.getElementById("detalleProblemaError");
+
+  // Dividir el detalle del problema en palabras
+  let palabras = inputValue.split(/\s+/);
+
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* Este campo es obligatorio.";
+    mostrarElemento("detalleProblemaError");
+  } else if (inputValue.toLowerCase() == resumen_problema.toLowerCase()) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* El detalle de este campo no puede ser igual al Resumen del Problema.";
+    mostrarElemento("detalleProblemaError");
+  } else if (palabras.length < 3) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* El detalle del problema debe contener al menos 3 palabras.";
+    mostrarElemento("detalleProblemaError");
+  } else if (inputValue.length < 5 || inputValue.length > 600) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* Longitud del campo incorrecta. Debe tener entre 5 y 600 caracteres.";
+    mostrarElemento("detalleProblemaError");
+    ValidarCamposTicket();
+  } else {
+    elemento.style.borderColor = "green";
+    errorSpan.textContent = "";
+    ocultarElemento("detalleProblemaError");
+    ValidarCamposTicket();
+  }
+}
+
+function ValidarCorreo(elemento) {
+  inputValue = elemento.value.trim();
+  let errorSpan = document.getElementById("correoError");
+  // correo solo debe permitir el dominio @arbusta.net
+  if (inputValue.indexOf("@arbusta.net") == -1) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = "* Formato de Correo Incorrecto. Por favor ingrese un correo electrónico con el formato: nombre@arbusta"
+    errorSpan.textContent = 'Formato de Correo Electrónico Incorrecto';
+    mostrarElemento("correoError")
+  } else {
+    elemento.style.borderColor = "green";
+    errorSpan.textContent = '';
+    ocultarElemento("correoError");
+    ValidarCamposTicket();
+  }
+}
+function ValidarTelefono(elemento) {
+  let inputValue = elemento.value.trim();
+  let errorSpan = document.getElementById('telefonoError');
+  if (inputValue.length != 10) {
+    elemento.style.borderColor = "red";
+    errorSpan.textContent = '* Formato de Teléfono Incorrecto, debe contener exactamente 10 dígitos.';
+    mostrarElemento('telefonoError')
+  } else {
+    errorSpan.textContent = "";
+    elemento.style.borderColor = "green";
+    ocultarElemento('telefonoError');
+    ValidarCamposTicket();
+  }
+}
+
+function ValidarNombreCompleto(elemento) {
+  let inputValue = elemento.value.trim();
+  let errorSpan = document.getElementById('nombreCompletoError');
+  if (!/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/.test(inputValue)) {
+    errorSpan.textContent = "* El nombre completo no puede contener números ni caracteres especiales.";
+    mostrarElemento('nombreCompletoError');
+    elemento.style.borderColor = "red";
+  } else {
+    errorSpan.textContent = "";
+    elemento.style.borderColor = "green";
+    ocultarElemento('nombreCompletoError');
+    ValidarCamposTicket();
+  }
+}
+
+function RegistrarTicket() {
+  event.preventDefault();
   $.ajax({
-    type: 'POST',
-    url: "../controlador/ticket.controlador.php",
+    type: "POST",
+    url: "../../controlador/ticket.controlador.php",
     data: {
-      'id_usuario': id_usuario,
-      'Metodo': "ModificarTicket"
+      'fecha_ticket': $('#fecha_ticket').val(),
+      'resumen_problema': $('#resumen_problema').val(),
+      'detalle_problema': $('#detalle_problema').val(),
+      'imagenes': $('#imagenes').val(),
+      'correo': $('#correo').val(),
+      'telefono': $('#telefono').val(),
+      'nombre_completo': $('#nombre_completo').val(),
+      'Metodo': 'RegistrarTicket'
     },
+
     success: function (data) {
-      $('.modal-body').text("");
-      $('.modal-body').append(data);
+      let title, text, icon;
+
+      if (data === "Registrado correctamente") {
+        title = "Éxito";
+        text = "Registrado correctamente. ¡Bienvenido!";
+        icon = "success";
+        console.log(data);
+      } else if (data === "Complete todos los campos") {
+        title = "Alerta";
+        text = "Complete todos los campos";
+        icon = "info";
+        console.log(data);
+      } else if (data === "Hubo un problema al intentar registrar la información") {
+        title = "Error";
+        text = "Hubo un problema al intentar registrar la información. Por favor, inténtalo de nuevo más tarde.";
+        icon = "error";
+        console.log(data);
+      } else {
+        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
+        title = "Fallo";
+        text = "Algo esta fallando";
+        icon = "question";
+        console.log(data);
+      }
+
+      console.log(data);
+
+      // Mostrar la alerta de SweetAlert2
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        timer: 2000,
+        timerProgressBar: true,
+        confirmButtonText: 'Aceptar',
+      });
+
+      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
+      $('#fecha_ticket').val(),
+        $('#resumen_problema').val(),
+        $('#detalle_problema').val(),
+        $('#imagenes').val(),
+        $('#correo').val(),
+        $('#telefono').val(),
+        $('#nombre_completo').val()
     }
   });
 }

@@ -49,7 +49,7 @@ $email = $_SESSION['correo'];
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="principal.php">
+                        <a class="nav-link" href="../principal.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-house-user"></i></div>
                             Inicio
                         </a>
@@ -93,6 +93,25 @@ $email = $_SESSION['correo'];
                                 <a class="nav-link" href="listar_tickets.php">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
                                     Mis Tickets
+                                </a>
+                            </nav>
+                        </div>
+                        
+                        <!-- CRUD TICKETS -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTickets" aria-expanded="false" aria-controls="collapseUsuarios">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                            Tickets
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseTickets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="partials/registrar_usuario.php">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Nuevo Ticket
+                                </a>
+                                <a class="nav-link" href="partials/listar_usuarios.php">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
+                                    Listar Tickets
                                 </a>
                             </nav>
                         </div>

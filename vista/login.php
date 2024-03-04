@@ -2,77 +2,50 @@
 <html lang="es">
 
 <head>
-    <!-- Configuración del documento -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <!-- Metadatos del sitio -->
     <meta name="description" content="sitio arbusta" />
     <meta name="author" content="Yenny Durango" />
-
-    <!-- Título de la página -->
     <title>ARBUSTA</title>
-
-    <!-- Enlace a la hoja de estilos para tablas simples -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-
-    <!-- Enlace a la hoja de estilos personalizada para formularios -->
     <link href="partials/assets/css/styles-formularios.css" rel="stylesheet" />
-
-    <!-- Ícono del sitio (favicon) -->
     <link rel="shortcut icon" href="partials/assets/img/logo.png" type="image/x-icon">
-
-    <!-- Inclusión del script de FontAwesome para íconos -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-    <!-- Inclusión del script de reCAPTCHA de Google para validación -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcytIApAAAAAJYRNKAF03_NL9EZKbQVITW7IkiE"></script>
+    <script type="text/javascript" src="./partials/assets/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
-            <!-- Contenedor principal -->
             <main>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
-                            <!-- Tarjeta de inicio de sesión -->
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <!-- Encabezado de la tarjeta -->
                                     <h3 class="text-center font-weight-light my-4">Iniciar sesión</h3>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Formulario de inicio de sesión -->
-                                    <form method="post" action="">
-                                        <!-- Campo para el correo electrónico -->
+                                    <form method="post" action="" id="form-login">
+                                        <input type="hidden" name="token" id="token" value="">
+                                        <input type="hidden" name="action" id="action" value="">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" onkeyup="ValidarCorreoUsuario(this)" />
+                                            <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" onkeyup="ValidarCorreoLogin(this)" />
                                             <label for="correo">Correo</label>
-                                            <span id="correoError" class="alert alert-danger" hidden></span>
+                                            <span id="CorreoError" class="alert alert-danger" hidden></span>
                                         </div>
-                                        <!-- Campo para la contraseña -->
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="Password" onkeyup="ValidarContrasenaUsuario(this)" />
+                                            <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="Password" onkeyup="ValidarContrasenaLogin(this)" />
                                             <label for="contrasena">Contraseña</label>
-                                            <span id="contrasenaError" class="alert alert-danger" hidden></span>
-                                            <!-- Botón para mostrar/ocultar la contraseña -->
-                                            <span id="verContrasena" class="text-primary" title="Ver contraseña" onclick="mostrarContrasenaL()">Ver contraseña
+                                            <span id="ContrasenaError" class="alert alert-danger" hidden></span>
+                                            <span id="VerContrasena" class="text-primary" title="Ver contraseña" onclick="MostrarContrasenaLogin()">Ver contraseña
                                             </span>
                                         </div>
-                                        <!-- Recaptcha para validación -->
-                                        <center>
-                                            <div class="card-body">
-                                                <div class="g-recaptcha" data-sitekey="6LdiYFYpAAAAAC5XMkW1T2S0km6SLOmOFqJ7AGc_"></div>
-                                            </div>
-                                            <!-- Botón para enviar el formulario de inicio de sesión -->
-                                            <button type="submit" class="btn btn-primary" id="submitButton" onclick="Ingresar()">Ingresar</button>
-                                        </center>
+                                        <button type="button" class="btn btn-primary" id="BotonEnviarLogin" onclick="Ingresar()" disabled>Ingresar</button>
                                     </form>
                                 </div>
-                                <!-- Enlaces para recuperar contraseña y registro -->
                                 <div class="card-footer text-center py-3">
                                     <a class="text-primary" href="recuperarcontrasena.php">¿Olvidaste tu contraseña?</a>
                                     <a class="text-primary" href="registro.php">¿Necesitas una cuenta? ¡Regístrate!</a>
@@ -85,9 +58,7 @@
         </div>
     </div>
 
-    <!-- Only load necessary scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./partials/assets/js/jquery-3.7.1.min.js"></script>
     <script src="./partials/assets/js/scripts.js"></script>
     <script src="./partials/assets/js/usuario.js"></script>
     <script src="./partials/assets/js/equipo.js"></script>

@@ -12,7 +12,7 @@
 <script>
    new DataTable('#example', {
       scrollX: true,
-      scrollY: 250,
+      scrollY: 300,
       autoWidth: true
    });
 </script>

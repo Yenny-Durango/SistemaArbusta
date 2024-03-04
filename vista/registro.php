@@ -42,7 +42,7 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para el nombre -->
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="nombre" name="nombre" type="text" placeholder="nombre" onkeyup="ValidarNombreUsuarioR(this)" />
+                                                    <input class="form-control" id="nombre" name="nombre" type="text" placeholder="nombre" onkeyup="ValidarNombreRegistro(this)" />
                                                     <label for="nombre">Nombres</label>
                                                 </div>
                                                 <span id="nombreError" class="alert alert-danger" hidden></span>
@@ -50,7 +50,7 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para el apellido -->
                                                 <div class="form-floating">
-                                                    <input class="form-control" id="apellido" name="apellido" type="text" placeholder="apellido" onkeyup="ValidarApellidoUsuarioR(this)" />
+                                                    <input class="form-control" id="apellido" name="apellido" type="text" placeholder="apellido" onkeyup="ValidarApellidoRegistro(this)" />
                                                     <label for="apellido">Apellido</label>
                                                 </div>
                                                 <span id="apellidoError" class="alert alert-danger" hidden></span>
@@ -61,7 +61,7 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para el correo electrónico -->
                                                 <div class="form-floating">
-                                                    <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" onkeyup="ValidarCorreoUsuarioR(this)" />
+                                                    <input class="form-control" id="correo" name="correo" type="email" placeholder="name@arbusta.net" onkeyup="ValidarCorreoRegistro(this)" />
                                                     <label for="correo">Correo</label>
                                                 </div>
                                                 <span id="correoError" class="alert alert-danger" hidden></span>
@@ -69,7 +69,7 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para el teléfono -->
                                                 <div class="form-floating">
-                                                    <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" onkeyup="ValidarTelefonoUsuarioR(this)" />
+                                                    <input class="form-control" id="telefono" name="telefono" type="number" placeholder="telefono" onkeyup="ValidarTelefonoRegistro(this)" />
                                                     <label for="Teléfono (Opcional)">Teléfono (Opcional)</label>
                                                 </div>
                                                 <span id="telefonoError" class="alert alert-danger" hidden></span>
@@ -80,7 +80,7 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para la contraseña -->
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="contrasena" onkeyup="ValidarContrasenaUsuarioR(this)" />
+                                                    <input class="form-control" id="contrasena" name="contrasena" type="password" placeholder="contrasena" onkeyup="ValidarContrasenaRegistro(this)" />
                                                     <label for="Contraseña">Contraseña</label>
                                                 </div>
                                                 <span id="contrasenaError" class="alert alert-danger" hidden></span>
@@ -88,14 +88,14 @@
                                             <div class="col-md-6">
                                                 <!-- Campo para confirmar la contraseña -->
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" type="password" placeholder="confirmar contraseña" onkeyup="ValidarConfimarContrasenaUsuarioR(this)" />
+                                                    <input class="form-control" id="confirmar_contrasena" name="confirmar_contrasena" type="password" placeholder="confirmar contraseña" onkeyup="ValidarConfimarContrasenaRegistro(this)" />
                                                     <label for="Confirmar contraseña">Confirmar contraseña</label>
                                                 </div>
                                                 <span id="confirmarContrasenaError" class="alert alert-danger" hidden></span>
                                             </div>
                                         </div>
                                         <!-- Botón para mostrar/ocultar la contraseña -->
-                                        <span id="verContrasena" class="text-primary" title="Ver contraseña" onclick="mostrarContrasena()">Ver contraseña</span>
+                                        <span id="verContrasena" class="text-primary" title="Ver contraseña" onclick="MostrarContrasena()">Ver contraseña</span>
                                         <!-- Botón para enviar el formulario de registro -->
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">

@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="author" content="Yenny Durango" />
     <title>ARBUSTA</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="./assets/css/styles-formularios.css" rel="stylesheet" />
+    <link href="./partials/assets/css/styles-formularios.css" rel="stylesheet" />
     <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
