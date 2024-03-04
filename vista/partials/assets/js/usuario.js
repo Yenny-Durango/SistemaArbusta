@@ -209,7 +209,7 @@ function Ingresar() {
 // FIN INGRESAR AL APLICATIVO DEL USUARIO ----------------------------------------------------------------
 
 // MOSTRAR CONTRASEÑA DEL FORMULARIO DE REGISTRO  ----------------------------------------------------------
-function mostrarContrasena() {
+function MostrarContrasenaRegistro() {
   var contrasena = document.getElementById("contrasena");
   var confirmar_contrasena = document.getElementById("confirmar_contrasena");
   var VerContrasena = document.getElementById("VerContrasena");
@@ -436,3 +436,151 @@ function ValidarContrasenaLogin(elemento) {
   }
 }
 // FIN VALIDACIONES DE LOS CAMPOS CORREO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL LOGIN  ----------------------
+
+// VALIDACIONES DE LOS CAMPOS NOMBRE, APELLIDO, CORREO, TELEFONO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL REGISTRO -------
+function ValidarCamposRegistro() {
+  let nombre = document.getElementById('nombre').value;
+  let apellido = document.getElementById('apellido').value;
+  let correo = document.getElementById("correo").value;
+  let telefono = document.getElementById("telefono").value;
+  let contrasena = document.getElementById("contrasena").value;
+  let confirmar_contrasena = document.getElementById("confirmar_contrasena").value;
+
+  let NombreValido = /^([A-Za-z\s]{2,30})$/.test(nombre);
+  let ApellidoValido = /^([A-Za-z\s]{3,30})$/.test(apellido);
+  let CorreoValido = /^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(correo);
+  let TelefonoValido = /^\d{10}$/.test(telefono);
+  let ContrasenaValida = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,20}$/.test(contrasena);
+  let ConfirmarContrasenaValida = contrasena === confirmar_contrasena;
+
+  let BotonEnviarRegistro = document.getElementById('BotonEnviarRegistro');
+  console.log('NombreValido', NombreValido, 'ApellidoValido', ApellidoValido, 'CorreoValido', CorreoValido, 'TelefonoValido', TelefonoValido, 'ContrasenaValida', ContrasenaValida, 'ConfirmarContrasenaValida', ConfirmarContrasenaValida);
+
+  if (NombreValido && ApellidoValido && CorreoValido && TelefonoValido && ContrasenaValida && ConfirmarContrasenaValida) {
+    BotonEnviarRegistro.disabled = false;
+    console.log("boton habilitado")
+  } else if (NombreValido === "" && ApellidoValido === "" && CorreoValido === "" && TelefonoValido === "" && ContrasenaValida === "" && ConfirmarContrasenaValida === "") {
+    BotonEnviarRegistro.disabled = false;
+    console.log("campo vacio");
+  } else {
+    BotonEnviarRegistro.disabled = true;
+    console.log("boton deshabilitado");
+  };
+}
+
+function ValidarNombreRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("NombreError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("NombreError");
+  } else if (!(/^([A-Za-z\s]{2,30})$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El nombre debe contener minimo 2 caracteres maximo 30, no debe contener numeros ni caracteres especiales.";
+    MostrarElemento("NombreError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("NombreError");
+    ValidarCamposRegistro();
+  }
+}
+
+function ValidarApellidoRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ApellidoError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ApellidoError");
+  } else if (!(/^([A-Za-z\s]{3,30})$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El apellido debe contener minimo 3 caracteres maximo 30, no debe contener numeros ni caracteres especiales.";
+    MostrarElemento("ApellidoError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("ApellidoError");
+    ValidarCamposRegistro();
+  }
+}
+
+function ValidarCorreoRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("CorreoError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("CorreoError");
+  } else if (!(/^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El correo debe contener el dominio @arbusta.net";
+    MostrarElemento("CorreoError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("CorreoError");
+    ValidarCamposRegistro();
+  }
+}
+
+function ValidarTelefonoRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("TelefonoError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("TelefonoError");
+  } else if (!(/^\d{10}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El telefono debe tener 10 caracteres, no se permiten letras ni caracteres especiales";
+    MostrarElemento("TelefonoError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("TelefonoError");
+    ValidarCamposRegistro();
+  }
+}
+
+function ValidarContrasenaRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ContrasenaError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ContrasenaError");
+  } else if (!(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,20}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. La contraseña debe ser de mínimo 5 caracteres y máximo 20, debe contener al menos 1 carácter especial, 1 minúscula, 1 mayúscula y 1 numero";
+    MostrarElemento("ContrasenaError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("ContrasenaError");
+    ValidarCamposRegistro();
+  }
+}
+
+function ValidarConfimarContrasenaRegistro(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ConfirmarContrasenaError");
+  let contrasena = document.getElementById("contrasena").value.trim();
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ConfirmarContrasenaError");
+  } else if (!(inputValue === contrasena)) { // Corrige aquí la comparación
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. La confirmacion de contraseña debe ser igual a el campo contraseña";
+    MostrarElemento("ConfirmarContrasenaError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    ocultarElemento("ConfirmarContrasenaError");
+    ValidarCamposRegistro();
+  }
+}
+
+// FIN VALIDACIONES DE LOS CAMPOS NOMBRE, APELLIDO, CORREO, TELEFONO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL REGISTRO -------
