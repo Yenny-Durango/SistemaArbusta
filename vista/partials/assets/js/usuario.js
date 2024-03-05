@@ -412,7 +412,7 @@ function ValidarCorreoLogin(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("CorreoError");
+    OcultarElemento("CorreoError");
     ValidarCamposLogin();
   }
 }
@@ -431,7 +431,7 @@ function ValidarContrasenaLogin(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("ContrasenaError");
+    OcultarElemento("ContrasenaError");
     ValidarCamposLogin();
   }
 }
@@ -482,7 +482,7 @@ function ValidarNombreRegistro(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("NombreError");
+    OcultarElemento("NombreError");
     ValidarCamposRegistro();
   }
 }
@@ -501,7 +501,7 @@ function ValidarApellidoRegistro(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("ApellidoError");
+    OcultarElemento("ApellidoError");
     ValidarCamposRegistro();
   }
 }
@@ -520,7 +520,7 @@ function ValidarCorreoRegistro(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("CorreoError");
+    OcultarElemento("CorreoError");
     ValidarCamposRegistro();
   }
 }
@@ -539,7 +539,7 @@ function ValidarTelefonoRegistro(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("TelefonoError");
+    OcultarElemento("TelefonoError");
     ValidarCamposRegistro();
   }
 }
@@ -558,7 +558,7 @@ function ValidarContrasenaRegistro(elemento) {
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("ContrasenaError");
+    OcultarElemento("ContrasenaError");
     ValidarCamposRegistro();
   }
 }
@@ -571,16 +571,131 @@ function ValidarConfimarContrasenaRegistro(elemento) {
     elemento.style.borderColor = "red";
     ErrorSpan.textContent = "Campo obligatorio";
     MostrarElemento("ConfirmarContrasenaError");
-  } else if (!(inputValue === contrasena)) { // Corrige aquí la comparación
+  } else if (!(inputValue === contrasena)) {
     elemento.style.borderColor = "red";
     ErrorSpan.textContent = "Formato incorrecto. La confirmacion de contraseña debe ser igual a el campo contraseña";
     MostrarElemento("ConfirmarContrasenaError");
   } else {
     elemento.style.borderColor = "green";
     ErrorSpan.textContent = "";
-    ocultarElemento("ConfirmarContrasenaError");
+    OcultarElemento("ConfirmarContrasenaError");
     ValidarCamposRegistro();
   }
 }
 
 // FIN VALIDACIONES DE LOS CAMPOS NOMBRE, APELLIDO, CORREO, TELEFONO, CONTRASEÑA Y CONFIRMAR CONTRASEÑA DEL REGISTRO -------
+
+// RECUPERAR CONTRASEÑA
+function RecuperarContrasena() {
+  event.preventDefault();
+  let redirijirA;
+
+  $.ajax({
+    type: "POST",
+    url: "../controlador/usuario.controlador.php",
+    data: {
+      'correo': $('#correo').val(),
+      'Metodo': 'RecuperarContrasena'
+    },
+    success: function (data) {
+      let title, text, icon;
+
+      if (data === "Correo no registrado") {
+        title = "Advertencia";
+        text = "Correo no registrado";
+        icon = "warning";
+        // redirijirA = "";
+        console.log(data);
+      } else if (data === "Complete todos los campos") {
+        title = "Alerta";
+        text = "Complete todos los campos";
+        icon = "info";
+        // redirijirA = "";
+        console.log(data);
+      } else if (data === "Error al enviar email") {
+        title = "Error";
+        text = "Error al enviar email";
+        icon = "error";
+        // redirijirA = "";
+        console.log(data);
+      } else if (data === "Error al recuperar la contraseña:") {
+        title = "Error";
+        text = "Error al recuperar la contraseña:";
+        icon = "error";
+        // redirijirA = "";
+        console.log(data);
+      } else if (data === "Hemos enviado un correo electronico para restablecer tu contraseña") {
+        title = "Exito";
+        text = "Hemos enviado un correo electronico para restablecer tu contraseña";
+        icon = "success";
+        // redirijirA = "";
+        console.log(data);
+      } else if (data === "Error al enviar email") {
+        title = "Error";
+        text = "Error al enviar email";
+        icon = "error";
+        // redirijirA = "";
+        console.log(data);
+      }
+      else {
+        title = "Fallo";
+        text = "Algo está fallando";
+        icon = "question";
+        console.log(data);
+      }
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        timer: 3000,
+        timerProgressBar: true,
+        confirmButtonText: 'Aceptar',
+      });
+    }
+  });
+}
+// FIN RECUPERAR CONTRASENA
+
+// VALIDACION DEL CAMPO CORREO DE RECUPERAR CONTRASEÑA --------------------------------------------
+function ValidarCamposRecuperarContrasena() {
+  let correo = document.getElementById("correo").value;
+
+  let CorreoValido = /^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(correo);
+
+  let BotonRecuperarContrasena = document.getElementById('BotonRecuperarContrasena');
+  console.log('CorreoValido', CorreoValido);
+
+  if (CorreoValido) {
+    BotonRecuperarContrasena.disabled = false;
+    console.log("boton habilitado")
+  } else if (CorreoValido === "") {
+    BotonRecuperarContrasena.disabled = false;
+    console.log("campo vacio");
+  } else {
+    BotonRecuperarContrasena.disabled = true;
+    console.log("boton deshabilitado");
+  };
+}
+
+function ValidarCorreoRecuperarContrasena(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("CorreoError");
+  // si el campo esta vacio indicar que es un campo obligatorio 
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("CorreoError");
+    // si no cumple el formato, se  muestra mensaje de error y se colorea el campo en rojo
+  } else if (!(/^[a-zA-Z0-9._%+-\/\s]+@arbusta\.net$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto. El correo debe contener el dominio @arbusta.net";
+    MostrarElemento("CorreoError");
+    // si todo esta correcto, se oculta el span de error y se pinta en verde el campo
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("CorreoError");
+    ValidarCamposRecuperarContrasena();
+  }
+}
+// FIN VALIDACION DEL CAMPO CORREO DE RECUPERAR CONTRASEÑA --------------------------------------------

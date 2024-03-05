@@ -11,8 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="partials/assets/css/styles-formularios.css" rel="stylesheet" />
     <link rel="shortcut icon" href="partials/assets/img/logo.png" type="image/x-icon">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body class="bg-primary">
@@ -98,12 +96,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="partials/assets/js/jquery-3.7.1.min.js"></script>
     <script src="partials/assets/js/scripts.js"></script>
-    <script src="partials/assets/js/equipo.js"></script>
-    <script src="partials/assets/js/ticket.js"></script>
-    <script src="partials/assets/js/usuario.js"></script>
-    <script src="partials/assets/js/firmail.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="./partials/assets/js/usuario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/84339ecbcb.js" crossorigin="anonymous"></script>
-
 </html>

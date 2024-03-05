@@ -4,42 +4,42 @@
 
 :root {
   --black: #06000b;
-  --dark-black: #17151c;
-  --light-black: #3e3d42;
+  --dark-black: #050009;
+  --light-black: #38333c;
   --purple: #8c2198;
-  --dark-purple: #6a1f66;
-  --light-purple: #ad7fa3;
-  --lightest-purple: #f6b6ff;
+  --dark-purple: #701a7a;
+  --light-purple: #a34dad;
+  --lightest-purple: #d1a6d6;
   --indigo: #28026b;
-  --dark-indigo: #140036;
-  --light-indigo: #39009c;
-  --lighter-indigo: #b285ff;
+  --dark-indigo: #200256;
+  --light-indigo: #7e67a6;
+  --lighter-indigo: #a99ac4;
   --green: #006400;
-  --dark-green: #003c00;
-  --darker-green: #002a00;
-  --light-green: #008000;
-  --lightest-green: #acffac;
+  --dark-green: #005000;
+  --darker-green: #003c00;
+  --light-green: #338333;
+  --lightest-green: #66a266;
   --red: #ff0000;
-  --dark-red: #8b0000;
-  --light-red: #ffc3c3;
-  --lightest-red: #ffffff;
-  --darker-red: #bf0000;
+  --dark-red: #cc0000;
+  --darker-red: #990000;
+  --light-red: #ff6666;
+  --lightest-red: #ff9999;
   --yellow: #ffff00;
-  --dark-yellow: #bf8000;
-  --light-yellow: #ffff80;
-  --lightest-yellow: #fffab5;
-  --darker-yellow: #806000;
+  --dark-yellow: #cccc00;
+  --light-yellow: #ffff33;
+  --lightest-yellow: #ffff66;
+  --darker-yellow: #999900;
   --blue: #0000ee;
-  --dark-blue: #000080;
-  --light-blue: #add8e6;
-  --lighter-blue: #e6faf1;
-  --darker-blue: #000064;
+  --dark-blue: #0000be;
+  --light-blue: #3333f1;
+  --lighter-blue: #6666f5;
+  --darker-blue: #00008f;
   --white: #fff;
-  --dark-white: #fafafa;
-  --light-white: #eff3f6;
-  --grey: #777;
-  --dark-grey: #292929;
-  --light-grey: #ccc;
+  --dark-white: #dddddd;
+  --light-white: #fff;
+  --grey: #999999;
+  --dark-grey: #333333;
+  --light-grey: #cccccc;
 
   --background-button-success: var(--dark-green);
   --color-button-success: var(--lightest-green);
@@ -3424,11 +3424,8 @@ textarea.is-invalid.datatable-input {
 .btn:disabled,
 .btn.disabled,
 fieldset:disabled .btn {
-  color: var(--bs-btn-disabled-color);
-  pointer-events: none;
-  background-color: var(--bs-btn-disabled-bg);
-  border-color: var(--bs-btn-disabled-border-color);
-  opacity: var(--bs-btn-disabled-opacity);
+  color: var(--color-disabled-button);
+  background-color: var(--bg-disabled-button);
 }
 
 .btn-primary {

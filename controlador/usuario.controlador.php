@@ -16,21 +16,21 @@ switch ($_POST['Metodo']) {
   case 'EliminarUsuario':
     EliminarUsuario();
     break;
+  case 'RecuperarContrasena':
+    RecuperarContrasena();
+    break;
   case 'Ingresar':
     Ingresar();
     break;
 }
 
-// Función para registrar un nuevo usuario en la base de datos.
+// REGISTRAR USUARIO DESDE EL ADMINISTRADOR --------------------------------------
 function RegistrarUsuarioAdmin()
 {
-  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
-  // Inicia la sesión
   session_start();
 
-  // Obtiene los datos del formulario por POST
   $nombre = $_POST['nombre'];
   $apellido = $_POST['apellido'];
   $correo = $_POST['correo'];
@@ -40,19 +40,16 @@ function RegistrarUsuarioAdmin()
   $tipo_usuario = $_POST['tipo_usuario'];
   $nombre_completo = $apellido . ' , ' . $nombre;
 
-  // Verifica si el correo electrónico ya existe en la base de datos
   $sql = "SELECT * FROM usuario WHERE correo = :correo";
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
   $stmt->execute();
 
   if ($stmt->rowCount() > 0) {
-    // El correo electrónico ya existe, muestra un mensaje de alerta
     echo "El correo ya está registrado";
   } else if ($nombre === '' || $apellido === '' || $correo === '' || $contrasena === '' || $confirmar_contrasena === '' || $tipo_usuario === '') {
     echo "Complete todos los campos";
   } else {
-    // La consulta preparada con parámetros para insertar el nuevo usuario
     $contrasena_bd = md5($contrasena);
     $sql = "INSERT INTO usuario(nombre_completo, correo, telefono, contrasena, tipo_usuario) VALUES (:nombre_completo, :correo, :telefono, :contrasena, :tipo_usuario)";
     $stmt = $pdo->prepare($sql);
@@ -63,7 +60,6 @@ function RegistrarUsuarioAdmin()
     $stmt->bindParam(':tipo_usuario', $tipo_usuario, PDO::PARAM_STR);
     $stmt->execute();
 
-    // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
     if ($stmt->rowCount() > 0) {
       echo "Registrado correctamente";
     } else {
@@ -71,18 +67,17 @@ function RegistrarUsuarioAdmin()
     }
   }
 
-  // Cierra la conexión a la base de datos
   $pdo = null;
 }
+// FIN REGISTRAR USUARIO DESDE EL ADMINISTRADOR --------------------------------------
+
+// REGISTRAR USUARIO --------------------------------------
 function RegistrarUsuario()
 {
-  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
-  // Inicia la sesión
   session_start();
 
-  // Obtiene los datos del formulario por POST
   $nombre = $_POST['nombre'];
   $apellido = $_POST['apellido'];
   $correo = $_POST['correo'];
@@ -91,19 +86,16 @@ function RegistrarUsuario()
   $confirmar_contrasena = $_POST['confirmar_contrasena'];
   $nombre_completo = $apellido . ' , ' . $nombre;
 
-  // Verifica si el correo electrónico ya existe en la base de datos
   $sql = "SELECT * FROM usuario WHERE correo = :correo";
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
   $stmt->execute();
 
   if ($stmt->rowCount() > 0) {
-    // El correo electrónico ya existe, muestra un mensaje de alerta
     echo "El correo ya está registrado";
   } else if ($nombre === '' || $apellido === '' || $correo === '' || $contrasena === '' || $confirmar_contrasena === '') {
     echo "Complete todos los campos";
   } else {
-    // La consulta preparada con parámetros para insertar el nuevo usuario
     $contrasena_bd = md5($contrasena);
     $sql = "INSERT INTO usuario(nombre_completo, correo, telefono, contrasena) VALUES (:nombre_completo, :correo, :telefono, :contrasena)";
     $stmt = $pdo->prepare($sql);
@@ -113,7 +105,6 @@ function RegistrarUsuario()
     $stmt->bindParam(':contrasena', $contrasena_bd, PDO::PARAM_STR);
     $stmt->execute();
 
-    // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
     if ($stmt->rowCount() > 0) {
       echo "Registrado correctamente";
     } else {
@@ -121,34 +112,16 @@ function RegistrarUsuario()
     }
   }
 
-  // Cierra la conexión a la base de datos
   $pdo = null;
 }
+// REGISTRAR USUARIO --------------------------------------
 
+// INGRESAR AL APLICATIVO DEL USUARIO ----------------------------------------------------------------
 function Ingresar()
 {
-  //  Establece una conexión a la base de datos
   require "../modelo/conexion.php";
   session_start();
 
-  // // define la clave secreta del recapcha 
-  // define('CLAVE', '6LcytIApAAAAABDxT854LCPhNGeZUjJWKnOv59R5');
-
-  // $token = $_POST['token'];
-
-  // $cu = curl_init();
-  // curl_setopt($cu, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-  // curl_setopt($cu, CURLOPT_POST, 1);
-  // curl_setopt($cu, CURLOPT_POSTFIELDS, http_build_query(array('secret' => CLAVE, 'response' => $token)));
-  // curl_setopt($cu, CURLOPT_RETURNTRANSFER, true);
-  // $response = curl_exec($cu);
-  // curl_close($cu);
-
-  // $datos = json_decode($response, true);
-
-  // if ($datos['success'] == 1 && $datos['score'] >= 0.5) {
-  //   if ($datos['action'] == 'validarUsuario') {
-  // Obtén las credenciales del formulario
   $correo = $_POST['correo'];
   $contrasena = $_POST['contrasena'];
 
@@ -156,13 +129,11 @@ function Ingresar()
     echo "Complete todos los campos";
     return;
   }
-  // Consulta preparada con parámetros
   $sql = "SELECT id_usuario, correo, contrasena, nombre_completo, tipo_usuario FROM usuario WHERE correo = :correo";
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
   $stmt->execute();
 
-  // Obtener resultados
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
   $contrasena_bd = md5($contrasena);
@@ -185,29 +156,21 @@ function Ingresar()
       echo 'Credenciales incorrectas';
     }
   } else {
-    // Usuario no existe
     echo 'El usuario no existe';
   }
-  $pdo = null; // Cerrar la conexion
-  //   echo "CAPTCHA VALIDO";
-  // } else {
-  //   echo "SHU SHU ROBOT";
-  // }
-
+  $pdo = null;
 }
+// FIN INGRESAR AL APLICATIVO DEL USUARIO ----------------------------------------------------------------
 
+// CONSULTAR USUARIO (MUESTRA LOS DATOS DEL USUARIO A MODIFICAR EN UN MODAL)  -----------------------
 function ConsultarUsuario()
 {
-  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
-  // Inicia la sesión
   session_start();
 
-  // Obtiene los datos del formulario por POST
   $id_usuario = $_POST['id_usuario'];
 
-  // Verifica si el correo electrónico ya existe en la base de datos
   $sql = "SELECT * FROM usuario WHERE id_usuario = $id_usuario";
   $result = $pdo->query($sql);
   foreach ($result as $key => $results) {
@@ -259,10 +222,11 @@ function ConsultarUsuario()
     </form>';
   }
 }
+// FIN CONSULTAR USUARIO (MUESTRA LOS DATOS DEL USUARIO A MODIFICAR EN UN MODAL)  -----------------------
 
+// MODIFICAR USUARIO ---------------------------------------------
 function ModificarUsuario()
 {
-  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
   $id_usuario = $_POST["id_usuario"];
@@ -285,25 +249,130 @@ function ModificarUsuario()
     echo "no fue posible modificar";
   }
 }
+// FIN MODIFICAR USUARIO ---------------------------------------------
 
+// ELIMINAR USUARIO -----------------------------------------------
 function EliminarUsuario()
 {
-  // Requiere el archivo de conexión a la base de datos
   require "../modelo/conexion.php";
 
   $id_usuario = $_POST['id_usuario'];
 
-  // Prepara la consulta SQL para eliminar al usuario
   $sql = "DELETE FROM usuario WHERE id_usuario = $id_usuario";
   $data = $pdo->query($sql);
 
-  // Ejecuta la consulta
   if ($data) {
     echo "Usuario eliminado correctamente";
   } else {
     echo "Hubo un problema al intentar eliminar la información";
   }
 
-  // Cierra la conexión a la base de datos
   $pdo = null;
+}
+// FIN ELIMINAR USUARIO -----------------------------------------------
+
+// RECUPERAR CONTRASEÑA MEDIANTE CORREO ---------------------------------
+function RecuperarContrasena()
+{
+  require "../modelo/conexion.php";
+  session_start();
+
+  $correo = $_POST['correo'];
+
+  if (empty($correo)) {
+    echo "Complete todos los campos";
+    return;
+  }
+
+  try {
+    // Verificamos si el correo existe en nuestra base de datos
+    $sql = "SELECT * FROM usuario WHERE correo = :correo";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // si el correo no existe, mostramos mensaje de error
+    if (!$result) {
+      echo "Correo no registrado";
+    } else {
+      // datos del usuario
+      $id_usuario = GetValor('id_usuario', 'correo', $correo);
+      $nombre = GetValor('nombre_completo', 'correo', $correo);
+
+      // Generamos un token
+      $token = GenerarTokenPass($correo);
+
+      $url = 'http://' . $_SERVER["SERVER_NAME"] . '../vista/cambiar_contrasena.php?id_usuario=' . $id_usuario . '&token=' . $token;
+
+      $asunto = 'Recuperación de Contraseña';
+      $cuerpo = "<html><body style='font-family: Arial, sans-serif;'>
+              <h2 style='color: #333;'>Hola $nombre,</h2>
+              <p style='color: #666;'>Se ha solicitado un reinicio de contraseña.</p>
+              <p style='color: #666;'>Para restaurar la contraseña, por favor visita la siguiente dirección:</p>
+              <a href='$url' style='background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; display: inline-block;'>Restaurar contraseña</a>
+            </body></html>";
+      EnviarEmail($correo, $asunto, $cuerpo, $nombre);
+    }
+  } catch (PDOException $e) {
+    // Manejar la excepción
+    echo "Error al recuperar la contraseña: " . $e->getMessage();
+  }
+}
+
+function EnviarEmail($correo, $nombre, $asunto, $cuerpo)
+{
+  $headers = "From: Sistema de Login <admin@sistemalogin.com>\r\n";
+  $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+  mail($correo, $nombre, $cuerpo, $headers);
+  // Enviamos el correo electrónico
+  if (mail($correo, $asunto, $cuerpo, $headers)) {
+    echo "Hemos enviado un correo electronico para restablecer tu contraseña";
+  } else {
+    echo "Error al enviar email";
+  }
+}
+
+function GetValor($campo, $campoWhere, $valor)
+{
+  require '../modelo/conexion.php';
+
+  try {
+    $sql = "SELECT $campo FROM usuario WHERE $campoWhere = :valor LIMIT 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':valor', $valor, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+      return $result[$campo];
+    } else {
+      return false;
+    }
+  } catch (PDOException $e) {
+    echo "Error al ejecutar la consulta: " . $e->getMessage();
+    return false;
+  }
+}
+
+function generateToken($length = 32)
+{
+  return bin2hex(random_bytes($length / 2));
+}
+
+function GenerarTokenPass($id_usuario)
+{
+  require '../modelo/conexion.php';
+
+  // Generamos el token
+  $token = generateToken();
+
+  $stmt = $pdo->prepare("UPDATE usuario SET token_password=?, password_request=1 WHERE id_usuario = ?");
+  $stmt->bindParam(1, $token);
+  $stmt->bindParam(2, $id_usuario);
+  $stmt->execute();
+  $stmt = null;
+  return $token;
 }

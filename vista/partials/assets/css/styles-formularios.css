@@ -14,126 +14,110 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root {
-  /* COLORES */
   --black: #06000b;
-  --dark-black: #17151c;
-  --light-black: #3e3d42;
+  --dark-black: #050009;
+  --light-black: #38333c;
   --purple: #8c2198;
-  --dark-purple: #6a1f66;
-  --light-purple: #ad7fa3;
+  --dark-purple: #701a7a;
+  --light-purple: #a34dad;
+  --lightest-purple: #d1a6d6;
   --indigo: #28026b;
-  --dark-indigo: #140036;
-  --light-indigo: #39009c;
-  --lighter-indigo: #b285ff;
+  --dark-indigo: #200256;
+  --light-indigo: #7e67a6;
+  --lighter-indigo: #a99ac4;
   --green: #006400;
-  --dark-green: #003c00;
-  --darker-green: #002a00;
-  --light-green: #008000;
-  --lightest-green: #acffac;
+  --dark-green: #005000;
+  --darker-green: #003c00;
+  --light-green: #338333;
+  --lightest-green: #66a266;
   --red: #ff0000;
-  --dark-red: #8b0000;
-  --light-red: #ffc3c3;
-  --lightest-red: #ffffff;
-  --darker-red: #bf0000;
+  --dark-red: #cc0000;
+  --darker-red: #990000;
+  --light-red: #ff6666;
+  --lightest-red: #ff9999;
   --yellow: #ffff00;
-  --dark-yellow: #bf8000;
-  --light-yellow: #ffff80;
-  --lightest-yellow: #fffab5;
-  --darker-yellow: #806000;
+  --dark-yellow: #cccc00;
+  --light-yellow: #ffff33;
+  --lightest-yellow: #ffff66;
+  --darker-yellow: #999900;
   --blue: #0000ee;
-  --dark-blue: #000080;
-  --light-blue: #add8e6;
-  --lighter-blue: #e6faf1;
-  --darker-blue: #000064;
+  --dark-blue: #0000be;
+  --light-blue: #3333f1;
+  --lighter-blue: #6666f5;
+  --darker-blue: #00008f;
   --white: #fff;
-  --dark-white: #fafafa;
-  --light-white: #eff3f6;
-  --grey: #777;
-  --dark-grey: #333;
-  --light-grey: #ccc;
-  /* FIN COLORES */
+  --dark-white: #dddddd;
+  --light-white: #fff;
+  --grey: #999999;
+  --dark-grey: #333333;
+  --light-grey: #cccccc;
 
-  /* BOTON SUCCESS */
   --background-button-success: var(--dark-green);
   --color-button-success: var(--lightest-green);
   --border-button-success: 1px solid var(--dark-green);
 
+  /* success hover */
   --bg-hover-button-success: var(--lightest-green);
   --color-hover-button-success: var(--dark-green);
   --border-hover-button-success: 1px solid var(--light-green);
 
+  /* success button active */
   --bg-active-button-success: var(--dark-green);
   --color-active-button-success: var(--white);
-  /* FIN BOTON SUCCESS */
 
-  /* BOTON WARNING */
   --background-button-warning: var(--light-yellow);
   --color-button-warning: var(--dark-yellow);
   --border-button-warning: 1px dashed var(--light-yellow);
 
+  /* warning hover */
   --bg-hover-button-warning: var(--lightest-yellow);
   --color-hover-button-warning: var(--dark-yellow);
   --border-hover-button-warning: 1px dashed var(--light-yellow);
 
+  /* warning button active */
   --bg-active-button-warning: var(--lightest-yellow);
   --color-active-button-warning: var(--dark-yellow);
-  /* FIN BOTON WARNING */
 
-  /* BOTON DANGER */
   --background-button-danger: var(--red);
   --color-button-danger: var(--white);
   --border-button-danger: 1px solid var(--dark-red);
 
+  /* danger hover */
   --bg-hover-button-danger: var(--light-red);
   --color-hover-button-danger: var(--dark-red);
   --border-hover-button-danger: 1px solid var(--light-red);
 
+  /* danger button active */
   --bg-active-button-danger: var(--lightest-red);
   --color-active-button-danger: var(--black);
-  /* FIN BOTON DANGER */
 
-  /* BOTON MORADO */
   --background-button-purple: var(--dark-purple);
   --color-button-purple: var(--white);
   --border-button-purple: none;
 
-  --bg-hover-button-purple: var(--light-purple);
+  /* purple hover */
+  --bg-hover-button-purple: var(--lightest-purple);
   --color-hover-button-purple: var(--dark-purple);
   --border-hover-button-purple: 1px dotted var(--dark-purple);
 
-  --bg-active-button-purple: var(--light-purple);
+  /* purple button active */
+  --bg-active-button-purple: var(--lightest-purple);
   --color-active-button-purple: var(--dark-purple);
-  /* FIN BOTON MORADO */
 
-  /* BOTON INDIGO */
   --background-button-indigo: var(--dark-indigo);
   --color-button-indigo: var(--white);
   --border-button-indigo: 1px dotted var(--dark-indigo);
 
+  /* indigo hover */
   --bg-hover-button-indigo: var(--lighter-indigo);
   --color-hover-button-indigo: var(--dark-indigo);
   --border-hover-button-indigo: 1px solid var(--dark-indigo);
 
-  --bg-active-button-indigo: var(--light-indigo);
-  --color-active-button-indigo: var(--dark-indigo);
-  /* FIN BOTON INDIGO */
+  /* button disabled */
+  --bg-disabled-button: var(--grey);
+  --color-disabled-button: var(--dark-black);
 
-
-  /* BOTON DESHABILITADO */
-  --background-button-disabled: var(--dark-grey);
-  --color-button-disabled: var(--white);
-  --border-button-disabled: none;
-
-  --bg-hover-button-disabled: var(--light-grey);
-  --color-hover-button-disabled: var(--dark-grey);
-  --border-hover-button-disabled: 1px dotted var(--dark-grey);
-
-  --bg-active-button-purple: var(--light-grey);
-  --color-active-button-purple: var(var(--dark-grey))
-    /* FIN BOTON DESHABILITADO */
-
-    /* ALERTAS */
-    --background-alert-success: var(--light-green);
+  --background-alert-success: var(--light-green);
   --color-alert-success: var(--dark-green);
 
   /* alert success hover */
@@ -3379,9 +3363,8 @@ textarea.is-invalid.datatable-input {
 .btn:disabled,
 .btn.disabled,
 fieldset:disabled .btn {
-  color: var(--color-button-disabled);
-  background-color: var(--background-button-disabled);
-  border-color: var(--border-button-disabled);
+  color: var(--color-disabled-button);
+  background-color: var(--bg-disabled-button);
 }
 
 .btn-primary {
@@ -3394,9 +3377,8 @@ fieldset:disabled .btn {
   --bs-btn-focus-shadow-rgb: 93, 126, 174;
   --bs-btn-active-color: var(--color-active-button-purple);
   --bs-btn-active-bg: var(--bg-active-button-purple);
-  --bs-btn-disabled-color: var(--color-button-disabled);
-  --bs-btn-disabled-bg: var(--background-button-disabled);
-  --bs-btn-disabled-border: var(var(--border-button-disabled));
+  --bs-btn-disabled-color: var(--color-disabled-button);
+  --bs-btn-disabled-bg: var(--bg-disabled-button);
 }
 
 .btn-secondary {
@@ -3409,9 +3391,8 @@ fieldset:disabled .btn {
   --bs-btn-focus-shadow-rgb: 93, 126, 174;
   --bs-btn-active-color: var(--color-active-button-indigo);
   --bs-btn-active-bg: var(--bg-active-button-indigo);
-  --bs-btn-disabled-color: var(--color-button-disabled);
-  --bs-btn-disabled-bg: var(--background-button-disabled);
-  --bs-btn-disabled-border: var(var(--border-button-disabled));
+  --bs-btn-disabled-color: var(--color-disabled-button);
+  --bs-btn-disabled-bg: var(--bg-disabled-button);
 }
 
 .btn-success {
@@ -3424,9 +3405,8 @@ fieldset:disabled .btn {
   --bs-btn-focus-shadow-rgb: 93, 126, 174;
   --bs-btn-active-color: var(--color-active-button-success);
   --bs-btn-active-bg: var(--bg-active-button-success);
-  --bs-btn-disabled-color: var(--color-button-disabled);
-  --bs-btn-disabled-bg: var(--background-button-disabled);
-  --bs-btn-disabled-border: var(var(--border-button-disabled));
+  --bs-btn-disabled-color: var(--color-disabled-button);
+  --bs-btn-disabled-bg: var(--bg-disabled-button);
 }
 
 .btn-warning {
@@ -3439,9 +3419,8 @@ fieldset:disabled .btn {
   --bs-btn-focus-shadow-rgb: 93, 126, 174;
   --bs-btn-active-color: var(--color-active-button-warning);
   --bs-btn-active-bg: var(--bg-active-button-warning);
-  --bs-btn-disabled-color: var(--color-button-disabled);
-  --bs-btn-disabled-bg: var(--background-button-disabled);
-  --bs-btn-disabled-border: var(var(--border-button-disabled));
+  --bs-btn-disabled-color: var(--color-disabled-button);
+  --bs-btn-disabled-bg: var(--bg-disabled-button);
 }
 
 .btn-danger {
@@ -3454,9 +3433,8 @@ fieldset:disabled .btn {
   --bs-btn-focus-shadow-rgb: 93, 126, 174;
   --bs-btn-active-color: var(--color-active-button-danger);
   --bs-btn-active-bg: var(--bg-active-button-danger);
-  --bs-btn-disabled-color: var(--color-button-disabled);
-  --bs-btn-disabled-bg: var(--background-button-disabled);
-  --bs-btn-disabled-border: var(var(--border-button-disabled));
+  --bs-btn-disabled-color: var(--color-disabled-button);
+  --bs-btn-disabled-bg: var(--bg-disabled-button);
 }
 
 .btn-link {
