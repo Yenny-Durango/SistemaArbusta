@@ -48,7 +48,7 @@ function mostrarImagen(event) {
 
       // Estilos del botón eliminar imagen (Bootstrap)
       eliminarBtn.className = 'btn btn-danger btn-sm';
-      eliminarBtn.title = 'Eliminar';
+      eliminarBtn.title = 'X';
 
       const contenedor = document.createElement("div");
       contenedor.className = 'position-relative'; // Estilo Bootstrap adicional para posicionar el botón sobre la imagen

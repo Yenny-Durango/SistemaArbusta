@@ -97,25 +97,6 @@ $email = $_SESSION['correo'];
                             </nav>
                         </div>
                         
-                        <!-- CRUD TICKETS -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTickets" aria-expanded="false" aria-controls="collapseUsuarios">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
-                            Tickets
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseTickets" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="partials/registrar_usuario.php">
-                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
-                                    Nuevo Ticket
-                                </a>
-                                <a class="nav-link" href="partials/listar_usuarios.php">
-                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-ticket"></i></div>
-                                    Listar Tickets
-                                </a>
-                            </nav>
-                        </div>
-
                         <div class="sb-sidenav-menu-heading">Firma Arbusta</div>
                         <!-- FIRMA -->
                         <a class="nav-link" href="firma.php">
