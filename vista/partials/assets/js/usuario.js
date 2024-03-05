@@ -385,10 +385,12 @@ function ValidarCamposLogin() {
   let ContrasenaValida = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,20}$/.test(contrasena);
 
   let BotonEnviarLogin = document.getElementById('BotonEnviarLogin');
+
   console.log('CorreoValido', CorreoValido, 'ContrasenaValida', ContrasenaValida);
+  
   if (CorreoValido && ContrasenaValida) {
     BotonEnviarLogin.disabled = false;
-    console.log("boton habilitado")
+    console.log("boton habilitado");
   } else if (CorreoValido === "" && ContrasenaValida === "") {
     BotonEnviarLogin.disabled = false;
     console.log("campo vacio");

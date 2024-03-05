@@ -1,5 +1,4 @@
 <?php
-// Switch que maneja las diferentes funciones según el método enviado por POST.
 switch ($_POST['Metodo']) {
     case 'RegistrarEquipo':
         RegistrarEquipo();
@@ -18,16 +17,13 @@ switch ($_POST['Metodo']) {
         break;
 }
 
-// Función para registrar un nuevo id_usuario en la base de datos.
+// REGISTRAR EQUIPO DESDE EL ADMINISTRADOR ---------------
 function RegistrarEquipo()
 {
-    // Requiere el archivo de conexión a la base de datos
     require "../modelo/conexion.php";
 
-    // Inicia la sesión
     session_start();
 
-    // Obtiene los datos del formulario por POST
     $equipo = $_POST['equipo'];
     $categoria_equipo = $_POST['categoria_equipo'];
     $compania = $_POST['compania'];
@@ -53,24 +49,19 @@ function RegistrarEquipo()
     $version_so = $_POST['version_so'];
     $descripcion = $_POST['descripcion'];
 
-    // Verifica si el equipo ya existe en la base de datos
     $sql = "SELECT * FROM equipo WHERE equipo = :equipo";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':equipo', $equipo, PDO::PARAM_STR);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
-        // El equipo ya está registrado, muestra un mensaje de alerta
         echo "El equipo ya está registrado";
     } else if ($equipo === '' || $categoria_equipo === '' || $compania === '' || $id_usuario === '' || $usado_por === '' || $ubicacion_uso === '' || $proveedor === ''  || $referencia_proveedor === ''  || $modelo === ''  || $numero_serie === ''  || $fecha_efectiva === '' || $valoracion === ''  || $procesador === ''  || $ram === ''  || $almacenamiento === ''  || $mac_address === ''  || $bateria === '' || $adaptador === ''  || $sistema_operativo === ''  || $version_so === ''  || $descripcion === '') {
-        // Faltan campos por completar, muestra un mensaje
         echo "Complete todos los campos";
     } else {
-        // Realiza la inserción de datos en la base de datos
         $sql = "INSERT INTO equipo(id_usuario,equipo, categoria_equipo, compania, usado_por, ubicacion_uso, proveedor, referencia_proveedor, modelo, numero_serie, fecha_efectiva, alquilado, seguro, leasing, valoracion, procesador, ram, almacenamiento, mac_address, bateria, adaptador, sistema_operativo, version_so, descripcion) VALUES (:id_usuario, :equipo, :categoria_equipo, :compania, :usado_por, :ubicacion_uso, :proveedor, :referencia_proveedor, :modelo, :numero_serie, :fecha_efectiva, :alquilado, :seguro, :leasing, :valoracion, :procesador, :ram, :almacenamiento, :mac_address, :bateria, :adaptador, :sistema_operativo, :version_so, :descripcion)";
 
         $stmt = $pdo->prepare($sql);
-        // Vincula los parámetros con los valores proporcionados
         $stmt->bindParam(':equipo', $equipo, PDO::PARAM_STR);
         $stmt->bindParam(':categoria_equipo', $categoria_equipo, PDO::PARAM_STR);
         $stmt->bindParam(':compania', $compania, PDO::PARAM_STR);
@@ -98,7 +89,6 @@ function RegistrarEquipo()
 
         $stmt->execute();
 
-        // Verifica si la inserción fue exitosa y muestra un mensaje correspondiente
         if ($stmt->rowCount() > 0) {
             echo "Registrado correctamente";
         } else {
@@ -106,21 +96,21 @@ function RegistrarEquipo()
         }
     }
 
-    // Cierra la conexión a la base de datos
     $pdo = null;
 }
+// FIN REGISTRAR EQUIPO DESDE EL ADMINISTRADOR ---------------
 
+// CONSULTAR EQUIPO (MUESTRA LOS DATOS DEL EQUIPO A MODIFICAR EN UN MODAL) ----------------------------
 function ConsultarEquipo()
 {
-    // Requiere el archivo de conexión a la base de datos
     require "../modelo/conexion.php";
 
-    // Inicia la sesión
     session_start();
 
-    // Obtiene los datos del formulario por POST
     $id_equipo = $_POST['id_equipo'];
+
     $sql = "SELECT * FROM equipo INNER JOIN usuario ON equipo.id_usuario = usuario.id_usuario WHERE id_equipo = $id_equipo";
+
     $sqly = "SELECT * FROM usuario";
     $resulta = $pdo->query($sqly);
     $result = $pdo->query($sql);
@@ -350,10 +340,11 @@ function ConsultarEquipo()
 </form>';
     }
 }
+// CONSULTAR EQUIPO (MUESTRA LOS DATOS DEL EQUIPO A MODIFICAR EN UN MODAL) ----------------------------
 
+// MODIFICAR EQUIPO ---------------------------------------
 function ModificarEquipo()
 {
-    // Requiere el archivo de conexión a la base de datos
     require "../modelo/conexion.php";
 
     $id_equipo = $_POST["id_equipo"];
@@ -392,25 +383,24 @@ function ModificarEquipo()
         echo "no fue posible modificar";
     }
 }
+// FIN MODIFICAR EQUIPO -----------------------------------
 
+// ELIMINAR EQUIPO ----------------------------------------
 function EliminarEquipo()
 {
-    // Requiere el archivo de conexión a la base de datos
     require "../modelo/conexion.php";
 
     $id_equipo = $_POST['id_equipo'];
 
-    // Prepara la consulta SQL para eliminar al usuario
     $sql = "DELETE FROM equipo WHERE id_equipo = $id_equipo";
     $data = $pdo->query($sql);
 
-    // Ejecuta la consulta
     if ($data) {
         echo "Equipo eliminado correctamente";
     } else {
         echo "Hubo un problema al intentar eliminar la información";
     }
 
-    // Cierra la conexión a la base de datos
     $pdo = null;
 }
+// FIN ELIMINAR EQUIPO ------------------------------------

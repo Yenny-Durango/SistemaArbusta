@@ -89,7 +89,7 @@ require "header-admin.php";
 
     <!-- Botón de envío del formulario -->
     <div class="mt-4 mb-0">
-        <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarUsuarioAdmin()">Registrar usuario</button></div>
+        <div class="d-grid"><button type="submit" id="submitButton" value="guardar" class="btn btn-primary btn-block" onclick="RegistrarUsuarioAdmin()" disabled>Registrar usuario</button></div>
     </div>
 </form>
 

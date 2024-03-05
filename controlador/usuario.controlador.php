@@ -172,6 +172,7 @@ function ConsultarUsuario()
   $id_usuario = $_POST['id_usuario'];
 
   $sql = "SELECT * FROM usuario WHERE id_usuario = $id_usuario";
+  
   $result = $pdo->query($sql);
   foreach ($result as $key => $results) {
     echo '

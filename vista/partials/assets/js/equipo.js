@@ -1,337 +1,4 @@
-function ValidarCamposEquipo() {
-  // equipo, proveedor,ref proveedor, modelo, num serie, procesador, ram, mac address, bateria, adaptador, version so, descripcion
-  let equipo = document.getElementById("equipo").value.trim();
-  let proveedor = document.getElementById("proveedor").value.trim();
-  let referencia_proveedor = document
-    .getElementById("referencia_proveedor")
-    .value.trim();
-  let modelo = document.getElementById("modelo").value.trim();
-  let numero_serie = document.getElementById("numero_serie").value.trim();
-  let procesador = document.getElementById("procesador").value.trim();
-  let ram = document.getElementById("ram").value.trim();
-  let mac_address = document.getElementById("mac_address").value.trim();
-  let bateria = document.getElementById("bateria").value.trim();
-  let adaptador = document.getElementById("adaptador").value.trim();
-  let version_so = document.getElementById("version_so").value.trim();
-  let descripcion = document.getElementById("descripcion").value.trim();
-
-  let equipoValido = equipo.length >= 5 && equipo.length <= 100;
-  let proveedorValido = proveedor.length >= 5 && proveedor.length <= 100;
-  let referencia_proveedorValido =
-    referencia_proveedor.length >= 5 && referencia_proveedor.length <= 100;
-  let modeloValido = modelo.length >= 5 && modelo.length <= 100;
-  let numero_serieValido =
-    numero_serie.length >= 5 && numero_serie.length <= 100;
-  let procesadorValido = procesador.length >= 5 && procesador.length <= 100;
-  let ramValido = ram.length >= 5 && ram.length <= 100;
-  let mac_addressValido = mac_address.length >= 5 && mac_address.length <= 100;
-  let bateriaValido = bateria.length >= 5 && bateria.length <= 100;
-  let adaptadorValido = adaptador.length >= 5 && adaptador.length <= 100;
-  let version_soValido = version_so.length >= 1 && version_so.length <= 100;
-  let descripcionValido = descripcion.length >= 1 && descripcion.length <= 100;
-
-  let submitButton = document.getElementById("submitButton");
-  if (
-    equipoValido &&
-    proveedorValido &&
-    referencia_proveedorValido &&
-    modeloValido &&
-    numero_serieValido &&
-    procesadorValido &&
-    ramValido &&
-    mac_addressValido &&
-    bateriaValido &&
-    adaptadorValido &&
-    version_soValido &&
-    descripcionValido
-  ) {
-    submitButton.disabled = false;
-    console.log("boton disabled");
-    console.log(
-      equipoValido,
-      " && ",
-      proveedorValido,
-      "&&",
-      referencia_proveedorValido,
-      "&&",
-      modeloValido,
-      "&&",
-      numero_serieValido,
-      "&&",
-      procesadorValido,
-      "&&",
-      ramValido,
-      "&&",
-      mac_addressValido,
-      "&&",
-      bateriaValido,
-      "&&",
-      adaptadorValido,
-      "&&",
-      version_soValido,
-      "&&",
-      descripcionValido
-    );
-  } else {
-    submitButton.disabled = true;
-    console.log("boton enabled");
-    console.log(
-      equipoValido,
-      " && ",
-      proveedorValido,
-      "&&",
-      referencia_proveedorValido,
-      "&&",
-      modeloValido,
-      "&&",
-      numero_serieValido,
-      "&&",
-      procesadorValido,
-      "&&",
-      ramValido,
-      "&&",
-      mac_addressValido,
-      "&&",
-      bateriaValido,
-      "&&",
-      adaptadorValido,
-      "&&",
-      version_soValido,
-      "&&",
-      descripcionValido
-    );
-  }
-}
-
-function mostrarElemento(id) {
-  document.getElementById(id).hidden = false;
-}
-
-function ocultarElemento(id) {
-  document.getElementById(id).hidden = true;
-}
-
-function ValidarNombreEquipo(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("equipoError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con la longitud requerida
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Nombre: 5-100 caracteres.";
-    mostrarElemento("equipoError");
-  } else {
-    // Cumple con la longitud requerida
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("equipoError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarProveedor(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("proveedorError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "Proveedor: 5-100 caracteres";
-    mostrarElemento("proveedorError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("proveedorError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarReferenciaProveedor(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("referenciaProveedorError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent =
-      "La referencia del proveedor debe tener entre 5 y 100 caracteres";
-    mostrarElemento("referenciaProveedorError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("referenciaProveedorError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarModelo(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("modeloError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El modelo debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("modeloError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("modeloError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarNumeroSerie(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("numeroSerieError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent =
-      "El número de serie debe contener entre 5 y 100 caracteres.";
-    mostrarElemento("numeroSerieError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("numeroSerieError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarProcesador(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("procesadorError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent =
-      "El procesador debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("procesadorError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("procesadorError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarRam(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("ramError");
-
-  if (inputValue.length < 3 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "La ram debe tener entre 3 y 100 caracteres.";
-    mostrarElemento("ramError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("ramError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarMacAddress(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("macAddressError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent =
-      "El mac address debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("macAddressError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("macAddressError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarBateria(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("bateriaError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "La bateria debe tener entre 5 y 100 caracteres.";
-    mostrarElemento("bateriaError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("bateriaError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarAdaptador(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("adaptadorError");
-
-  if (inputValue.length < 5 || inputValue.length > 100) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "El adaptador debe tener entre 5 y 100 caracteres";
-    mostrarElemento("adaptadorError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("adaptadorError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarVersionSo(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("versionSoError");
-
-  if (inputValue.length < 2 || inputValue.length > 50) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent = "La version SO debe tener entre 2 y 50 caracteres";
-    mostrarElemento("versionSoError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("versionSoError");
-  }
-  ValidarCamposEquipo();
-}
-
-function ValidarDescripcion(elemento) {
-  let inputValue = elemento.value.trim();
-  let errorSpan = document.getElementById("descripcionError");
-
-  if (inputValue.length < 1 || inputValue.length > 500) {
-    // No cumple con las reglas
-    elemento.style.borderColor = "red";
-    errorSpan.textContent =
-      "La descripcion debe tener entre 1 y 500 caracteres";
-    mostrarElemento("descripcionError");
-  } else {
-    // Cumple con las reglas
-    elemento.style.borderColor = "green";
-    errorSpan.textContent = "";
-    ocultarElemento("descripcionError");
-  }
-  ValidarCamposEquipo();
-}
-
+// REGISTRAR EQUIPO -----------------------------------
 function RegistrarEquipo() {
   event.preventDefault();
   $.ajax({
@@ -390,14 +57,12 @@ function RegistrarEquipo() {
         icon = "error";
         console.log(data);
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
         console.log(data);
       }
       console.log(data);
-      // Mostrar la alerta de SweetAlert5
       Swal.fire({
         title: title,
         text: text,
@@ -407,7 +72,6 @@ function RegistrarEquipo() {
         confirmButtonText: "Aceptar",
       });
 
-      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
       $("#equipo").val("");
       $("#categoria_equipo").val("");
       $("#compania").val("");
@@ -435,8 +99,10 @@ function RegistrarEquipo() {
     },
   });
 }
+// FIN REGISTRAR EQUIPO -----------------------------------
 
-// Cerrar modal
+
+// CERRAR MODAL -------------------------------------------
 function CerrarModal() {
   event.preventDefault();
   const modal = document.querySelector("#modal");
@@ -447,7 +113,10 @@ function CerrarModal() {
     modal.removeEventListener("animationend", close);
   });
 }
+// FIN CERRAR MODAL ---------------------------------------
 
+
+// CONSULTAR EQUIPO  --------------------------------------
 function ConsultarEquipo(id_equipo) {
   window.modal.showModal();
   $.ajax({
@@ -463,7 +132,10 @@ function ConsultarEquipo(id_equipo) {
     }
   });
 }
+// FIN CONSULTAR EQUIPO  ----------------------------------
 
+
+// MODIFICAR EQUIPO ---------------------------------------
 function ModificarEquipo() {
   event.preventDefault();
   let redirijirA;
@@ -515,14 +187,12 @@ function ModificarEquipo() {
         console.log(data);
         CerrarModal();
       } else {
-        // En caso de una respuesta desconocida, puedes manejarla de acuerdo a tus necesidades.
         title = "Fallo";
         text = "Algo esta fallando";
         icon = "question";
         console.log(data);
       }
       console.log(data);
-      // Mostrar la alerta de SweetAlert5
       Swal.fire({
         title: title,
         text: text,
@@ -534,7 +204,6 @@ function ModificarEquipo() {
         window.location.href = redirijirA;
       });
 
-      // Limpiar los valores del formulario (o realizar otras acciones según tu lógica)
       $('#id_equipo').val('');
       $('#equipo').val('');
       $('#categoria_equipo').val('');
@@ -564,7 +233,10 @@ function ModificarEquipo() {
     }
   });
 }
+// FIN MODIFICAR EQUIPO -----------------------------------
 
+
+// ELIMINAR EQUIPO ----------------------------------------
 function EliminarEquipo(id_equipo) {
   // Aquí puedes realizar las acciones necesarias para eliminar el usuario con el id proporcionado
   // Puedes hacer una llamada AJAX para enviar la solicitud al servidor, por ejemplo
@@ -614,4 +286,191 @@ function EliminarEquipo(id_equipo) {
       CerrarModal();
     },
   });
+}
+// FIN ELIMINAR EQUIPO ------------------------------------
+
+
+function ValidarCamposEquipo() {
+  let equipo = document.getElementById("equipo").value;
+  let proveedor = document.getElementById("proveedor").value;
+  let referencia_proveedor = document.getElementById("referencia_proveedor").value;
+  let modelo = document.getElementById("modelo").value;
+  let numero_serie = document.getElementById("numero_serie").value;
+  let fecha_efectiva = document.getElementById("fecha_efectiva").value;
+  let alquilado = document.getElementById("alquilado").value;
+  let seguro = document.getElementById("seguro").value;
+  let leasing = document.getElementById("leasing").value;
+  let valoracion = document.getElementById("valoracion").value;
+  let procesador = document.getElementById("procesador").value;
+  let ram = document.getElementById("ram").value;
+  let almacenamiento = document.getElementById("almacenamiento").value;
+  let mac_address = document.getElementById("mac_address").value;
+  let bateria = document.getElementById("bateria").value;
+  let adaptador = document.getElementById("adaptador").value;
+  let sistema_operativo = document.getElementById("sistema_operativo").value;
+  let version_so = document.getElementById("version_so").value;
+  let descripcion = document.getElementById("descripcion").value;
+
+  let EquipoValido = /^.{5,100}$/.test(equipo);
+  let ProveedorValido = /^.{5,100}$/.test(proveedor);
+  let ReferenciaProveedorValido = /^.{5,100}$/.test(referencia_proveedor);
+  let ModeloValido = /^.{5,100}$/.test(modelo);
+  let NumeroSerieValido = /^.{6,100}$/.test(numero_serie);
+  let FechaEfectivaValida = /^\d{2}\/\d{2}\/\d{4}$/.test(fecha_efectiva);
+  let ProcesadorValido = /^.{5,100}$/.test(procesador);
+  let RamValido = /^.{5,100}$/.test(ram);
+  let AlmacenamientoValido = /^.{5,100}$/.test(almacenamiento);
+  let MacAdressValida = /^.{12,100}$/.test(mac_address);
+  let BateriaValida = /^.{5,100}$/.test(bateria);
+  let AdaptadorValido = /^.{5,100}$/.test(adaptador);
+  let SistemaOperativoValido = /^.{5,100}$/.test(sistema_operativo);
+  let VersionSoValida = /^.{5,100}$/.test(version_so);
+  let DescripcionValida = /^.{1,100}$/.test(descripcion);
+
+  let BotonEnviarEquipo = document.getElementById('BotonEnviarEquipo');
+
+  console.log('EquipoValido', EquipoValido, 'ProveedorValido', ProveedorValido, 'ReferenciaProveedorValido', ReferenciaProveedorValido, 'ModeloValido', ModeloValido, 'NumeroSerieValido', NumeroSerieValido, 'FechaEfectivaValida', FechaEfectivaValida, 'AlquiladoValido', AlquiladoValido, 'SeguroValido', SeguroValido, 'LeasingValido', LeasingValido, 'ValoracionValida', ValoracionValida, ProcesadorValido, 'ProcesadorValido', RamValido, 'RamValido', AlmacenamientoValido, 'AlmacenamientoValido', MacAdressValida, 'MacAdressValida', BateriaValida, 'BateriaValida', AdaptadorValido, 'AdaptadorValido', SistemaOperativoValido, 'SistemaOperativoValido', VersionSoValida, 'VersionSoValida', DescripcionValida, 'DescripcionValida');
+
+  if (EquipoValido && ProveedorValido && ReferenciaProveedorValido && ModeloValido && NumeroSerieValido && FechaEfectivaValida && AlquiladoValido && SeguroValido && LeasingValido && ValoracionValida && ProcesadorValido && RamValido && AlmacenamientoValido && MacAdressValida && BateriaValida && AdaptadorValido && SistemaOperativoValido && VersionSoValida && DescripcionValida) {
+    BotonEnviarEquipo.disabled = false;
+    console.log("boton habilitado");
+  } else if (EquipoValido === "" && ProveedorValido === "" && ReferenciaProveedorValido === "" && ModeloValido === "" && NumeroSerieValido === "" && FechaEfectivaValida === "" && AlquiladoValido === "" && SeguroValido === "" && LeasingValido === "" && ValoracionValida === "" && ProcesadorValido === "" && RamValido === "" && AlmacenamientoValido === "" && MacAdressValida === "" && BateriaValida === "" && AdaptadorValido === "" && SistemaOperativoValido === "" && VersionSoValida === "" && DescripcionValida === "") {
+    BotonEnviarEquipo.disabled = false;
+    console.log("campo vacio");
+  } else {
+    BotonEnviarEquipo.disabled = true;
+    console.log("boton deshabilitado");
+  }
+}
+
+function ValidarEquipo(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("EquipoError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("EquipoError");
+  } else if (!(/^.{5,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Nombre del equipo debe tener entre 5 y 100 caracteres.";
+    MostrarElemento("EquipoError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("EquipoError");
+    ValidarCamposEquipo();
+  }
+}
+
+function ValidarProveedor(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ProveedorError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ProveedorError");
+  } else if (!(/^.{5,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Proveedor debe tener entre 5 y 100 caracteres.";
+    MostrarElemento("ProveedorError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("ProveedorError");
+    ValidarCamposEquipo();
+  }
+}
+
+function ValidarReferenciaProveedor(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ReferenciaProveedorError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ReferenciaProveedorError");
+  } else if (!(/^.{5,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Referencia proveedor debe tener entre 5 y 100 caracteres.";
+    MostrarElemento("ReferenciaProveedorError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("ReferenciaProveedorError");
+    ValidarCamposEquipo();
+  }
+}
+
+function ValidarModelo(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ModeloError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ModeloError");
+  } else if (!(/^.{5,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Modelo debe tener entre 5 y 100 caracteres.";
+    MostrarElemento("ModeloError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("ModeloError");
+    ValidarCamposEquipo();
+  }
+}
+function ValidarNumeroSerie(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("NumeroSerieError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("NumeroSerieError");
+  } else if (!(/^.{6,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Numero serie debe tener entre 6 y 100 caracteres.";
+    MostrarElemento("NumeroSerieError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("NumeroSerieError");
+    ValidarCamposEquipo();
+  }
+}
+
+function ValidarFechaEfectiva(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("FechaEfectivaError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("FechaEfectivaError");
+  } else if (!(/^\d{2}\/\d{2}\/\d{4}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Formato incorrecto: La fecha debe cumplir con el formato dd/mm/aaaa";
+    MostrarElemento("FechaEfectivaError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("FechaEfectivaError");
+    ValidarCamposEquipo();
+  }
+}
+
+function ValidarProcesador(elemento) {
+  let inputValue = elemento.value.trim();
+  let ErrorSpan = document.getElementById("ProcesadorError");
+  if (inputValue == "") {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "Campo obligatorio";
+    MostrarElemento("ProcesadorError");
+  } else if (!(/^.{5,100}$/.test(inputValue))) {
+    elemento.style.borderColor = "red";
+    ErrorSpan.textContent = "El procesador debe contener entre 5 y 100 caracteres";
+    MostrarElemento("ProcesadorError");
+  } else {
+    elemento.style.borderColor = "green";
+    ErrorSpan.textContent = "";
+    OcultarElemento("ProcesadorError");
+    ValidarCamposEquipo();
+  }
 }
